@@ -181,7 +181,13 @@ class BillingController
             $itemsStmt->execute([':id' => $id]);
             $items = $itemsStmt->fetchAll();
 
-            $paymentsStmt = $db->prepare("SELECT * FROM payments WHERE invoice_number = :id ORDER BY payment_date DESC");
+            $paymentsStmt = $db->prepare("
+                SELECT p.*, u.full_name AS staff_name 
+                FROM payments p 
+                LEFT JOIN users u ON p.staff_id = u.id 
+                WHERE p.invoice_number = :id 
+                ORDER BY p.payment_date DESC
+            ");
             $paymentsStmt->execute([':id' => $id]);
             $payments = $paymentsStmt->fetchAll();
 

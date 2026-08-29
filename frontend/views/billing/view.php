@@ -210,7 +210,7 @@
                                         <td><strong class="text-dark font-mono"><?php echo htmlspecialchars($p['receipt_number']); ?></strong></td>
                                         <td><span class="text-secondary"><?php echo date('d/m/Y \a\t g:i A', strtotime($p['payment_date'])); ?></span></td>
                                         <td><span class="badge-pill-custom badge-zinc"><?php echo htmlspecialchars($p['payment_method']); ?></span></td>
-                                        <td><small class="text-muted"><i class="fa-solid fa-user-check me-1 text-primary"></i><?php echo htmlspecialchars($p['staff_name']); ?></small></td>
+                                        <td><small class="text-muted"><i class="fa-solid fa-user-check me-1 text-primary"></i><?php echo htmlspecialchars($p['staff_name'] ?? 'Authorized Clinician'); ?></small></td>
                                         <td class="text-end font-mono fw-bold text-success"><?php echo DEFAULT_CURRENCY . number_format($p['amount_paid'], 2); ?></td>
                                     </tr>
                                 <?php endforeach; ?>

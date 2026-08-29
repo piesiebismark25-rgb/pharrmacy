@@ -18,14 +18,39 @@ class ReportController
             $totalRevenue = (float)$db->query("SELECT COALESCE(SUM(amount_paid), 0) FROM payments")->fetchColumn();
             $totalOutstanding = (float)$db->query("SELECT COALESCE(SUM(balance), 0) FROM invoices")->fetchColumn();
 
-            $recentVisits = $db->query("
-                SELECT v.*, c.full_name AS client_name, u.full_name AS staff_name 
-                FROM visits v 
-                INNER JOIN clients c ON v.client_id = c.client_id 
-                INNER JOIN users u ON v.attending_staff_id = u.id 
-                ORDER BY v.visit_date DESC LIMIT 15
+            // 1. Payment Methods Breakdown (Donut Chart)
+            $channelStats = $db->query("
+                SELECT payment_method, COUNT(*) AS txn_count, COALESCE(SUM(amount_paid), 0) AS total_amount 
+                FROM payments 
+                GROUP BY payment_method
             ")->fetchAll();
 
+            // 2. Gender Demographics
+            $genderStats = $db->query("
+                SELECT gender, COUNT(*) AS count 
+                FROM clients 
+                GROUP BY gender
+            ")->fetchAll();
+
+            // 3. Last 7 Days Revenue Trend
+            $days = [];
+            $revenueDaysData = [];
+            $visitsDaysData = [];
+            for ($i = 6; $i >= 0; $i--) {
+                $d = date('Y-m-d', strtotime("-$i days"));
+                $label = date('D, d M', strtotime($d));
+                $days[] = $label;
+
+                $revStmt = $db->prepare("SELECT COALESCE(SUM(amount_paid), 0) FROM payments WHERE DATE(payment_date) = :d");
+                $revStmt->execute([':d' => $d]);
+                $revenueDaysData[] = (float)$revStmt->fetchColumn();
+
+                $visStmt = $db->prepare("SELECT COUNT(*) FROM visits WHERE DATE(visit_date) = :d");
+                $visStmt->execute([':d' => $d]);
+                $visitsDaysData[] = (int)$visStmt->fetchColumn();
+            }
+
+            // 4. Recent Payment Transactions Ledger
             $recentPayments = $db->query("
                 SELECT p.*, c.full_name AS client_name 
                 FROM payments p 
@@ -36,12 +61,12 @@ class ReportController
         } catch (\PDOException $e) {
             $totalPatients = $totalVisits = 0;
             $totalRevenue = $totalOutstanding = 0.0;
-            $recentVisits = $recentPayments = [];
+            $channelStats = $genderStats = $days = $revenueDaysData = $visitsDaysData = $recentPayments = [];
         }
 
-        $pageTitle = "Printable Reports - " . APP_NAME;
+        $pageTitle = "Operational & Financial Intelligence - " . APP_NAME;
         $pageHeading = "Comprehensive Clinical & Financial Reports";
-        $pageSubheading = "Print-ready summaries for clinical operations and revenue auditing.";
+        $pageSubheading = "Executive analytics and operational audit intelligence.";
         $currentRoute = 'reports';
 
         ob_start();

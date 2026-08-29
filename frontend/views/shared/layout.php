@@ -363,27 +363,29 @@ $currentRoute = $currentRoute ?? 'dashboard';
             font-weight: 600;
         }
 
-        .signout-btn {
-            width: 28px;
-            height: 28px;
-            border-radius: 6px;
-            background-color: rgba(239, 68, 68, 0.12);
-            border: 1px solid rgba(239, 68, 68, 0.25);
-            color: #f87171;
+        .sidebar-logout-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
+            width: 100%;
+            padding: 8px 14px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            color: #334155;
+            font-size: 0.8125rem;
+            font-weight: 600;
             text-decoration: none;
             transition: all 0.15s ease;
-            flex-shrink: 0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
         }
 
-        .signout-btn:hover {
-            background-color: #ef4444;
-            color: #ffffff;
-            border-color: #ef4444;
-            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+        .sidebar-logout-btn:hover {
+            background-color: #fff1f2;
+            color: #e11d48;
+            border-color: #fecdd3;
+            box-shadow: 0 2px 8px rgba(225, 29, 72, 0.25);
+            transform: translateY(-1px);
         }
 
         /* Mobile Sidebar Backdrop */
@@ -896,17 +898,10 @@ $currentRoute = $currentRoute ?? 'dashboard';
                 </li>
             <?php endif; ?>
 
-            <li class="menu-category">External</li>
-            <li>
-                <a href="<?php echo APP_URL; ?>/" target="_blank" class="sidebar-link">
-                    <div class="nav-icon-box"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
-                    <span>View Public Site</span>
-                </a>
-            </li>
         </ul>
 
         <div class="sidebar-footer">
-            <div class="doctor-card-modern">
+            <div class="doctor-card-modern mb-2">
                 <div class="avatar-wrap">
                     <div class="avatar-box">
                         <?php echo strtoupper(substr($currentUserName ?? 'DR', 0, 2)); ?>
@@ -917,10 +912,11 @@ $currentRoute = $currentRoute ?? 'dashboard';
                     <div class="fw-bold text-truncate text-white" style="font-size: 0.8125rem;"><?php echo htmlspecialchars($currentUserName ?? 'Doctor'); ?></div>
                     <div class="role-badge"><?php echo htmlspecialchars($currentRole ?? 'Clinical Officer'); ?></div>
                 </div>
-                <a href="<?php echo APP_URL; ?>/logout" class="signout-btn" title="Sign Out of Portal">
-                    <i class="fa-solid fa-power-off"></i>
-                </a>
             </div>
+            <a href="<?php echo APP_URL; ?>/logout" class="sidebar-logout-btn">
+                <i class="fa-solid fa-arrow-right-from-bracket me-2"></i>
+                <span>Sign Out</span>
+            </a>
         </div>
     </aside>
 
@@ -950,25 +946,6 @@ $currentRoute = $currentRoute ?? 'dashboard';
             </div>
         </header>
 
-        <!-- Printable Document Header (Appears only on paper/PDF export) -->
-        <div class="print-only-header">
-            <div class="d-flex justify-content-between align-items-start">
-                <div>
-                    <h2 class="fw-bold text-dark mb-0">I.K HOLINESS HOME CARE SERVICES</h2>
-                    <p class="text-secondary fw-semibold mb-1" style="font-size: 10pt;">"YOUR HEALTH IS OUR LIFE"</p>
-                    <small class="text-muted d-block">
-                        <strong>Location:</strong> Pankrono, Kumasi, Ghana &bull; 
-                        <strong>Tel:</strong> 0241974447 / 0550974126 &bull; 
-                        <strong>Email:</strong> kisaiahh@icloud.com
-                    </small>
-                </div>
-                <div class="text-end">
-                    <span class="badge bg-dark text-white p-2">OFFICIAL MEDICAL RECORD</span>
-                    <div class="mt-2 text-muted" style="font-size: 8pt;">Printed on: <?php echo date('d/m/Y H:i A'); ?></div>
-                </div>
-            </div>
-        </div>
-
         <!-- Main Page Body -->
         <main class="main-container">
             <!-- Toast / Notifications -->
@@ -994,25 +971,6 @@ $currentRoute = $currentRoute ?? 'dashboard';
 
             <!-- Render Main View Content -->
             <?php echo $content ?? ''; ?>
-
-            <!-- Printable Footer Stamp Block -->
-            <div class="print-footer">
-                <div class="row pt-4">
-                    <div class="col-6">
-                        <p class="mb-1 fw-bold">Attending Medical Practitioner:</p>
-                        <p class="text-muted mb-4"><?php echo htmlspecialchars($currentUserName ?? 'Dr. I.K Holiness'); ?> (Medical Officer)</p>
-                        <div style="border-bottom: 1px dashed #64748b; width: 180px; height: 25px;"></div>
-                        <small class="text-muted">Doctor Signature / Date</small>
-                    </div>
-                    <div class="col-6 text-end">
-                        <p class="mb-1 fw-bold">Official Stamp & Verification:</p>
-                        <div style="display: inline-block; border: 2px dashed #94a3b8; width: 130px; height: 60px; border-radius: 6px;"></div>
-                    </div>
-                </div>
-                <div class="text-center mt-3 pt-2 border-top text-muted" style="font-size: 7.5pt;">
-                    I.K Holiness Home Care Services &bull; Pankrono, Kumasi &bull; 0241974447 / 0550974126 &bull; Confidential Medical Document
-                </div>
-            </div>
         </main>
     </div>
 
