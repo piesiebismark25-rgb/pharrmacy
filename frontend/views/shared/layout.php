@@ -367,24 +367,26 @@ $currentRoute = $currentRoute ?? 'dashboard';
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 8px;
             width: 100%;
-            padding: 8px 14px;
-            border-radius: 8px;
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0;
-            color: #334155;
+            padding: 9px 14px;
+            border-radius: 9px;
+            background: rgba(225, 29, 72, 0.14);
+            border: 1px solid rgba(225, 29, 72, 0.3);
+            color: #fda4af;
             font-size: 0.8125rem;
             font-weight: 600;
+            letter-spacing: 0.02em;
             text-decoration: none;
-            transition: all 0.15s ease;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(8px);
         }
 
         .sidebar-logout-btn:hover {
-            background-color: #fff1f2;
-            color: #e11d48;
-            border-color: #fecdd3;
-            box-shadow: 0 2px 8px rgba(225, 29, 72, 0.25);
+            background: linear-gradient(135deg, #be123c 0%, #e11d48 100%);
+            color: #ffffff !important;
+            border-color: #e11d48;
+            box-shadow: 0 4px 14px rgba(225, 29, 72, 0.4);
             transform: translateY(-1px);
         }
 
@@ -736,14 +738,19 @@ $currentRoute = $currentRoute ?? 'dashboard';
 
         /* PRINT STYLES ENGINE */
         @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
             @page {
                 size: A4 portrait;
-                margin: 15mm;
+                margin: 12mm;
             }
             body {
                 background: #ffffff !important;
                 color: #0f172a !important;
-                font-size: 10pt !important;
+                font-size: 9.5pt !important;
                 line-height: 1.4 !important;
             }
             #sidebar-wrapper, .sidebar-backdrop, .topbar, .btn-print-custom, .btn-primary-custom, .btn-secondary-custom, .no-print, .btn-close, .alert {
@@ -757,35 +764,29 @@ $currentRoute = $currentRoute ?? 'dashboard';
             .main-container {
                 padding: 0 !important;
             }
-            .ui-card, .ui-table-container {
-                background: #ffffff !important;
-                border: 1px solid #cbd5e1 !important;
-                box-shadow: none !important;
-                border-radius: 6px !important;
-                color: #0f172a !important;
+            .vibrant-stat-card, .audit-kpi-card, .staff-kpi-card,
+            .bg-grad-blue, .bg-grad-purple, .bg-grad-emerald, .bg-grad-rose, .bg-grad-teal,
+            .card-gradient-blue, .card-gradient-purple, .card-gradient-emerald, .card-gradient-rose {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                color: #ffffff !important;
+                border-radius: 10px !important;
+            }
+            .badge-pill-custom, .badge-motto, .badge-emerald, .badge-amber, .badge-rose, .badge-blue, .badge-purple, .badge-zinc {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
             .ui-table th {
                 background-color: #f1f5f9 !important;
                 color: #0f172a !important;
                 border-bottom: 2px solid #0f172a !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
             .ui-table td {
                 color: #0f172a !important;
                 border-bottom: 1px solid #e2e8f0 !important;
-            }
-            .print-only-header {
-                display: block !important;
-                margin-bottom: 20px;
-                padding-bottom: 15px;
-                border-bottom: 2px solid #0f172a;
-            }
-            .print-footer {
-                display: block !important;
-                margin-top: 30px;
-                padding-top: 15px;
-                border-top: 1px solid #cbd5e1;
-                font-size: 8pt;
-                color: #64748b;
             }
         }
 
@@ -935,10 +936,6 @@ $currentRoute = $currentRoute ?? 'dashboard';
             </div>
 
             <div class="topbar-actions">
-                <button onclick="window.print()" class="btn-print-custom">
-                    <i class="fa-solid fa-print"></i>
-                    <span class="d-none d-sm-inline">Print</span>
-                </button>
                 <a href="<?php echo APP_URL; ?>/clients/create" class="btn-primary-custom">
                     <i class="fa-solid fa-user-plus"></i>
                     <span class="d-none d-sm-inline">New Patient</span>

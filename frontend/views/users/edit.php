@@ -1,4 +1,4 @@
-<!-- Create New Staff Account View -->
+<!-- Edit Staff Account View -->
 <div class="row justify-content-center">
     <div class="col-12 col-md-8 col-xl-6">
         
@@ -7,8 +7,8 @@
             <a href="<?php echo APP_URL; ?>/users" class="btn-secondary-custom py-2 px-3">
                 <i class="fa-solid fa-arrow-left me-1"></i> Back to Staff List
             </a>
-            <span class="badge-pill-custom badge-blue font-mono" style="font-size: 0.75rem;">
-                <i class="fa-solid fa-user-shield me-1"></i> Admin Console
+            <span class="badge-pill-custom badge-zinc font-mono" style="font-size: 0.75rem;">
+                User ID: #<?php echo $user['id']; ?>
             </span>
         </div>
 
@@ -16,22 +16,23 @@
         <div class="ui-card p-4 p-md-5" style="background-color: #ffffff;">
             <div class="d-flex align-items-center gap-3 mb-4 pb-3 border-bottom">
                 <div class="icon-sq bg-blue-subtle text-primary" style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
-                    <i class="fa-solid fa-user-plus"></i>
+                    <i class="fa-solid fa-user-pen"></i>
                 </div>
                 <div>
-                    <h5 class="fw-bold text-dark mb-0" style="font-size: 1.1rem;">Register New Staff Account</h5>
-                    <small class="text-muted">Create credentials for a clinical officer or administrator</small>
+                    <h5 class="fw-bold text-dark mb-0" style="font-size: 1.1rem;">Edit Staff Account</h5>
+                    <small class="text-muted">Update profile, username, role, or reset password</small>
                 </div>
             </div>
 
-            <form action="<?php echo APP_URL; ?>/users/store" method="POST">
+            <form action="<?php echo APP_URL; ?>/users/update" method="POST">
+                <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
                 
                 <!-- Full Name -->
                 <div class="mb-3">
                     <label for="full_name" class="form-label-custom">
                         Full Practitioner Name <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control form-control-custom" id="full_name" name="full_name" placeholder="e.g. Dr. Kwabena Mensah or Nurse Sarah" required>
+                    <input type="text" class="form-control form-control-custom" id="full_name" name="full_name" value="<?php echo htmlspecialchars($user['full_name']); ?>" required>
                 </div>
 
                 <!-- Username -->
@@ -39,16 +40,15 @@
                     <label for="username" class="form-label-custom">
                         Login Username <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control form-control-custom font-mono" id="username" name="username" placeholder="e.g. kmensah or nurse_sarah" required>
-                    <small class="text-muted d-block mt-1" style="font-size: 0.72rem;">Lowercase letters and numbers without spaces.</small>
+                    <input type="text" class="form-control form-control-custom font-mono" id="username" name="username" value="<?php echo htmlspecialchars($user['username']); ?>" required>
                 </div>
 
-                <!-- Password -->
+                <!-- New Password (Optional) -->
                 <div class="mb-3">
                     <label for="password" class="form-label-custom">
-                        Temporary Password <span class="text-danger">*</span>
+                        Reset Password <span class="text-muted fw-normal text-lowercase">(leave empty to keep current password)</span>
                     </label>
-                    <input type="password" class="form-control form-control-custom" id="password" name="password" placeholder="Minimum 6 characters" required>
+                    <input type="password" class="form-control form-control-custom" id="password" name="password" placeholder="Enter new password to overwrite">
                 </div>
 
                 <!-- Role Selection -->
@@ -59,21 +59,21 @@
                     <div class="row g-2">
                         <div class="col-6">
                             <label class="role-select-box">
-                                <input type="radio" name="role" value="staff" checked>
+                                <input type="radio" name="role" value="staff" <?php echo $user['role'] === 'staff' ? 'checked' : ''; ?>>
                                 <div class="role-box-content">
                                     <i class="fa-solid fa-stethoscope text-primary fs-5 mb-1"></i>
                                     <strong class="d-block text-dark small">Clinical Staff</strong>
-                                    <small class="text-muted" style="font-size: 0.7rem;">Encounters, patients & appointments</small>
+                                    <small class="text-muted" style="font-size: 0.7rem;">Encounters & appointments</small>
                                 </div>
                             </label>
                         </div>
                         <div class="col-6">
                             <label class="role-select-box">
-                                <input type="radio" name="role" value="admin">
+                                <input type="radio" name="role" value="admin" <?php echo $user['role'] === 'admin' ? 'checked' : ''; ?>>
                                 <div class="role-box-content">
                                     <i class="fa-solid fa-user-shield text-purple fs-5 mb-1"></i>
                                     <strong class="d-block text-dark small">Administrator</strong>
-                                    <small class="text-muted" style="font-size: 0.7rem;">Full system & audit management</small>
+                                    <small class="text-muted" style="font-size: 0.7rem;">Full system access</small>
                                 </div>
                             </label>
                         </div>
@@ -86,7 +86,7 @@
                         Cancel
                     </a>
                     <button type="submit" class="btn-primary-custom py-2 px-4 shadow-sm">
-                        <i class="fa-solid fa-check me-1"></i> Create Staff Account
+                        <i class="fa-solid fa-check me-1"></i> Save Changes
                     </button>
                 </div>
 

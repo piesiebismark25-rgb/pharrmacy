@@ -117,6 +117,15 @@ class AuthHelper
     }
 
     /**
+     * Check if the currently authenticated user has admin role.
+     */
+    public static function isAdmin(): bool
+    {
+        self::initSession();
+        return (self::getRole() === 'admin');
+    }
+
+    /**
      * Get the logged-in user's role.
      */
     public static function getRole(): ?string

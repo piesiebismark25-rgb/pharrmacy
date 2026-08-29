@@ -47,13 +47,13 @@
         </div>
     </div>
 
-    <!-- 2. 4 HERO STAT CARDS WITH VIBRANT LUXURY COLORS -->
+    <!-- 2. 4 HERO STAT CARDS WITH 4 DISTINCT VIBRANT LUXURY COLORS -->
     <div class="row g-3 g-xl-4 mb-4">
         
-        <!-- CARD 1: Registered Patients (Vibrant Royal Blue Gradient) -->
+        <!-- CARD 1: Registered Patients (Vibrant Royal Blue) -->
         <div class="col-12 col-sm-6 col-xl-3">
             <div class="vibrant-stat-card card-gradient-blue">
-                <div class="d-flex align-items-start justify-content-between mb-3">
+                <div class="d-flex align-items-start justify-content-between mb-2">
                     <div>
                         <span class="vibrant-label">Registered Patients</span>
                         <div class="vibrant-value"><?php echo number_format($totalClients); ?></div>
@@ -63,16 +63,18 @@
                     </div>
                 </div>
                 <div class="vibrant-footer">
-                    <span class="vibrant-badge"><i class="fa-solid fa-arrow-trend-up me-1"></i>+12% this mo</span>
-                    <span class="vibrant-subtext">Permanent dossiers</span>
+                    <span class="vibrant-subtext">
+                        <i class="fa-solid fa-id-card-clip"></i>
+                        <span>Permanent Patient Dossiers</span>
+                    </span>
                 </div>
             </div>
         </div>
 
-        <!-- CARD 2: Today's Encounters (Vibrant Ocean Teal Gradient) -->
+        <!-- CARD 2: Today's Encounters (Vibrant Royal Purple) -->
         <div class="col-12 col-sm-6 col-xl-3">
-            <div class="vibrant-stat-card card-gradient-teal">
-                <div class="d-flex align-items-start justify-content-between mb-3">
+            <div class="vibrant-stat-card card-gradient-purple">
+                <div class="d-flex align-items-start justify-content-between mb-2">
                     <div>
                         <span class="vibrant-label">Today's Visits</span>
                         <div class="vibrant-value"><?php echo number_format($todayVisits); ?></div>
@@ -82,16 +84,18 @@
                     </div>
                 </div>
                 <div class="vibrant-footer">
-                    <span class="vibrant-badge"><i class="fa-solid fa-clock me-1"></i>Active Queue</span>
-                    <span class="vibrant-subtext">Home visits scheduled</span>
+                    <span class="vibrant-subtext">
+                        <i class="fa-solid fa-house-medical"></i>
+                        <span>Home Visits Scheduled</span>
+                    </span>
                 </div>
             </div>
         </div>
 
-        <!-- CARD 3: Today's Collections (Vibrant Emerald Green Gradient) -->
+        <!-- CARD 3: Today's Collections (Vibrant Emerald Green) -->
         <div class="col-12 col-sm-6 col-xl-3">
             <div class="vibrant-stat-card card-gradient-emerald">
-                <div class="d-flex align-items-start justify-content-between mb-3">
+                <div class="d-flex align-items-start justify-content-between mb-2">
                     <div>
                         <span class="vibrant-label">Today's Cleared Revenue</span>
                         <div class="vibrant-value font-mono">
@@ -103,16 +107,18 @@
                     </div>
                 </div>
                 <div class="vibrant-footer">
-                    <span class="vibrant-badge"><i class="fa-solid fa-circle-check me-1"></i>Cleared</span>
-                    <span class="vibrant-subtext">MoMo & Cash settled</span>
+                    <span class="vibrant-subtext">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>MoMo & Cash Settled</span>
+                    </span>
                 </div>
             </div>
         </div>
 
-        <!-- CARD 4: Outstanding Receivables (Vibrant Crimson Rose Gradient) -->
+        <!-- CARD 4: Outstanding Receivables (Vibrant Crimson Rose) -->
         <div class="col-12 col-sm-6 col-xl-3">
             <div class="vibrant-stat-card card-gradient-rose">
-                <div class="d-flex align-items-start justify-content-between mb-3">
+                <div class="d-flex align-items-start justify-content-between mb-2">
                     <div>
                         <span class="vibrant-label">Outstanding Balances</span>
                         <div class="vibrant-value font-mono">
@@ -124,8 +130,10 @@
                     </div>
                 </div>
                 <div class="vibrant-footer">
-                    <span class="vibrant-badge"><i class="fa-solid fa-circle-exclamation me-1"></i>Receivables</span>
-                    <span class="vibrant-subtext">Pending statements</span>
+                    <span class="vibrant-subtext">
+                        <i class="fa-solid <?php echo $outstandingBalances > 0 ? 'fa-triangle-exclamation' : 'fa-check-double'; ?>"></i>
+                        <span><?php echo $outstandingBalances > 0 ? 'Pending Invoices' : 'Zero Overdue Balance'; ?></span>
+                    </span>
                 </div>
             </div>
         </div>
@@ -536,9 +544,9 @@
     box-shadow: 0 10px 25px -4px rgba(37, 99, 235, 0.35);
 }
 
-.card-gradient-teal {
-    background: linear-gradient(135deg, #0f766e 0%, #0d9488 60%, #14b8a6 100%);
-    box-shadow: 0 10px 25px -4px rgba(13, 148, 136, 0.35);
+.card-gradient-purple {
+    background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 60%, #9333ea 100%);
+    box-shadow: 0 10px 25px -4px rgba(124, 58, 237, 0.35);
 }
 
 .card-gradient-emerald {
@@ -556,7 +564,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.88);
 }
 
 .vibrant-value {
@@ -586,8 +594,7 @@
 .vibrant-footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding-top: 14px;
+    padding-top: 12px;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     margin-top: 14px;
 }
@@ -604,8 +611,15 @@
 }
 
 .vibrant-subtext {
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.95);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 /* Neat White Cards & Tables */
