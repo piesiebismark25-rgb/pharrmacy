@@ -1,8 +1,8 @@
-﻿<div class="row justify-content-center">
+<div class="row justify-content-center">
     <div class="col-12 col-xl-9">
         
         <?php if (!empty($errors)): ?>
-            <div class="ui-alert ui-alert-danger mb-4" role="alert">
+            <div class="ui-alert ui-alert-danger mb-3" role="alert">
                 <div>
                     <strong class="d-block mb-1"><i class="fa-solid fa-triangle-exclamation me-1"></i> Registration Error:</strong>
                     <ul class="mb-0 ps-3">
@@ -17,10 +17,10 @@
         <form action="<?php echo APP_URL; ?>/clients/store" method="POST" autocomplete="off">
             
             <!-- Section 1: Patient Primary Details -->
-            <div class="ui-card mb-4">
-                <h5 class="fw-bold text-white mb-4 pb-2 border-bottom" style="border-color: var(--border-subtle) !important;">
-                    <i class="fa-solid fa-user-pen text-teal me-2" style="color: var(--accent-teal);"></i> Patient Personal & Contact Details
-                </h5>
+            <div class="ui-card mb-3">
+                <h6 class="fw-bold text-dark mb-3 pb-2 border-bottom" style="border-color: var(--border-subtle) !important;">
+                    <i class="fa-solid fa-user-pen text-blue-accent me-1"></i> Patient Personal & Contact Details
+                </h6>
 
                 <div class="row g-3">
                     <div class="col-12 col-md-6">
@@ -59,8 +59,8 @@
                         <label class="form-label">Calculated Age</label>
                         <input type="text" 
                                id="age_display" 
-                               class="form-control text-teal fw-bold" 
-                               style="color: var(--accent-teal) !important; background-color: var(--bg-base) !important;" 
+                               class="form-control font-mono fw-bold" 
+                               style="background-color: var(--bg-subtle) !important; color: var(--accent-main) !important;" 
                                placeholder="Auto-calculated from DOB..." 
                                readonly>
                     </div>
@@ -99,10 +99,10 @@
             </div>
 
             <!-- Section 2: Emergency Contact -->
-            <div class="ui-card mb-4" style="border-left: 4px solid var(--warning);">
-                <h5 class="fw-bold text-white mb-4 pb-2 border-bottom" style="border-color: var(--border-subtle) !important;">
-                    <i class="fa-solid fa-phone-volume text-warning me-2"></i> Emergency Contact & Next of Kin
-                </h5>
+            <div class="ui-card mb-4" style="border-left: 3px solid var(--warning);">
+                <h6 class="fw-bold text-dark mb-3 pb-2 border-bottom" style="border-color: var(--border-subtle) !important;">
+                    <i class="fa-solid fa-phone-volume text-warning me-1"></i> Emergency Contact & Next of Kin
+                </h6>
 
                 <div class="row g-3">
                     <div class="col-12 col-md-6">
@@ -130,10 +130,10 @@
             </div>
 
             <!-- Buttons -->
-            <div class="d-flex justify-content-end gap-3">
-                <a href="<?php echo APP_URL; ?>/clients" class="btn-secondary-custom px-4">Cancel</a>
-                <button type="submit" class="btn-primary-custom px-5">
-                    <i class="fa-solid fa-floppy-disk me-2"></i> Save & Register Patient
+            <div class="d-flex justify-content-end gap-2">
+                <a href="<?php echo APP_URL; ?>/clients" class="btn-secondary-custom px-3">Cancel</a>
+                <button type="submit" class="btn-primary-custom px-4">
+                    <i class="fa-solid fa-floppy-disk me-1"></i> Save & Register Patient
                 </button>
             </div>
 
@@ -148,16 +148,15 @@ function calculateAge(dobString) {
         return;
     }
     const dob = new Date(dobString);
-    const today = new Date();
-    let age = today.getFullYear() - dob.getFullYear();
-    const m = today.getMonth() - dob.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
-        age--;
-    }
-    document.getElementById('age_display').value = age >= 0 ? age + " Years Old" : "Invalid Date";
+    const diff_ms = Date.now() - dob.getTime();
+    const age_dt = new Date(diff_ms);
+    const age = Math.abs(age_dt.getUTCFullYear() - 1970);
+    document.getElementById('age_display').value = isNaN(age) ? "" : age + " Years Old";
 }
-document.addEventListener("DOMContentLoaded", function() {
-    const dobVal = document.getElementById('dob').value;
-    if(dobVal) calculateAge(dobVal);
+document.addEventListener('DOMContentLoaded', () => {
+    const dobEl = document.getElementById('dob');
+    if (dobEl && dobEl.value) {
+        calculateAge(dobEl.value);
+    }
 });
 </script>

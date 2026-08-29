@@ -1,10 +1,10 @@
-﻿<div class="row justify-content-center">
+<div class="row justify-content-center">
     <div class="col-12 col-md-8 col-xl-6">
         <form action="<?php echo APP_URL; ?>/appointments/store" method="POST">
             <div class="ui-card mb-4">
-                <h5 class="fw-bold text-white mb-4 pb-2 border-bottom" style="border-color: var(--border-subtle) !important;">
-                    <i class="fa-solid fa-calendar-plus text-teal me-2" style="color: var(--accent-teal);"></i> Book Appointment / Home Visit
-                </h5>
+                <h6 class="fw-bold text-dark mb-3 pb-2 border-bottom" style="border-color: var(--border-subtle) !important;">
+                    <i class="fa-solid fa-calendar-plus text-blue-accent me-1"></i> Book Appointment / Home Visit
+                </h6>
 
                 <div class="mb-3">
                     <label for="client_id" class="form-label">Select Patient <span class="text-danger">*</span></label>
@@ -34,10 +34,10 @@
                     <input type="text" name="reason" id="reason" class="form-control" placeholder="e.g. Weekly Vital Signs & Glucose Checkup, Catheter Replacement" required>
                 </div>
 
-                <div class="d-flex justify-content-end gap-3">
-                    <a href="<?php echo APP_URL; ?>/appointments" class="btn-secondary-custom px-4">Cancel</a>
-                    <button type="submit" class="btn-primary-custom px-5">
-                        <i class="fa-solid fa-calendar-check me-2"></i> Book Appointment
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="<?php echo APP_URL; ?>/appointments" class="btn-secondary-custom px-3">Cancel</a>
+                    <button type="submit" class="btn-primary-custom px-4">
+                        <i class="fa-solid fa-calendar-check me-1"></i> Book Appointment
                     </button>
                 </div>
             </div>

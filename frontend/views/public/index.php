@@ -6,10 +6,10 @@
     <title>I.K HOLINESS HOME CARE SERVICES - "Your Health is Our Life"</title>
     <meta name="description" content="Professional clinical home care, nursing, vital signs monitoring, wound care, and post-operative recovery in Pankrono, Kumasi.">
     
-    <!-- Google Fonts: Inter & Outfit -->
+    <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Bootstrap 5.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome 6.5 -->
@@ -17,337 +17,335 @@
 
     <style>
         :root {
-            --bg-base: #060a09;
-            --bg-subtle: #0c1513;
-            --surface-card: #111d1a;
-            --surface-card-hover: #162824;
-            --border-subtle: rgba(255, 255, 255, 0.08);
-            --border-active: rgba(45, 212, 191, 0.35);
-            --accent-main: #10b981;
-            --accent-teal: #14b8a6;
-            --accent-glow: rgba(20, 184, 166, 0.2);
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
+            --bg-base: #f8fafc;
+            --bg-subtle: #f1f5f9;
+            --surface-card: #ffffff;
+            --border-subtle: #e2e8f0;
+            --border-strong: #cbd5e1;
+            --accent-main: #2563eb;
+            --accent-dark: #1d4ed8;
+            --accent-light: #eff6ff;
+            --accent-border: #bfdbfe;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
             --text-muted: #64748b;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: var(--bg-base);
             color: var(--text-primary);
+            font-size: 0.875rem;
             margin: 0;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, h4, h5, h6, .brand-font {
-            font-family: 'Outfit', sans-serif;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            color: var(--text-primary);
             letter-spacing: -0.02em;
         }
 
-        /* Glassmorphic Navbar */
+        /* Top Navbar */
         .public-navbar {
-            background-color: rgba(6, 10, 9, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background-color: #ffffff;
             border-bottom: 1px solid var(--border-subtle);
             position: sticky;
             top: 0;
             z-index: 1050;
-            padding: 16px 0;
+            padding: 12px 0;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
         }
 
         .brand-logo-wrap {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-decoration: none;
         }
 
         .brand-icon-box {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, rgba(20, 184, 166, 0.25) 0%, rgba(16, 185, 129, 0.12) 100%);
-            border: 1px solid var(--border-active);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 16px var(--accent-glow);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+            color: #ffffff;
+            font-size: 0.95rem;
         }
 
         .nav-link-custom {
             color: var(--text-secondary);
-            font-weight: 500;
-            font-size: 0.9375rem;
+            font-weight: 600;
+            font-size: 0.85rem;
             text-decoration: none;
-            padding: 8px 14px;
-            border-radius: 8px;
+            padding: 6px 14px;
+            border-radius: 6px;
             transition: all 0.15s ease;
         }
 
         .nav-link-custom:hover {
-            color: #ffffff;
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .btn-portal-login {
-            background-color: var(--surface-card);
-            border: 1px solid var(--border-subtle);
-            color: var(--text-primary);
-            font-weight: 600;
-            font-size: 0.875rem;
-            padding: 9px 18px;
-            border-radius: 10px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.15s ease;
-        }
-
-        .btn-portal-login:hover {
-            background-color: var(--surface-card-hover);
-            border-color: var(--border-active);
-            color: #ffffff;
+            color: var(--accent-main);
+            background-color: var(--accent-light);
         }
 
         .btn-cta-primary {
-            background: linear-gradient(135deg, #10b981 0%, #0d9488 100%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #ffffff;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            border: 1px solid #1d4ed8;
+            color: #ffffff !important;
             font-weight: 600;
-            font-size: 1rem;
-            padding: 14px 28px;
-            border-radius: 12px;
+            font-size: 0.875rem;
+            padding: 9px 18px;
+            border-radius: 8px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
-            transition: all 0.2s ease;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+            transition: all 0.15s ease;
         }
 
         .btn-cta-primary:hover {
-            background: linear-gradient(135deg, #059669 0%, #0f766e 100%);
-            box-shadow: 0 6px 28px rgba(16, 185, 129, 0.5);
-            transform: translateY(-2px);
-            color: #ffffff;
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            transform: translateY(-1px);
         }
 
         .btn-cta-secondary {
-            background-color: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border-subtle);
-            color: #ffffff;
+            background-color: #ffffff;
+            border: 1px solid var(--border-strong);
+            color: var(--text-primary) !important;
             font-weight: 600;
-            font-size: 1rem;
-            padding: 14px 28px;
-            border-radius: 12px;
+            font-size: 0.875rem;
+            padding: 9px 18px;
+            border-radius: 8px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            transition: all 0.2s ease;
+            gap: 8px;
+            transition: all 0.15s ease;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
         }
 
         .btn-cta-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
+            background-color: var(--bg-subtle);
+            border-color: #94a3b8;
         }
 
         /* Hero Section */
         .hero-section {
-            padding: 90px 0 80px 0;
+            padding: 60px 0 50px 0;
             position: relative;
-            background-image: 
-                radial-gradient(circle at 50% 10%, rgba(20, 184, 166, 0.15) 0%, transparent 60%),
-                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+            background: radial-gradient(circle at 50% 10%, rgba(37, 99, 235, 0.05) 0%, transparent 60%);
         }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
+            gap: 6px;
+            padding: 5px 12px;
             border-radius: 9999px;
-            background-color: rgba(20, 184, 166, 0.1);
-            border: 1px solid var(--border-active);
-            color: var(--accent-teal);
-            font-size: 0.8125rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            margin-bottom: 24px;
+            background-color: var(--accent-light);
+            border: 1px solid var(--accent-border);
+            color: var(--accent-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            margin-bottom: 18px;
         }
 
         .hero-title {
-            font-size: clamp(2.4rem, 5vw, 4rem);
-            font-weight: 900;
-            line-height: 1.1;
-            color: #ffffff;
-            margin-bottom: 20px;
+            font-size: clamp(1.8rem, 4vw, 2.7rem);
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--text-primary);
+            margin-bottom: 14px;
+            letter-spacing: -0.02em;
         }
 
         .hero-title-accent {
-            background: linear-gradient(135deg, #2dd4bf 0%, #10b981 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--accent-main);
         }
 
         .hero-desc {
-            font-size: 1.15rem;
+            font-size: 0.95rem;
             color: var(--text-secondary);
-            line-height: 1.6;
-            max-width: 680px;
-            margin: 0 auto 36px auto;
+            line-height: 1.5;
+            max-width: 620px;
+            margin: 0 auto 26px auto;
         }
 
-        /* Service Cards */
-        .service-card {
-            background-color: var(--surface-card);
+        /* Pillar & Tabbed Services Matrix */
+        .pillar-card {
+            background-color: #ffffff;
             border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 28px 24px;
+            border-radius: 14px;
+            padding: 24px;
             height: 100%;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease-in-out;
             position: relative;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
         }
 
-        .service-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--border-active);
-            background-color: var(--surface-card-hover);
-            box-shadow: 0 12px 30px rgba(20, 184, 166, 0.12);
+        .pillar-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-border);
+            box-shadow: 0 8px 20px -3px rgba(37, 99, 235, 0.08);
         }
 
-        .service-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background-color: rgba(20, 184, 166, 0.1);
-            border: 1px solid rgba(20, 184, 166, 0.25);
+        .pillar-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .pillar-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background-color: var(--accent-light);
+            border: 1px solid var(--accent-border);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
-            color: var(--accent-teal);
-            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--accent-main);
+            flex-shrink: 0;
         }
 
-        .service-title {
-            font-size: 1.125rem;
+        .pillar-title {
+            font-size: 1rem;
             font-weight: 700;
-            color: #ffffff;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .pillar-subtitle {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .service-list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
             margin-bottom: 10px;
         }
 
-        .service-text {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            line-height: 1.5;
-            margin-bottom: 0;
+        .service-list-item i {
+            color: var(--accent-main);
+            font-size: 0.75rem;
+            margin-top: 3px;
+            flex-shrink: 0;
         }
 
-        /* Section Container */
+        /* Section Containers */
         .section-py {
-            padding: 90px 0;
+            padding: 60px 0;
         }
 
         .section-header {
             text-align: center;
-            max-width: 650px;
-            margin: 0 auto 60px auto;
+            max-width: 600px;
+            margin: 0 auto 36px auto;
         }
 
         .section-subtitle {
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.8125rem;
+            letter-spacing: 0.06em;
+            font-size: 0.72rem;
             font-weight: 700;
-            color: var(--accent-teal);
-            margin-bottom: 10px;
+            color: var(--accent-main);
+            margin-bottom: 6px;
             display: block;
         }
 
         .section-title {
-            font-size: 2.2rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 14px;
+            color: var(--text-primary);
+            margin-bottom: 8px;
         }
 
         /* Booking Form Card */
         .booking-card {
-            background-color: var(--surface-card);
+            background-color: #ffffff;
             border: 1px solid var(--border-subtle);
-            border-radius: 24px;
-            padding: 44px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            border-radius: 16px;
+            padding: 32px 24px;
+            box-shadow: 0 6px 20px -3px rgba(0, 0, 0, 0.05);
         }
 
         .form-control-custom, .form-select-custom {
-            background-color: rgba(6, 10, 9, 0.7);
-            border: 1px solid var(--border-subtle);
-            color: #ffffff;
-            border-radius: 10px;
-            padding: 12px 16px;
-            font-size: 0.9375rem;
+            background-color: #ffffff;
+            border: 1px solid var(--border-strong);
+            color: var(--text-primary);
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 0.8125rem;
             transition: all 0.15s ease;
         }
 
         .form-control-custom:focus, .form-select-custom:focus {
-            background-color: rgba(6, 10, 9, 0.95);
-            border-color: var(--accent-teal);
-            box-shadow: 0 0 0 3px var(--accent-glow);
-            color: #ffffff;
+            background-color: #ffffff;
+            border-color: var(--accent-main);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+            color: var(--text-primary);
             outline: none;
         }
 
         /* Footer */
         .public-footer {
-            background-color: var(--bg-subtle);
+            background-color: #ffffff;
             border-top: 1px solid var(--border-subtle);
-            padding: 60px 0 30px 0;
+            padding: 40px 0 20px 0;
         }
     </style>
 </head>
 <body>
 
-    <!-- Public Navigation Bar -->
+    <!-- Public Navigation Bar (Clean & Professional) -->
     <header class="public-navbar">
         <div class="container">
             <div class="d-flex align-items-center justify-content-between">
                 
                 <a href="<?php echo APP_URL; ?>/" class="brand-logo-wrap">
                     <div class="brand-icon-box">
-                        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="2" y="2" width="28" height="28" rx="8" fill="#0d9488" fill-opacity="0.3" stroke="#2dd4bf" stroke-width="1.5"/>
-                            <path d="M16 7V25M7 16H25" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
-                            <circle cx="16" cy="16" r="4" fill="#10b981" stroke="#ffffff" stroke-width="1.2"/>
-                        </svg>
+                        <i class="fa-solid fa-house-medical"></i>
                     </div>
                     <div>
-                        <span class="brand-font fw-bold text-white d-block" style="font-size: 1.05rem; line-height: 1.1;">I.K HOLINESS</span>
-                        <span class="text-teal" style="font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--accent-teal);">Home Care Services</span>
+                        <span class="fw-bold text-dark d-block" style="font-size: 0.95rem; line-height: 1.15;">I.K HOLINESS</span>
+                        <span style="font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--accent-main);">Home Care Services</span>
                     </div>
                 </a>
 
                 <nav class="d-none d-lg-flex align-items-center gap-1">
                     <a href="#services" class="nav-link-custom">Services</a>
                     <a href="#about" class="nav-link-custom">About Us</a>
-                    <a href="#booking" class="nav-link-custom">Book Visit</a>
+                    <a href="#booking" class="nav-link-custom">Request Care</a>
                     <a href="#contact" class="nav-link-custom">Contact</a>
                 </nav>
 
-                <div class="d-flex align-items-center gap-3">
-                    <a href="tel:0241974447" class="btn-cta-secondary d-none d-sm-inline-flex px-3 py-2" style="font-size: 0.85rem;">
-                        <i class="fa-solid fa-phone text-teal" style="color: var(--accent-teal);"></i> 0241974447
+                <div class="d-flex align-items-center gap-2">
+                    <a href="tel:0241974447" class="btn-cta-secondary d-none d-sm-inline-flex px-3 py-1" style="font-size: 0.8rem;">
+                        <i class="fa-solid fa-phone" style="color: var(--accent-main);"></i> 0241974447
                     </a>
-                    <a href="<?php echo APP_URL; ?>/login" class="btn-portal-login">
-                        <i class="fa-solid fa-user-doctor text-teal" style="color: var(--accent-teal);"></i>
-                        <span>Doctor / Staff Portal</span>
+                    <a href="#booking" class="btn-cta-primary py-1 px-3" style="font-size: 0.8rem;">
+                        <i class="fa-solid fa-calendar-check"></i> Book Visit
                     </a>
                 </div>
 
@@ -371,80 +369,171 @@
                 Dedicated healthcare professionals delivering glucose monitoring, wound management, post-operative care, medication administration, and vital signs monitoring across Kumasi.
             </p>
 
-            <div class="d-flex justify-content-center gap-3 flex-wrap mb-5">
+            <div class="d-flex justify-content-center gap-2 flex-wrap mb-4">
                 <a href="#booking" class="btn-cta-primary">
                     <i class="fa-solid fa-calendar-check"></i> Schedule a Home Visit
                 </a>
                 <a href="tel:0241974447" class="btn-cta-secondary">
-                    <i class="fa-solid fa-phone-volume text-teal" style="color: var(--accent-teal);"></i> Call 0241974447
+                    <i class="fa-solid fa-phone-volume" style="color: var(--accent-main);"></i> Call 0241974447
                 </a>
             </div>
 
-            <!-- Stats/Trust Pillars -->
-            <div class="row g-4 justify-content-center pt-4 max-w-4xl mx-auto border-top" style="border-color: var(--border-subtle) !important;">
+            <!-- Stats / Trust Pillars -->
+            <div class="row g-3 justify-content-center pt-3 max-w-4xl mx-auto border-top" style="border-color: var(--border-subtle) !important;">
                 <div class="col-6 col-md-3">
-                    <h3 class="fw-bold text-white mb-0">16+</h3>
-                    <small class="text-muted">Home Care Services</small>
+                    <h4 class="fw-bold text-dark mb-0" style="font-size: 1.25rem;">16+</h4>
+                    <small class="text-muted" style="font-size: 0.72rem;">Home Care Services</small>
                 </div>
                 <div class="col-6 col-md-3">
-                    <h3 class="fw-bold text-white mb-0">24 / 7</h3>
-                    <small class="text-muted">On-Call Support</small>
+                    <h4 class="fw-bold text-dark mb-0" style="font-size: 1.25rem;">24 / 7</h4>
+                    <small class="text-muted" style="font-size: 0.72rem;">On-Call Support</small>
                 </div>
                 <div class="col-6 col-md-3">
-                    <h3 class="fw-bold text-white mb-0">Pankrono</h3>
-                    <small class="text-muted">Kumasi & Environs</small>
+                    <h4 class="fw-bold text-dark mb-0" style="font-size: 1.25rem;">Pankrono</h4>
+                    <small class="text-muted" style="font-size: 0.72rem;">Kumasi & Environs</small>
                 </div>
                 <div class="col-6 col-md-3">
-                    <h3 class="fw-bold text-emerald mb-0" style="color: #34d399;">100%</h3>
-                    <small class="text-muted">Dedicated Care</small>
+                    <h4 class="fw-bold mb-0" style="font-size: 1.25rem; color: var(--accent-main);">100%</h4>
+                    <small class="text-muted" style="font-size: 0.72rem;">Dedicated Care</small>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- Services Catalog (All 16 Services) -->
+    <!-- Services Portfolio: Clean 4-Pillar Clinical Matrix -->
     <section id="services" class="section-py" style="background-color: var(--bg-subtle);">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">What We Offer</span>
-                <h2 class="section-title">Our Home Care Services Portfolio</h2>
-                <p class="text-secondary mb-0">Comprehensive medical, surgical, rehabilitation, and hygiene procedures delivered directly to patients at home.</p>
+                <span class="section-subtitle">Structured Healthcare</span>
+                <h2 class="section-title">Home Care Services Portfolio</h2>
+                <p class="text-secondary mb-0" style="font-size: 0.8125rem;">Our 16 clinical procedures organized into 4 specialized care pillars for fast, convenient discovery.</p>
             </div>
 
-            <div class="row g-4">
-                <?php
-                $services = [
-                    ['icon' => 'fa-droplet', 'title' => 'Glucose Monitoring', 'desc' => 'Routine and emergency blood sugar level checks, fasting glucose logs, and diabetic lifestyle management.'],
-                    ['icon' => 'fa-heart-pulse', 'title' => 'Vital Signs Monitoring', 'desc' => 'Regular tracking of blood pressure, pulse rate, body temperature, respiration, and blood oxygen levels.'],
-                    ['icon' => 'fa-bath', 'title' => 'Bed Bathing Care', 'desc' => 'Dignified, gentle assisted hygiene care for bedridden, immobile, or elderly patients in comfort.'],
-                    ['icon' => 'fa-syringe', 'title' => 'Catheterization', 'desc' => 'Sterile catheter insertion, replacement, and clinical management to ensure comfort and prevent infection.'],
-                    ['icon' => 'fa-truck-medical', 'title' => 'Hospital Escort', 'desc' => 'Professional accompaniment to clinical appointments, hospital admissions, and doctor liaisons.'],
-                    ['icon' => 'fa-pills', 'title' => 'Serving Medication', 'desc' => 'Timely, strict administration of oral, topical, and injectable medications per doctor prescriptions.'],
-                    ['icon' => 'fa-utensils', 'title' => 'Nutritional Management', 'desc' => 'Specialized dietary guidance, meal planning for hypertension/diabetes, and nutritional rehabilitation.'],
-                    ['icon' => 'fa-vial', 'title' => 'Blood Sampling for Lab', 'desc' => 'Home phlebotomy blood draw services with prompt dispatch to certified diagnostic laboratories.'],
-                    ['icon' => 'fa-user-nurse', 'title' => 'Post-Operative Care', 'desc' => 'Specialized home recovery support following surgery, pain management, and complication monitoring.'],
-                    ['icon' => 'fa-person-chalkboard', 'title' => 'Health Talk & Counseling', 'desc' => 'In-depth health education for patients and families on disease prevention and wellness.'],
-                    ['icon' => 'fa-person-walking', 'title' => 'Physiotherapy & Exercise', 'desc' => 'Therapeutic exercises, mobility rehabilitation, joint mobilization, and post-stroke recovery.'],
-                    ['icon' => 'fa-repeat', 'title' => 'Catheter Care & Flushing', 'desc' => 'Regular aseptic catheter care, drainage hygiene, and therapeutic saline flushing.'],
-                    ['icon' => 'fa-bandage', 'title' => 'Wound Dressing', 'desc' => 'Sterile surgical wound care, diabetic foot ulcer treatment, burn management, and dressing changes.'],
-                    ['icon' => 'fa-tooth', 'title' => 'Oral Hygiene Care', 'desc' => 'Specialized oral care and antiseptic rinses for dependent, elderly, and palliative care patients.'],
-                    ['icon' => 'fa-apple-whole', 'title' => 'NG Tube Feeding', 'desc' => 'Nasogastric tube care, safe enteral nutritional feeds, and aspiration prevention protocols.'],
-                    ['icon' => 'fa-user-doctor', 'title' => 'Medical Advice & Consult', 'desc' => 'Doctor evaluations, clinical second opinions, follow-up consults, and care referrals.']
-                ];
-
-                foreach ($services as $s):
-                ?>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <i class="fa-solid <?php echo $s['icon']; ?>"></i>
+            <div class="row g-3 g-xl-4">
+                <!-- Pillar 1: Clinical Nursing & Monitoring -->
+                <div class="col-12 col-md-6 col-xl-3">
+                    <div class="pillar-card">
+                        <div class="pillar-header">
+                            <div class="pillar-icon">
+                                <i class="fa-solid fa-heart-pulse"></i>
                             </div>
-                            <h3 class="service-title"><?php echo $s['title']; ?></h3>
-                            <p class="service-text"><?php echo $s['desc']; ?></p>
+                            <div>
+                                <h3 class="pillar-title">Clinical Nursing</h3>
+                                <span class="pillar-subtitle">Diagnostic & Vitals</span>
+                            </div>
+                        </div>
+                        <div class="service-list-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>Glucose Monitoring:</strong> Fasting blood sugar logs and diabetic checks.</div>
+                        </div>
+                        <div class="service-list-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>Vital Signs Tracking:</strong> BP, temperature, respiration, pulse rate.</div>
+                        </div>
+                        <div class="service-list-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>Serving Medication:</strong> Timely oral, IV, and injectable drugs.</div>
+                        </div>
+                        <div class="service-list-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>Blood Sampling:</strong> Phlebotomy sample collection for labs.</div>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                </div>
+
+                <!-- Pillar 2: Specialized Clinical Procedures -->
+                <div class="col-12 col-md-6 col-xl-3">
+                    <div class="pillar-card">
+                        <div class="pillar-header">
+                            <div class="pillar-icon">
+                                <i class="fa-solid fa-syringe"></i>
+                            </div>
+                            <div>
+                                <h3 class="pillar-title">Specialized Care</h3>
+                                <span class="pillar-subtitle">Aseptic Procedures</span>
+                            </div>
+                        </div>
+                        <div class="service-list-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>Catheterization:</strong> Sterile insertion & drainage management.</div>
+                        </div>
+                        <div class="service-list-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>Catheter Flushing:</strong> Care, hygiene, and regular maintenance.</div>
+                        </div>
+                        <div class="service-list-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>Wound Dressing:</strong> Ulcer treatment, aseptic post-op dressing.</div>
+                        </div>
+                        <div class="service-list-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>NG Tube Feeding:</strong> Nasogastric feeds & aspiration safety.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Recovery & Rehabilitation -->
+                <div class="col-12 col-md-6 col-xl-3">
+                    <div class="pillar-card">
+                        <div class="pillar-header">
+                            <div class="pillar-icon">
+                                <i class="fa-solid fa-person-walking"></i>
+                            </div>
+                            <div>
+                                <h3 class="pillar-title">Rehabilitation</h3>
+                                <span class="pillar-subtitle">Recovery & Therapy</span>
+                            </div>
+                        </div>
+                        <div class="service-list-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>Post-Operative Care:</strong> Home recovery support and monitoring.</div>
+                        </div>
+                        <div class="service-list-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>Physiotherapy:</strong> Mobility exercises & joint rehabilitation.</div>
+                        </div>
+                        <div class="service-list-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>Health Talk & Counseling:</strong> Preventative lifestyle guidance.</div>
+                        </div>
+                        <div class="service-list-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>Hospital Escort:</strong> Medical escort to hospital consults.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 4: Hygiene & Daily Living Support -->
+                <div class="col-12 col-md-6 col-xl-3">
+                    <div class="pillar-card">
+                        <div class="pillar-header">
+                            <div class="pillar-icon">
+                                <i class="fa-solid fa-bath"></i>
+                            </div>
+                            <div>
+                                <h3 class="pillar-title">Daily Living Care</h3>
+                                <span class="pillar-subtitle">Hygiene & Wellness</span>
+                            </div>
+                        </div>
+                        <div class="service-list-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>Bed Bathing Care:</strong> Dignified hygiene for immobile patients.</div>
+                        </div>
+                        <div class="service-list-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>Oral Hygiene Care:</strong> Gentle antiseptic oral sanitation.</div>
+                        </div>
+                        <div class="service-list-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>Nutritional Care:</strong> Diabetic & hypertensive meal planning.</div>
+                        </div>
+                        <div class="service-list-item">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <div><strong>Medical Consults:</strong> Clinical assessments and follow-ups.</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -453,31 +542,31 @@
     <section id="booking" class="section-py">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12 col-lg-10">
+                <div class="col-12 col-lg-8">
                     <div class="booking-card">
-                        <div class="text-center mb-4">
+                        <div class="text-center mb-3">
                             <span class="section-subtitle">Quick Consultation</span>
-                            <h2 class="fw-bold text-white mb-2">Request a Home Care Visit</h2>
-                            <p class="text-secondary mb-0">Fill out your details below and our medical officer will contact you immediately.</p>
+                            <h3 class="fw-bold text-dark mb-1" style="font-size: 1.4rem;">Request a Home Care Visit</h3>
+                            <p class="text-secondary mb-0" style="font-size: 0.8125rem;">Fill out your details below and our medical officer will contact you immediately.</p>
                         </div>
 
                         <!-- Feedback Alerts -->
                         <?php if (isset($_SESSION['booking_success'])): ?>
-                            <div class="alert alert-success border-0 rounded-3 bg-opacity-10 bg-success text-success p-3 mb-4" role="alert">
-                                <i class="fa-solid fa-circle-check me-2"></i>
+                            <div class="alert alert-success border-0 rounded-2 p-2 px-3 mb-3" style="background-color: var(--accent-light); color: var(--accent-dark); border: 1px solid var(--accent-border) !important; font-size: 0.8125rem;" role="alert">
+                                <i class="fa-solid fa-circle-check me-1"></i>
                                 <?php echo htmlspecialchars($_SESSION['booking_success']); unset($_SESSION['booking_success']); ?>
                             </div>
                         <?php endif; ?>
 
                         <?php if (isset($_SESSION['booking_error'])): ?>
-                            <div class="alert alert-danger border-0 rounded-3 bg-opacity-10 bg-danger text-danger p-3 mb-4" role="alert">
-                                <i class="fa-solid fa-circle-exclamation me-2"></i>
+                            <div class="alert alert-danger border-0 rounded-2 p-2 px-3 mb-3" style="background-color: #fff1f2; color: #be123c; border: 1px solid #fecdd3 !important; font-size: 0.8125rem;" role="alert">
+                                <i class="fa-solid fa-circle-exclamation me-1"></i>
                                 <?php echo htmlspecialchars($_SESSION['booking_error']); unset($_SESSION['booking_error']); ?>
                             </div>
                         <?php endif; ?>
 
                         <form action="<?php echo APP_URL; ?>/book-request" method="POST" autocomplete="off">
-                            <div class="row g-3">
+                            <div class="row g-2">
                                 <div class="col-12 col-md-6">
                                     <label class="form-label text-secondary fw-semibold">Patient Full Name <span class="text-danger">*</span></label>
                                     <input type="text" name="full_name" class="form-control form-control-custom" placeholder="e.g. Kwame Mensah" required>
@@ -508,7 +597,7 @@
                                     </select>
                                 </div>
                                 <div class="col-12 col-md-6">
-                                    <label class="form-label text-secondary fw-semibold">Residential Location (Kumasi / Environs)</label>
+                                    <label class="form-label text-secondary fw-semibold">Residential Location (Kumasi)</label>
                                     <input type="text" name="address" class="form-control form-control-custom" placeholder="e.g. Pankrono, Tafo, Ahodwo...">
                                 </div>
                                 <div class="col-6 col-md-6">
@@ -520,12 +609,12 @@
                                     <input type="time" name="preferred_time" class="form-control form-control-custom" value="09:00">
                                 </div>
                                 <div class="col-12">
-                                    <label class="form-label text-secondary fw-semibold">Special Medical Notes or Instructions</label>
-                                    <textarea name="notes" rows="3" class="form-control form-control-custom" placeholder="Briefly describe symptoms, patient condition, or any special requests..."></textarea>
+                                    <label class="form-label text-secondary fw-semibold">Special Medical Notes</label>
+                                    <textarea name="notes" rows="2" class="form-control form-control-custom" placeholder="Briefly describe symptoms, patient condition, or requests..."></textarea>
                                 </div>
-                                <div class="col-12 text-center pt-3">
-                                    <button type="submit" class="btn-cta-primary px-5 py-3 fs-6">
-                                        <i class="fa-solid fa-paper-plane me-2"></i> Submit Home Care Request
+                                <div class="col-12 text-center pt-2">
+                                    <button type="submit" class="btn-cta-primary px-4 py-2">
+                                        <i class="fa-solid fa-paper-plane me-1"></i> Submit Request
                                     </button>
                                 </div>
                             </div>
@@ -539,55 +628,50 @@
     <!-- Contact & Emergency Footer -->
     <footer id="contact" class="public-footer">
         <div class="container">
-            <div class="row g-4 pb-5 border-bottom" style="border-color: var(--border-subtle) !important;">
+            <div class="row g-4 pb-4 border-bottom" style="border-color: var(--border-subtle) !important;">
                 
-                <div class="col-12 col-md-5">
-                    <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="col-12 col-md-6">
+                    <div class="d-flex align-items-center gap-2 mb-2">
                         <div class="brand-icon-box">
-                            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="2" y="2" width="28" height="28" rx="8" fill="#0d9488" fill-opacity="0.3" stroke="#2dd4bf" stroke-width="1.5"/>
-                                <path d="M16 7V25M7 16H25" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round"/>
-                                <circle cx="16" cy="16" r="4" fill="#10b981" stroke="#ffffff" stroke-width="1.2"/>
-                            </svg>
+                            <i class="fa-solid fa-house-medical"></i>
                         </div>
                         <div>
-                            <h4 class="fw-bold text-white mb-0">I.K HOLINESS HOME CARE</h4>
-                            <span class="text-teal" style="font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-teal);">"Your Health is Our Life"</span>
+                            <h6 class="fw-bold text-dark mb-0">I.K HOLINESS HOME CARE</h6>
+                            <span style="font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--accent-main);">"Your Health is Our Life"</span>
                         </div>
                     </div>
-                    <p class="text-secondary small mb-3">
+                    <p class="text-secondary small mb-0" style="font-size: 0.78rem;">
                         Professional, discrete, and compassionate medical home care tailored to the individual health needs of our patients across Pankrono, Kumasi, and surrounding communities.
                     </p>
                 </div>
 
                 <div class="col-6 col-md-3">
-                    <h6 class="fw-bold text-white text-uppercase mb-3" style="font-size: 0.8rem; letter-spacing: 0.08em;">Quick Links</h6>
-                    <ul class="list-unstyled text-secondary small mb-0">
-                        <li class="mb-2"><a href="#services" class="text-secondary text-decoration-none hover-white">All 16 Services</a></li>
-                        <li class="mb-2"><a href="#booking" class="text-secondary text-decoration-none hover-white">Book Care Visit</a></li>
-                        <li class="mb-2"><a href="<?php echo APP_URL; ?>/login" class="text-teal text-decoration-none fw-semibold">Doctor Login</a></li>
+                    <h6 class="fw-bold text-dark text-uppercase mb-2" style="font-size: 0.75rem; letter-spacing: 0.06em;">Quick Links</h6>
+                    <ul class="list-unstyled text-secondary small mb-0" style="font-size: 0.78rem;">
+                        <li class="mb-1"><a href="#services" class="text-secondary text-decoration-none">Our Services</a></li>
+                        <li class="mb-1"><a href="#booking" class="text-secondary text-decoration-none">Book Care Visit</a></li>
+                        <li class="mb-1"><a href="#contact" class="text-secondary text-decoration-none">Contact Us</a></li>
                     </ul>
                 </div>
 
-                <div class="col-12 col-md-4">
-                    <h6 class="fw-bold text-white text-uppercase mb-3" style="font-size: 0.8rem; letter-spacing: 0.08em;">Emergency Contact</h6>
-                    <div class="text-secondary small mb-2">
-                        <i class="fa-solid fa-location-dot text-teal me-2" style="color: var(--accent-teal);"></i> Pankrono, Kumasi, Ghana
+                <div class="col-12 col-md-3">
+                    <h6 class="fw-bold text-dark text-uppercase mb-2" style="font-size: 0.75rem; letter-spacing: 0.06em;">Emergency Contact</h6>
+                    <div class="text-secondary small mb-1" style="font-size: 0.78rem;">
+                        <i class="fa-solid fa-location-dot me-1" style="color: var(--accent-main);"></i> Pankrono, Kumasi, Ghana
                     </div>
-                    <div class="text-secondary small mb-2">
-                        <i class="fa-solid fa-phone text-teal me-2" style="color: var(--accent-teal);"></i> 0241974447 / 0550974126
+                    <div class="text-secondary small mb-1" style="font-size: 0.78rem;">
+                        <i class="fa-solid fa-phone me-1" style="color: var(--accent-main);"></i> 0241974447 / 0550974126
                     </div>
-                    <div class="text-secondary small mb-3">
-                        <i class="fa-solid fa-envelope text-teal me-2" style="color: var(--accent-teal);"></i> kisaiahh@icloud.com
+                    <div class="text-secondary small" style="font-size: 0.78rem;">
+                        <i class="fa-solid fa-envelope me-1" style="color: var(--accent-main);"></i> kisaiahh@icloud.com
                     </div>
                 </div>
 
             </div>
 
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pt-4 text-muted small">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pt-3 text-muted small" style="font-size: 0.75rem;">
                 <div>&copy; <?php echo date('Y'); ?> I.K Holiness Home Care Services. All rights reserved.</div>
-                <div class="mt-2 mt-md-0">
-                    <a href="<?php echo APP_URL; ?>/login" class="text-muted text-decoration-none me-3">Staff Portal</a>
+                <div class="mt-1 mt-md-0">
                     <span>"Your Health is Our Life"</span>
                 </div>
             </div>
