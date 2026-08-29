@@ -7,31 +7,22 @@ namespace App\Helpers;
 class AuthHelper
 {
     /**
-     * Start a secure session with standard security policies.
+     * Start session safely without recursion or headers warning.
      */
     public static function initSession(): void
     {
         if (session_status() === PHP_SESSION_NONE) {
-            // Set cookie parameters based on security configurations
-            session_set_cookie_params([
-                'lifetime' => defined('SESSION_LIFETIME') ? SESSION_LIFETIME : 1800,
-                'path' => '/',
-                'domain' => '',
-                'secure' => defined('SESSION_SECURE') ? SESSION_SECURE : false,
-                'httponly' => defined('SESSION_HTTPONLY') ? SESSION_HTTPONLY : true,
-                'samesite' => defined('SESSION_SAMESITE') ? SESSION_SAMESITE : 'Lax'
-            ]);
-            
-            session_start();
-        }
-
-        // Session validation (anti-session hijacking check)
-        if (self::isLoggedIn()) {
-            if (!isset($_SESSION['user_agent_hash'])) {
-                $_SESSION['user_agent_hash'] = md5($_SERVER['HTTP_USER_AGENT']);
-            } elseif ($_SESSION['user_agent_hash'] !== md5($_SERVER['HTTP_USER_AGENT'])) {
-                self::logout();
+            if (!headers_sent()) {
+                session_set_cookie_params([
+                    'lifetime' => defined('SESSION_LIFETIME') ? SESSION_LIFETIME : 1800,
+                    'path' => '/',
+                    'domain' => '',
+                    'secure' => defined('SESSION_SECURE') ? SESSION_SECURE : false,
+                    'httponly' => defined('SESSION_HTTPONLY') ? SESSION_HTTPONLY : true,
+                    'samesite' => defined('SESSION_SAMESITE') ? SESSION_SAMESITE : 'Lax'
+                ]);
             }
+            @session_start();
         }
     }
 
@@ -41,25 +32,28 @@ class AuthHelper
     public static function login(int $userId, string $username, string $fullName, string $role): void
     {
         self::initSession();
-        // Regenerate session ID to prevent session fixation attacks
-        session_regenerate_id(true);
+        if (!headers_sent()) {
+            @session_regenerate_id(true);
+        }
 
         $_SESSION['user_id'] = $userId;
         $_SESSION['username'] = $username;
         $_SESSION['full_name'] = $fullName;
         $_SESSION['role'] = $role;
-        $_SESSION['user_agent_hash'] = md5($_SERVER['HTTP_USER_AGENT']);
+        $_SESSION['user_agent_hash'] = md5($_SERVER['HTTP_USER_AGENT'] ?? 'unknown');
         $_SESSION['last_activity'] = time();
     }
 
     /**
-     * Destroy the session and redirect to login.
+     * Destroy the session and cleanup.
      */
     public static function logout(): void
     {
-        self::initSession();
+        if (session_status() === PHP_SESSION_NONE) {
+            @session_start();
+        }
         $_SESSION = [];
-        if (ini_get("session.use_cookies")) {
+        if (ini_get("session.use_cookies") && !headers_sent()) {
             $params = session_get_cookie_params();
             setcookie(
                 session_name(),
@@ -71,7 +65,9 @@ class AuthHelper
                 $params["httponly"]
             );
         }
-        session_destroy();
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            @session_destroy();
+        }
     }
 
     /**
@@ -80,7 +76,7 @@ class AuthHelper
     public static function isLoggedIn(): bool
     {
         self::initSession();
-        
+
         if (!isset($_SESSION['user_id'])) {
             return false;
         }
@@ -109,12 +105,11 @@ class AuthHelper
 
     /**
      * Enforce a specific role or role group.
-     * Redirects to access denied/forbidden if roles don't match.
      */
     public static function requireRole(string $role): void
     {
         self::requireLogin();
-        if ($_SESSION['role'] !== $role) {
+        if (($_SESSION['role'] ?? '') !== $role) {
             http_response_code(403);
             echo "Access Denied: You do not have permission to access this page.";
             exit;
