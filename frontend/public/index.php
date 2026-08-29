@@ -88,5 +88,17 @@ $router->get('/payments/receipt', 'PaymentController@receipt');
 // Administrative Operational Reports
 $router->get('/reports', 'ReportController@index');
 
+// Staff Accounts Management Routes
+$router->get('/users', 'UserController@index');
+$router->get('/users/create', 'UserController@create');
+$router->post('/users/store', 'UserController@store');
+$router->get('/users/edit', 'UserController@edit');
+$router->post('/users/update', 'UserController@update');
+$router->get('/users/delete', 'UserController@delete');
+
+// Clinic Settings Routes
+$router->get('/settings', 'SettingController@index');
+$router->post('/settings/update', 'SettingController@update');
+
 // 5. Dispatch Request
 $router->resolve($routingPath, $_SERVER['REQUEST_METHOD'] ?? 'GET');
