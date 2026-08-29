@@ -21,30 +21,32 @@ $currentRoute = $currentRoute ?? 'dashboard';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Chart.js 4.4 for Modern Medical Charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- TanStack Table Core 8 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tanstack/table-core@8.20.5/build/umd/index.production.js"></script>
     
     <style>
         :root {
-            /* Rich High-Contrast Executive Palette */
-            --bg-base: #eef2f6;
-            --bg-subtle: #e2e8f0;
+            /* Modern Clean White Canvas & Vibrant Accent System */
+            --bg-base: #f4f6f9;
+            --bg-subtle: #edf1f7;
             --surface-card: #ffffff;
-            --surface-card-hover: #f8fafc;
+            --surface-card-hover: #ffffff;
             --surface-elevated: #ffffff;
-            --border-subtle: #dbe2ea;
+            --border-subtle: #e2e8f0;
             --border-strong: #cbd5e1;
             --border-focus: #2563eb;
             
             /* Text Hierarchy */
             --text-primary: #0f172a;
-            --text-secondary: #334155;
+            --text-secondary: #475569;
             --text-muted: #64748b;
             
-            /* Primary Brand Accent (Modern Royal Blue) */
+            /* Primary Brand Accent (Royal Sapphire Blue) */
             --accent-main: #2563eb;
             --accent-dark: #1d4ed8;
             --accent-light: #eff6ff;
             --accent-border: #bfdbfe;
-            --accent-glow: rgba(37, 99, 235, 0.15);
+            --accent-glow: rgba(37, 99, 235, 0.12);
             
             /* Semantic Status Colors */
             --success: #16a34a;
@@ -70,11 +72,11 @@ $currentRoute = $currentRoute ?? 'dashboard';
             --sidebar-width: 260px;
             
             --radius-sm: 8px;
-            --radius-md: 10px;
-            --radius-lg: 14px;
-            --shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-            --shadow-card: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
-            --shadow-hover: 0 8px 20px -3px rgba(15, 23, 42, 0.08);
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --shadow-subtle: 0 1px 3px 0 rgba(15, 23, 42, 0.04);
+            --shadow-card: 0 4px 16px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+            --shadow-hover: 0 10px 25px -3px rgba(15, 23, 42, 0.08);
         }
 
         * {
@@ -97,7 +99,7 @@ $currentRoute = $currentRoute ?? 'dashboard';
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 700;
             color: var(--text-primary);
-            letter-spacing: -0.02em;
+            letter-spacing: -0.025em;
         }
 
         .font-mono {
@@ -447,6 +449,126 @@ $currentRoute = $currentRoute ?? 'dashboard';
             flex: 1;
         }
 
+        /* Custom Modern Buttons */
+        .btn-primary-custom {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            border: 1px solid #1d4ed8;
+            color: #ffffff !important;
+            font-weight: 600;
+            font-size: 0.8125rem;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            box-shadow: 0 1px 2px 0 rgba(37, 99, 235, 0.25);
+            transition: all 0.15s ease-in-out;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-primary-custom:hover {
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary-custom {
+            background-color: #ffffff;
+            border: 1px solid var(--border-strong);
+            color: var(--text-secondary) !important;
+            font-weight: 600;
+            font-size: 0.8125rem;
+            padding: 7px 14px;
+            border-radius: var(--radius-sm);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.15s ease-in-out;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .btn-secondary-custom:hover {
+            background-color: var(--bg-subtle);
+            border-color: #94a3b8;
+            color: var(--text-primary) !important;
+        }
+
+        /* Modern Tables (Neat & Clean) */
+        .ui-table-container, .tanstack-table-wrap {
+            background-color: #ffffff;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            width: 100%;
+        }
+
+        .tanstack-table-wrap .table-responsive {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        @media (max-width: 991px) {
+            .tanstack-table-wrap .table-responsive {
+                overflow-x: auto;
+            }
+        }
+
+        .tanstack-table-header {
+            padding: 12px 18px;
+            background-color: #f8fafc;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .ui-table {
+            width: 100%;
+            margin-bottom: 0;
+            border-collapse: collapse;
+        }
+
+        .ui-table th {
+            background-color: #f8fafc;
+            color: #475569;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 12px 18px;
+            border-bottom: 1px solid var(--border-subtle);
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        .ui-table td {
+            background-color: #ffffff !important;
+            color: var(--text-secondary);
+            font-size: 0.8125rem;
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border-subtle);
+            vertical-align: middle;
+        }
+
+        .ui-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .ui-table tbody tr {
+            transition: background-color 0.12s ease;
+        }
+
+        .ui-table tbody tr:hover td {
+            background-color: #f8fafc !important;
+        }
+
         /* Modern UI Card */
         .ui-card {
             background-color: var(--surface-card);
@@ -532,127 +654,6 @@ $currentRoute = $currentRoute ?? 'dashboard';
         .form-control::placeholder {
             color: #94a3b8;
             font-size: 0.8rem;
-        }
-
-        /* Custom Modern Buttons */
-        .btn-primary-custom {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            border: 1px solid #1d4ed8;
-            color: #ffffff !important;
-            font-weight: 600;
-            font-size: 0.8125rem;
-            padding: 8px 16px;
-            border-radius: var(--radius-sm);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            box-shadow: 0 1px 2px 0 rgba(37, 99, 235, 0.25);
-            transition: all 0.15s ease-in-out;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .btn-primary-custom:hover {
-            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary-custom {
-            background-color: #ffffff;
-            border: 1px solid var(--border-strong);
-            color: var(--text-secondary) !important;
-            font-weight: 600;
-            font-size: 0.8125rem;
-            padding: 7px 14px;
-            border-radius: var(--radius-sm);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: all 0.15s ease-in-out;
-            text-decoration: none;
-            cursor: pointer;
-            box-shadow: var(--shadow-subtle);
-        }
-
-        .btn-secondary-custom:hover {
-            background-color: var(--bg-subtle);
-            border-color: #94a3b8;
-            color: var(--text-primary) !important;
-        }
-
-        .btn-print-custom {
-            background-color: #ffffff;
-            border: 1px solid #e0e7ff;
-            color: #4338ca !important;
-            font-weight: 600;
-            font-size: 0.8125rem;
-            padding: 7px 14px;
-            border-radius: var(--radius-sm);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.15s ease;
-            text-decoration: none;
-            box-shadow: var(--shadow-subtle);
-        }
-
-        .btn-print-custom:hover {
-            background-color: #eef2ff;
-            border-color: #c7d2fe;
-            color: #3730a3 !important;
-            transform: translateY(-1px);
-        }
-
-        /* Modern Tables */
-        .ui-table-container {
-            background-color: #ffffff;
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-card);
-        }
-
-        .ui-table {
-            width: 100%;
-            margin-bottom: 0;
-            border-collapse: separate;
-            border-spacing: 0;
-        }
-
-        .ui-table th {
-            background-color: #f8fafc;
-            color: var(--text-muted);
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 11px 16px;
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .ui-table td {
-            background-color: #ffffff !important;
-            color: var(--text-secondary);
-            font-size: 0.8125rem;
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border-subtle);
-            vertical-align: middle;
-        }
-
-        .ui-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .ui-table tbody tr {
-            transition: background-color 0.12s ease;
-        }
-
-        .ui-table tbody tr:hover td {
-            background-color: #f8fafc !important;
-            color: var(--text-primary);
         }
 
         /* Status & Category Badges */
