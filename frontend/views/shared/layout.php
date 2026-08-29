@@ -508,13 +508,13 @@ $currentRoute = $currentRoute ?? 'dashboard';
             width: 100%;
         }
 
-        .tanstack-table-wrap .table-responsive {
+        .ui-table-container .table-responsive, .tanstack-table-wrap .table-responsive {
             overflow-x: hidden;
             width: 100%;
         }
 
         @media (max-width: 991px) {
-            .tanstack-table-wrap .table-responsive {
+            .ui-table-container .table-responsive, .tanstack-table-wrap .table-responsive {
                 overflow-x: auto;
             }
         }
