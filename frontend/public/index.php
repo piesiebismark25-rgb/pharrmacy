@@ -34,9 +34,16 @@ if (empty($routingPath)) {
 // 4. Initialize Router
 $router = new Router();
 
-// Public Homepage & Inquiries
+// Public Multi-Page Routes
 $router->get('/', 'HomeController@index');
+$router->get('/home', 'HomeController@index');
+$router->get('/services', 'HomeController@services');
+$router->get('/about', 'HomeController@about');
+$router->get('/request-care', 'HomeController@requestCare');
+$router->get('/booking', 'HomeController@requestCare');
+$router->get('/contact', 'HomeController@contact');
 $router->post('/book-request', 'HomeController@bookRequest');
+$router->post('/contact-submit', 'HomeController@contactSubmit');
 
 // Authentication Routes
 $router->get('/login', 'AuthController@showLogin');
@@ -59,30 +66,27 @@ $router->get('/clients/delete', 'ClientController@delete');
 $router->get('/visits', 'VisitController@index');
 $router->get('/visits/create', 'VisitController@create');
 $router->post('/visits/store', 'VisitController@store');
-$router->get('/visits/view', 'VisitController@view');
 
-// Appointments Routes
+// Appointments Scheduling Routes
 $router->get('/appointments', 'AppointmentController@index');
 $router->get('/appointments/create', 'AppointmentController@create');
 $router->post('/appointments/store', 'AppointmentController@store');
 $router->get('/appointments/edit', 'AppointmentController@edit');
-$router->post('/appointments/update', 'AppointmentController@update');
-$router->get('/appointments/delete', 'AppointmentController@delete');
 
-// Billing & Invoices Routes
+// Medical Invoicing & Billing Routes
 $router->get('/billing', 'BillingController@index');
 $router->get('/billing/create', 'BillingController@create');
 $router->post('/billing/store', 'BillingController@store');
 $router->get('/billing/view', 'BillingController@view');
 
-// Payments & Receipts Routes
+// Financial Payment Collections Routes
 $router->get('/payments', 'PaymentController@index');
 $router->get('/payments/create', 'PaymentController@create');
 $router->post('/payments/store', 'PaymentController@store');
 $router->get('/payments/receipt', 'PaymentController@receipt');
 
-// Printable Reports
+// Administrative Operational Reports
 $router->get('/reports', 'ReportController@index');
 
-// 5. Resolve Route
-$router->resolve($routingPath, $_SERVER['REQUEST_METHOD']);
+// 5. Dispatch Request
+$router->resolve($routingPath, $_SERVER['REQUEST_METHOD'] ?? 'GET');

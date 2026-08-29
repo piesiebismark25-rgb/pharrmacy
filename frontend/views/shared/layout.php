@@ -24,19 +24,19 @@ $currentRoute = $currentRoute ?? 'dashboard';
     
     <style>
         :root {
-            /* Modern Professional Clean Palette (Tailwind UI / Linear Inspired) */
-            --bg-base: #f8fafc;
-            --bg-subtle: #f1f5f9;
+            /* Rich High-Contrast Executive Palette */
+            --bg-base: #eef2f6;
+            --bg-subtle: #e2e8f0;
             --surface-card: #ffffff;
             --surface-card-hover: #f8fafc;
             --surface-elevated: #ffffff;
-            --border-subtle: #e2e8f0;
+            --border-subtle: #dbe2ea;
             --border-strong: #cbd5e1;
             --border-focus: #2563eb;
             
             /* Text Hierarchy */
             --text-primary: #0f172a;
-            --text-secondary: #475569;
+            --text-secondary: #334155;
             --text-muted: #64748b;
             
             /* Primary Brand Accent (Modern Royal Blue) */
@@ -44,7 +44,7 @@ $currentRoute = $currentRoute ?? 'dashboard';
             --accent-dark: #1d4ed8;
             --accent-light: #eff6ff;
             --accent-border: #bfdbfe;
-            --accent-glow: rgba(37, 99, 235, 0.12);
+            --accent-glow: rgba(37, 99, 235, 0.15);
             
             /* Semantic Status Colors */
             --success: #16a34a;
@@ -73,8 +73,8 @@ $currentRoute = $currentRoute ?? 'dashboard';
             --radius-md: 10px;
             --radius-lg: 14px;
             --shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-            --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 6px 16px -2px rgba(0, 0, 0, 0.06);
+            --shadow-card: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+            --shadow-hover: 0 8px 20px -3px rgba(15, 23, 42, 0.08);
         }
 
         * {
@@ -104,13 +104,14 @@ $currentRoute = $currentRoute ?? 'dashboard';
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Sidebar Navigation with Full Scrollbar Support */
+        /* Modern High-Contrast Obsidian Slate Sidebar */
         #sidebar-wrapper {
             width: var(--sidebar-width);
             height: 100vh;
             max-height: 100vh;
-            background-color: var(--sidebar-bg);
-            border-right: 1px solid var(--sidebar-border);
+            background-color: #0f172a;
+            background-image: radial-gradient(circle at 10% 0%, rgba(37, 99, 235, 0.16) 0%, transparent 65%);
+            border-right: 1px solid #1e293b;
             position: fixed;
             left: 0;
             top: 0;
@@ -120,33 +121,36 @@ $currentRoute = $currentRoute ?? 'dashboard';
             justify-content: space-between;
             overflow: hidden;
             transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
         }
 
         .sidebar-header {
-            padding: 18px 18px;
-            border-bottom: 1px solid var(--sidebar-border);
+            padding: 18px 16px;
+            border-bottom: 1px solid #1e293b;
+            background-color: #0f172a;
             flex-shrink: 0;
         }
 
         .brand-logo-wrap {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
         }
 
         .brand-icon {
-            width: 36px;
-            height: 36px;
+            width: 38px;
+            height: 38px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            border-radius: var(--radius-md);
+            border-radius: 10px;
             color: #ffffff;
-            font-size: 0.95rem;
-            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+            font-size: 1rem;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .brand-text {
@@ -155,11 +159,27 @@ $currentRoute = $currentRoute ?? 'dashboard';
         }
 
         .brand-title {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 800;
             color: #ffffff;
             line-height: 1.15;
             letter-spacing: -0.01em;
+        }
+
+        .brand-tagline-wrap {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 2px;
+        }
+
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #22c55e;
+            box-shadow: 0 0 8px #22c55e;
+            display: inline-block;
         }
 
         .brand-tagline {
@@ -167,13 +187,13 @@ $currentRoute = $currentRoute ?? 'dashboard';
             text-transform: uppercase;
             letter-spacing: 0.06em;
             color: #60a5fa;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         /* Scrollable Sidebar Menu */
         .sidebar-menu {
             list-style: none;
-            padding: 12px 10px;
+            padding: 14px 8px;
             margin: 0;
             flex: 1 1 auto;
             overflow-y: auto;
@@ -201,55 +221,69 @@ $currentRoute = $currentRoute ?? 'dashboard';
         }
 
         .menu-category {
-            font-size: 0.65rem;
+            font-size: 0.62rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            font-weight: 700;
+            font-weight: 800;
             color: #64748b;
-            padding: 10px 12px 4px 12px;
+            padding: 12px 10px 4px 10px;
         }
 
         .sidebar-link {
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 8px 12px;
-            color: var(--sidebar-link);
+            padding: 8px 10px;
+            color: #94a3b8;
             text-decoration: none;
             font-size: 0.8125rem;
             font-weight: 500;
-            border-radius: var(--radius-sm);
-            transition: all 0.15s ease-in-out;
-            margin-bottom: 2px;
+            border-radius: 8px;
+            transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 3px;
             position: relative;
+            border: 1px solid transparent;
         }
 
-        .sidebar-link i {
-            width: 18px;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #64748b;
-            transition: color 0.15s ease-in-out;
+        .nav-icon-box {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8125rem;
+            color: #94a3b8;
+            flex-shrink: 0;
+            transition: all 0.18s ease;
         }
 
         .sidebar-link:hover {
             color: #ffffff;
-            background-color: rgba(255, 255, 255, 0.05);
+            background-color: rgba(255, 255, 255, 0.06);
+            transform: translateX(2px);
         }
 
-        .sidebar-link:hover i {
+        .sidebar-link:hover .nav-icon-box {
+            background-color: rgba(255, 255, 255, 0.1);
             color: #60a5fa;
+            border-color: rgba(96, 165, 250, 0.3);
         }
 
         .sidebar-link.active {
             color: #ffffff;
-            background-color: rgba(37, 99, 235, 0.15);
-            border: 1px solid rgba(37, 99, 235, 0.3);
+            background: linear-gradient(90deg, rgba(37, 99, 235, 0.22) 0%, rgba(37, 99, 235, 0.05) 100%);
+            border: 1px solid rgba(37, 99, 235, 0.4);
             font-weight: 600;
         }
 
-        .sidebar-link.active i {
-            color: #60a5fa;
+        .sidebar-link.active .nav-icon-box {
+            background: #2563eb;
+            color: #ffffff;
+            border-color: #3b82f6;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
         }
 
         .sidebar-link.active::before {
@@ -261,28 +295,41 @@ $currentRoute = $currentRoute ?? 'dashboard';
             width: 3px;
             background-color: #3b82f6;
             border-radius: 0 4px 4px 0;
+            box-shadow: 0 0 8px #3b82f6;
         }
 
+        /* Redesigned Sidebar Footer / Practitioner Card */
         .sidebar-footer {
-            padding: 12px 12px;
-            border-top: 1px solid var(--sidebar-border);
-            background-color: rgba(0, 0, 0, 0.2);
+            padding: 12px 10px;
+            border-top: 1px solid #1e293b;
+            background-color: rgba(0, 0, 0, 0.3);
             flex-shrink: 0;
         }
 
-        .sidebar-footer .doctor-badge {
+        .doctor-card-modern {
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 6px 8px;
-            border-radius: var(--radius-sm);
-            background-color: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 8px 10px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.15s ease;
+        }
+
+        .doctor-card-modern:hover {
+            background-color: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .avatar-wrap {
+            position: relative;
+            flex-shrink: 0;
         }
 
         .avatar-box {
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             display: flex;
@@ -290,8 +337,51 @@ $currentRoute = $currentRoute ?? 'dashboard';
             justify-content: center;
             color: #ffffff;
             font-weight: 700;
-            font-size: 0.78rem;
+            font-size: 0.8125rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+        }
+
+        .status-indicator {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #22c55e;
+            border: 1.5px solid #0f172a;
+        }
+
+        .role-badge {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+
+        .signout-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            background-color: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            color: #f87171;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            text-decoration: none;
+            transition: all 0.15s ease;
             flex-shrink: 0;
+        }
+
+        .signout-btn:hover {
+            background-color: #ef4444;
+            color: #ffffff;
+            border-color: #ef4444;
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
         }
 
         /* Mobile Sidebar Backdrop */
@@ -299,7 +389,7 @@ $currentRoute = $currentRoute ?? 'dashboard';
             display: none;
             position: fixed;
             inset: 0;
-            background-color: rgba(15, 23, 42, 0.5);
+            background-color: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(2px);
             z-index: 1035;
         }
@@ -329,7 +419,7 @@ $currentRoute = $currentRoute ?? 'dashboard';
             position: sticky;
             top: 0;
             z-index: 1030;
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+            box-shadow: 0 1px 4px 0 rgba(15, 23, 42, 0.03);
         }
 
         .topbar-left h1 {
@@ -734,89 +824,102 @@ $currentRoute = $currentRoute ?? 'dashboard';
                 </div>
                 <div class="brand-text">
                     <span class="brand-title">I.K HOLINESS</span>
-                    <span class="brand-tagline">Home Care Services</span>
+                    <div class="brand-tagline-wrap">
+                        <span class="live-dot"></span>
+                        <span class="brand-tagline">Clinical EHR Portal</span>
+                    </div>
                 </div>
             </a>
         </div>
 
         <ul class="sidebar-menu">
-            <li class="menu-category">Clinical Management</li>
+            <li class="menu-category">Clinical Care</li>
             <li>
                 <a href="<?php echo APP_URL; ?>/dashboard" class="sidebar-link <?php echo $currentRoute === 'dashboard' ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-chart-pie"></i>
-                    <span>Dashboard</span>
+                    <div class="nav-icon-box"><i class="fa-solid fa-chart-pie"></i></div>
+                    <span>Executive Dashboard</span>
                 </a>
             </li>
             <li>
                 <a href="<?php echo APP_URL; ?>/clients" class="sidebar-link <?php echo $currentRoute === 'clients' ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-user-group"></i>
+                    <div class="nav-icon-box"><i class="fa-solid fa-user-group"></i></div>
                     <span>Patients Directory</span>
                 </a>
             </li>
             <li>
                 <a href="<?php echo APP_URL; ?>/visits" class="sidebar-link <?php echo $currentRoute === 'visits' ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-stethoscope"></i>
+                    <div class="nav-icon-box"><i class="fa-solid fa-stethoscope"></i></div>
                     <span>Clinical Encounters</span>
                 </a>
             </li>
             <li>
                 <a href="<?php echo APP_URL; ?>/appointments" class="sidebar-link <?php echo $currentRoute === 'appointments' ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    <span>Appointments</span>
+                    <div class="nav-icon-box"><i class="fa-solid fa-calendar-check"></i></div>
+                    <span>Care Appointments</span>
                 </a>
             </li>
 
-            <li class="menu-category">Finance & Billing</li>
+            <li class="menu-category">Finance & Invoicing</li>
             <li>
                 <a href="<?php echo APP_URL; ?>/billing" class="sidebar-link <?php echo $currentRoute === 'billing' ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-file-invoice-dollar"></i>
-                    <span>Invoices & Statements</span>
+                    <div class="nav-icon-box"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                    <span>Medical Invoices</span>
                 </a>
             </li>
             <li>
                 <a href="<?php echo APP_URL; ?>/payments" class="sidebar-link <?php echo $currentRoute === 'payments' ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-receipt"></i>
-                    <span>Receipts Ledger</span>
+                    <div class="nav-icon-box"><i class="fa-solid fa-receipt"></i></div>
+                    <span>Receipts & Payments</span>
                 </a>
             </li>
             <li>
                 <a href="<?php echo APP_URL; ?>/reports" class="sidebar-link <?php echo $currentRoute === 'reports' ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-print"></i>
-                    <span>Auditing Reports</span>
+                    <div class="nav-icon-box"><i class="fa-solid fa-chart-simple"></i></div>
+                    <span>Audit & Reports</span>
                 </a>
             </li>
 
             <?php if ($currentRole === 'admin'): ?>
-                <li class="menu-category">Administration</li>
+                <li class="menu-category">System Admin</li>
                 <li>
                     <a href="<?php echo APP_URL; ?>/users" class="sidebar-link <?php echo $currentRoute === 'users' ? 'active' : ''; ?>">
-                        <i class="fa-solid fa-user-shield"></i>
+                        <div class="nav-icon-box"><i class="fa-solid fa-user-shield"></i></div>
                         <span>Staff Accounts</span>
                     </a>
                 </li>
                 <li>
                     <a href="<?php echo APP_URL; ?>/settings" class="sidebar-link <?php echo $currentRoute === 'settings' ? 'active' : ''; ?>">
-                        <i class="fa-solid fa-sliders"></i>
+                        <div class="nav-icon-box"><i class="fa-solid fa-sliders"></i></div>
                         <span>Clinic Settings</span>
                     </a>
                 </li>
             <?php endif; ?>
+
+            <li class="menu-category">External</li>
+            <li>
+                <a href="<?php echo APP_URL; ?>/" target="_blank" class="sidebar-link">
+                    <div class="nav-icon-box"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                    <span>View Public Site</span>
+                </a>
+            </li>
         </ul>
 
         <div class="sidebar-footer">
-            <div class="doctor-badge mb-2">
-                <div class="avatar-box">
-                    <?php echo strtoupper(substr($currentUserName ?? 'DR', 0, 2)); ?>
+            <div class="doctor-card-modern">
+                <div class="avatar-wrap">
+                    <div class="avatar-box">
+                        <?php echo strtoupper(substr($currentUserName ?? 'DR', 0, 2)); ?>
+                    </div>
+                    <span class="status-indicator"></span>
                 </div>
                 <div class="flex-grow-1 overflow-hidden">
-                    <div class="fw-semibold text-truncate text-white" style="font-size: 0.8rem;"><?php echo htmlspecialchars($currentUserName ?? 'Doctor'); ?></div>
-                    <div class="text-muted text-truncate" style="font-size: 0.68rem; text-transform: uppercase;"><?php echo htmlspecialchars($currentRole ?? 'Attending'); ?></div>
+                    <div class="fw-bold text-truncate text-white" style="font-size: 0.8125rem;"><?php echo htmlspecialchars($currentUserName ?? 'Doctor'); ?></div>
+                    <div class="role-badge"><?php echo htmlspecialchars($currentRole ?? 'Clinical Officer'); ?></div>
                 </div>
+                <a href="<?php echo APP_URL; ?>/logout" class="signout-btn" title="Sign Out of Portal">
+                    <i class="fa-solid fa-power-off"></i>
+                </a>
             </div>
-            <a href="<?php echo APP_URL; ?>/logout" class="sidebar-link text-danger py-1 px-2" style="margin-bottom: 0;">
-                <i class="fa-solid fa-arrow-right-from-bracket text-danger" style="font-size: 0.8rem;"></i>
-                <span>Sign Out</span>
-            </a>
         </div>
     </aside>
 

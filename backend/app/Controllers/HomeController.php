@@ -9,7 +9,36 @@ class HomeController
     public function index(): void
     {
         AuthHelper::initSession();
+        $currentPage = 'home';
         require_once VIEWS_PATH . '/public/index.php';
+    }
+
+    public function services(): void
+    {
+        AuthHelper::initSession();
+        $currentPage = 'services';
+        require_once VIEWS_PATH . '/public/services.php';
+    }
+
+    public function about(): void
+    {
+        AuthHelper::initSession();
+        $currentPage = 'about';
+        require_once VIEWS_PATH . '/public/about.php';
+    }
+
+    public function requestCare(): void
+    {
+        AuthHelper::initSession();
+        $currentPage = 'request-care';
+        require_once VIEWS_PATH . '/public/request-care.php';
+    }
+
+    public function contact(): void
+    {
+        AuthHelper::initSession();
+        $currentPage = 'contact';
+        require_once VIEWS_PATH . '/public/contact.php';
     }
 
     public function bookRequest(): void
@@ -17,7 +46,7 @@ class HomeController
         AuthHelper::initSession();
 
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: ' . APP_URL . '/');
+            header('Location: ' . APP_URL . '/request-care');
             exit;
         }
 
@@ -60,7 +89,7 @@ class HomeController
                 }
 
                 // 2. Book appointment
-                $reason = "Public Web Booking: " . $service . (!empty($notes) ? " (Note: $notes)" : "");
+                $reason = "Web Request: " . $service . (!empty($notes) ? " (Note: $notes)" : "");
                 $insAppt = $db->prepare("
                     INSERT INTO appointments (client_id, appointment_date, appointment_time, reason, status)
                     VALUES (:client_id, :appointment_date, :appointment_time, :reason, 'Scheduled')
@@ -73,17 +102,43 @@ class HomeController
                 ]);
 
                 $db->commit();
-                $_SESSION['booking_success'] = "Thank you $full_name! Your care request has been received. Our clinical team will call you shortly on $phone.";
+                $_SESSION['booking_success'] = "Thank you, {$full_name}! Your request for {$service} has been received. Our clinical officer will call you at {$phone} to confirm your visit.";
             } catch (\Exception $e) {
-                if (isset($db) && $db->inTransaction()) $db->rollBack();
-                error_log("Public Booking Error: " . $e->getMessage());
-                $_SESSION['booking_error'] = "Could not submit booking. Please call us directly at 0241974447.";
+                if (isset($db) && $db->inTransaction()) {
+                    $db->rollBack();
+                }
+                error_log("Booking Error: " . $e->getMessage());
+                $_SESSION['booking_error'] = "Unable to complete request at this time. Please call our hotline directly: " . CLINIC_PHONE;
             }
         } else {
-            $_SESSION['booking_error'] = "Please provide your full name and phone number.";
+            $_SESSION['booking_error'] = "Please provide your Full Name and Phone Number to request a visit.";
         }
 
-        header('Location: ' . APP_URL . '/#booking');
+        $redirect = $_POST['redirect_to'] ?? '/request-care';
+        header('Location: ' . APP_URL . $redirect);
+        exit;
+    }
+
+    public function contactSubmit(): void
+    {
+        AuthHelper::initSession();
+
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: ' . APP_URL . '/contact');
+            exit;
+        }
+
+        $name = trim($_POST['name'] ?? '');
+        $phone = trim($_POST['phone'] ?? '');
+        $message = trim($_POST['message'] ?? '');
+
+        if (!empty($name) && !empty($phone)) {
+            $_SESSION['contact_success'] = "Thank you, {$name}. Your message has been dispatched to our on-call medical team. We will contact you at {$phone} shortly.";
+        } else {
+            $_SESSION['contact_error'] = "Please provide your Name and Phone Number.";
+        }
+
+        header('Location: ' . APP_URL . '/contact');
         exit;
     }
 }

@@ -64,6 +64,23 @@ class Router
     }
 
     /**
+     * Alias for resolve supporting flexible parameter order
+     *
+     * @param string $param1
+     * @param string $param2
+     * @return void
+     */
+    public function dispatch(string $param1, string $param2): void
+    {
+        // If first parameter is HTTP method (e.g. 'GET', 'POST')
+        if (in_array(strtoupper($param1), ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'])) {
+            $this->resolve($param2, $param1);
+        } else {
+            $this->resolve($param1, $param2);
+        }
+    }
+
+    /**
      * Clean and normalize a path by trimming slashes.
      *
      * @param string $path

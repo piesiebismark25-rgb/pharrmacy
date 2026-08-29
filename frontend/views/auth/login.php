@@ -61,6 +61,13 @@
         .logo-wrap {
             text-align: center;
             margin-bottom: 24px;
+            display: block;
+            text-decoration: none;
+            transition: transform 0.15s ease;
+        }
+
+        .logo-wrap:hover {
+            transform: translateY(-2px);
         }
 
         .logo-box {
@@ -122,12 +129,32 @@
             pointer-events: none;
         }
 
+        .eye-toggle-btn {
+            position: absolute;
+            right: 12px;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            cursor: pointer;
+            z-index: 5;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.15s ease;
+        }
+
+        .eye-toggle-btn:hover {
+            color: var(--accent-main);
+        }
+
         .form-control-custom {
             width: 100%;
             background-color: #ffffff;
             border: 1px solid var(--border-strong);
             border-radius: 8px;
-            padding: 9px 12px 9px 36px;
+            padding: 9px 38px 9px 36px;
             color: var(--text-primary);
             font-size: 0.8125rem;
             transition: all 0.15s ease-in-out;
@@ -168,6 +195,21 @@
             transform: translateY(-1px);
         }
 
+        .back-home-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-top: 14px;
+            transition: color 0.15s ease;
+        }
+
+        .back-home-link:hover {
+            color: var(--accent-main);
+        }
+
         .auth-footer {
             margin-top: 20px;
             text-align: center;
@@ -182,14 +224,15 @@
     <div class="auth-container">
         <div class="auth-card">
             
-            <div class="logo-wrap">
+            <!-- Clickable Logo Header linking to Public Homepage -->
+            <a href="<?php echo APP_URL; ?>/" class="logo-wrap" title="Click to return to homepage">
                 <div class="logo-box">
                     <i class="fa-solid fa-house-medical"></i>
                 </div>
                 <h1 class="clinic-heading">I.K HOLINESS</h1>
                 <div class="clinic-subheading">Home Care Services</div>
                 <div class="clinic-motto">"Your Health is Our Life"</div>
-            </div>
+            </a>
 
             <!-- Error Alerts -->
             <?php if (!empty($errors)): ?>
@@ -233,6 +276,10 @@
                                class="form-control-custom" 
                                placeholder="Enter password" 
                                required>
+                        <!-- Password Visibility Toggle Button -->
+                        <button type="button" class="eye-toggle-btn" onclick="togglePasswordVisibility()" title="Toggle password visibility">
+                            <i class="fa-regular fa-eye" id="toggleIcon"></i>
+                        </button>
                     </div>
                 </div>
 
@@ -241,7 +288,13 @@
                 </button>
             </form>
 
-            <div class="auth-footer">
+            <div class="text-center">
+                <a href="<?php echo APP_URL; ?>/" class="back-home-link">
+                    <i class="fa-solid fa-arrow-left"></i> Back to Public Homepage
+                </a>
+            </div>
+
+            <div class="auth-footer border-top pt-3 mt-3">
                 Pankrono, Kumasi &bull; 0241974447 / 0550974126<br>
                 Secure Clinical Practice Management Portal
             </div>
@@ -249,5 +302,21 @@
         </div>
     </div>
 
+    <!-- Password Visibility Toggle Script -->
+    <script>
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
 </body>
 </html>
