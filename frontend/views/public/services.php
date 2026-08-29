@@ -1,376 +1,392 @@
 <?php
-$pageTitle = 'Clinical Services - I.K HOLINESS HOME CARE SERVICES';
+$pageTitle = 'Clinical Services Catalog - I.K HOLINESS HOME CARE SERVICES';
 $currentPage = 'services';
 require_once __DIR__ . '/header.php';
 ?>
 
-<!-- Banner Header -->
-<section class="page-header-banner">
-    <div class="container">
-        <span class="page-badge">
-            <i class="fa-solid fa-stethoscope"></i> Complete Clinical Catalog
+<!-- 1. Hero Header Banner -->
+<section class="page-header-banner" style="background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%); border-bottom: 1px solid #e2e8f0;">
+    <div class="container text-center">
+        <span class="badge-pill-custom badge-blue font-mono fw-bold mb-3">
+            <i class="fa-solid fa-stethoscope me-1"></i> COMPLETE CLINICAL CATALOG
         </span>
-        <h1 class="page-title">Our Home Care Services</h1>
-        <p class="page-desc">
-            Explore our comprehensive range of 16 specialized medical, nursing, diagnostic, and palliative procedures provided in the comfort of your home.
+        <h1 class="page-title text-dark fw-bold mb-3" style="font-size: clamp(2rem, 4vw, 2.75rem); letter-spacing: -0.02em;">
+            Specialized Home Care Procedures
+        </h1>
+        <p class="page-desc text-secondary" style="font-size: 1.05rem; max-width: 680px; margin: 0 auto 20px auto; line-height: 1.6;">
+            16 accredited clinical nursing, sterile aseptic, rehabilitative, and daily wellness procedures delivered directly to your residence in Kumasi.
         </p>
     </div>
 </section>
 
-<!-- Main Services Directory Section -->
-<section class="section-py" style="background-color: var(--bg-base);">
+<!-- 2. Main Services Directory Section -->
+<section class="section-py" style="background-color: #f8fafc;">
     <div class="container">
         
-        <!-- Pillar 1: Clinical Nursing & Monitoring -->
-        <div id="nursing" class="mb-5 pt-3">
-            <div class="d-flex align-items-center gap-3 mb-3">
-                <div class="pillar-icon-box theme-sapphire" style="width: 40px; height: 40px; font-size: 1rem;">
+        <!-- Domain 1: Clinical Nursing & Diagnostics -->
+        <div id="nursing" class="mb-5">
+            <div class="d-flex align-items-center gap-3 mb-4 pb-2 border-bottom">
+                <div class="icon-sq bg-blue-subtle text-primary" style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
                     <i class="fa-solid fa-heart-pulse"></i>
                 </div>
                 <div>
-                    <h3 class="fw-bold text-dark mb-0" style="font-size: 1.25rem;">1. Clinical Nursing & Diagnostics</h3>
-                    <small class="text-muted">Biometric tracking, glycemic surveillance, and prescribed therapeutic administration.</small>
+                    <h3 class="fw-bold text-dark mb-0" style="font-size: 1.3rem;">1. Clinical Nursing & Diagnostics</h3>
+                    <small class="text-secondary">Vital tracking, glycemic monitoring, and prescribed therapeutic administration.</small>
                 </div>
             </div>
 
-            <div class="row g-3">
+            <div class="row g-4">
+                <!-- GLU-01 -->
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="ui-card-modern h-100 p-3 d-flex flex-column justify-content-between">
+                    <div class="clean-service-card h-100 p-4">
                         <div>
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Glucose Monitoring</h6>
-                                <span class="badge-pill-custom bg-blue-subtle text-blue-accent font-mono" style="font-size: 0.68rem;">GLU-01</span>
+                                <h5 class="clean-service-title mb-0" style="font-size: 1rem;">Glucose Monitoring</h5>
+                                <span class="badge-pill-custom badge-blue font-mono" style="font-size: 0.7rem;">GLU-01</span>
                             </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.45;">
-                                Continuous fasting and postprandial blood glucose checks, ketone testing, diabetic log management, and lifestyle counseling.
+                            <p class="clean-service-desc mb-3">
+                                Continuous fasting and postprandial glucose tracking, diabetic logs, and dietary guidance.
                             </p>
                         </div>
-                        <a href="<?php echo APP_URL; ?>/request-care?service=Glucose+Monitoring" class="pillar-action-link" style="color: var(--accent-main);">
-                            <span>Request Service</span> <i class="fa-solid fa-arrow-right"></i>
+                        <a href="<?php echo APP_URL; ?>/request-care?service=Glucose+Monitoring" class="btn-clean-service text-primary">
+                            <span>Request Service</span> <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- VIT-02 -->
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="ui-card-modern h-100 p-3 d-flex flex-column justify-content-between">
+                    <div class="clean-service-card h-100 p-4">
                         <div>
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Vital Signs Tracking</h6>
-                                <span class="badge-pill-custom bg-blue-subtle text-blue-accent font-mono" style="font-size: 0.68rem;">VIT-02</span>
+                                <h5 class="clean-service-title mb-0" style="font-size: 1rem;">Vital Signs Tracking</h5>
+                                <span class="badge-pill-custom badge-blue font-mono" style="font-size: 0.7rem;">VIT-02</span>
                             </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.45;">
-                                Regular clinical tracking of blood pressure (BP), body temperature, radial pulse, respiratory rate, and SpO2 oxygen saturation levels.
+                            <p class="clean-service-desc mb-3">
+                                Routine blood pressure (BP), radial pulse, respiration, temperature, and SpO2 oxygen checks.
                             </p>
                         </div>
-                        <a href="<?php echo APP_URL; ?>/request-care?service=Vital+Signs+Monitoring" class="pillar-action-link" style="color: var(--accent-main);">
-                            <span>Request Service</span> <i class="fa-solid fa-arrow-right"></i>
+                        <a href="<?php echo APP_URL; ?>/request-care?service=Vital+Signs+Monitoring" class="btn-clean-service text-primary">
+                            <span>Request Service</span> <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- MED-03 -->
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="ui-card-modern h-100 p-3 d-flex flex-column justify-content-between">
+                    <div class="clean-service-card h-100 p-4">
                         <div>
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Serving Medication</h6>
-                                <span class="badge-pill-custom bg-blue-subtle text-blue-accent font-mono" style="font-size: 0.68rem;">MED-03</span>
+                                <h5 class="clean-service-title mb-0" style="font-size: 1rem;">Serving Medication</h5>
+                                <span class="badge-pill-custom badge-blue font-mono" style="font-size: 0.7rem;">MED-03</span>
                             </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.45;">
-                                Professional timing and administration of prescribed oral medications, intravenous (IV) infusions, intramuscular, and subcutaneous injections.
+                            <p class="clean-service-desc mb-3">
+                                Strict timing and administration of prescribed oral medications, IV infusions, and injections.
                             </p>
                         </div>
-                        <a href="<?php echo APP_URL; ?>/request-care?service=Serving+Medication" class="pillar-action-link" style="color: var(--accent-main);">
-                            <span>Request Service</span> <i class="fa-solid fa-arrow-right"></i>
+                        <a href="<?php echo APP_URL; ?>/request-care?service=Serving+Medication" class="btn-clean-service text-primary">
+                            <span>Request Service</span> <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- LAB-04 -->
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="ui-card-modern h-100 p-3 d-flex flex-column justify-content-between">
+                    <div class="clean-service-card h-100 p-4">
                         <div>
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Blood Sampling (Lab)</h6>
-                                <span class="badge-pill-custom bg-blue-subtle text-blue-accent font-mono" style="font-size: 0.68rem;">LAB-04</span>
+                                <h5 class="clean-service-title mb-0" style="font-size: 1rem;">Lab Blood Sampling</h5>
+                                <span class="badge-pill-custom badge-blue font-mono" style="font-size: 0.7rem;">LAB-04</span>
                             </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.45;">
-                                Aseptic home phlebotomy blood collection, sample preservation, and prompt transport to certified clinical diagnostic laboratories.
+                            <p class="clean-service-desc mb-3">
+                                Sterile home phlebotomy blood sampling, sample preservation, and prompt laboratory dispatch.
                             </p>
                         </div>
-                        <a href="<?php echo APP_URL; ?>/request-care?service=Blood+Sampling+for+Laboratory" class="pillar-action-link" style="color: var(--accent-main);">
-                            <span>Request Service</span> <i class="fa-solid fa-arrow-right"></i>
+                        <a href="<?php echo APP_URL; ?>/request-care?service=Blood+Sampling+for+Laboratory" class="btn-clean-service text-primary">
+                            <span>Request Service</span> <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Pillar 2: Specialized Clinical Procedures -->
-        <div id="specialized" class="mb-5 pt-3">
-            <div class="d-flex align-items-center gap-3 mb-3">
-                <div class="pillar-icon-box theme-indigo" style="width: 40px; height: 40px; font-size: 1rem;">
+        <!-- Domain 2: Specialized Clinical Procedures -->
+        <div id="specialized" class="mb-5">
+            <div class="d-flex align-items-center gap-3 mb-4 pb-2 border-bottom">
+                <div class="icon-sq bg-purple-subtle text-purple" style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
                     <i class="fa-solid fa-syringe"></i>
                 </div>
                 <div>
-                    <h3 class="fw-bold text-dark mb-0" style="font-size: 1.25rem;">2. Specialized Clinical Procedures</h3>
-                    <small class="text-muted">Invasive care management, catheterization, aseptic wound dressings, and tube feeding.</small>
+                    <h3 class="fw-bold text-dark mb-0" style="font-size: 1.3rem;">2. Specialized Clinical Procedures</h3>
+                    <small class="text-secondary">Aseptic wound dressings, urinary catheter care, and enteral tube feeding.</small>
                 </div>
             </div>
 
-            <div class="row g-3">
+            <div class="row g-4">
+                <!-- CAT-05 -->
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="ui-card-modern h-100 p-3 d-flex flex-column justify-content-between">
+                    <div class="clean-service-card h-100 p-4">
                         <div>
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Catheterization</h6>
-                                <span class="badge-pill-custom bg-blue-subtle text-blue-accent font-mono" style="font-size: 0.68rem;">CAT-05</span>
+                                <h5 class="clean-service-title mb-0" style="font-size: 1rem;">Catheterization</h5>
+                                <span class="badge-pill-custom badge-purple font-mono" style="font-size: 0.7rem;">CAT-05</span>
                             </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.45;">
-                                Sterile urinary Foley catheter insertion, periodic exchange, and drainage bag setup with strict infection-control protocols.
+                            <p class="clean-service-desc mb-3">
+                                Sterile Foley catheter insertion, periodic exchange, and drainage bag setup with aseptic protocols.
                             </p>
                         </div>
-                        <a href="<?php echo APP_URL; ?>/request-care?service=Catheterization" class="pillar-action-link" style="color: var(--accent-main);">
-                            <span>Request Service</span> <i class="fa-solid fa-arrow-right"></i>
+                        <a href="<?php echo APP_URL; ?>/request-care?service=Catheterization" class="btn-clean-service text-purple">
+                            <span>Request Service</span> <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- CAT-06 -->
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="ui-card-modern h-100 p-3 d-flex flex-column justify-content-between">
+                    <div class="clean-service-card h-100 p-4">
                         <div>
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Catheter Care & Flushing</h6>
-                                <span class="badge-pill-custom bg-blue-subtle text-blue-accent font-mono" style="font-size: 0.68rem;">CAT-06</span>
+                                <h5 class="clean-service-title mb-0" style="font-size: 1rem;">Catheter Care & Flush</h5>
+                                <span class="badge-pill-custom badge-purple font-mono" style="font-size: 0.7rem;">CAT-06</span>
                             </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.45;">
-                                Regular catheter site sanitation, therapeutic bladder irrigation, line flushing, and blockage prevention for bedbound patients.
+                            <p class="clean-service-desc mb-3">
+                                Routine site hygiene, therapeutic bladder irrigation, line flushing, and blockage prevention.
                             </p>
                         </div>
-                        <a href="<?php echo APP_URL; ?>/request-care?service=Catheter+Care" class="pillar-action-link" style="color: var(--accent-main);">
-                            <span>Request Service</span> <i class="fa-solid fa-arrow-right"></i>
+                        <a href="<?php echo APP_URL; ?>/request-care?service=Catheter+Care" class="btn-clean-service text-purple">
+                            <span>Request Service</span> <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- WND-07 -->
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="ui-card-modern h-100 p-3 d-flex flex-column justify-content-between">
+                    <div class="clean-service-card h-100 p-4">
                         <div>
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Wound Dressing</h6>
-                                <span class="badge-pill-custom bg-blue-subtle text-blue-accent font-mono" style="font-size: 0.68rem;">WND-07</span>
+                                <h5 class="clean-service-title mb-0" style="font-size: 1rem;">Wound Dressing</h5>
+                                <span class="badge-pill-custom badge-purple font-mono" style="font-size: 0.7rem;">WND-07</span>
                             </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.45;">
-                                Advanced aseptic dressing of diabetic foot ulcers, pressure sores (bedsores), post-surgical incision care, and burn management.
+                            <p class="clean-service-desc mb-3">
+                                Advanced clinical dressing for diabetic ulcers, pressure bedsores, surgical incisions, and burns.
                             </p>
                         </div>
-                        <a href="<?php echo APP_URL; ?>/request-care?service=Wound+Dressing" class="pillar-action-link" style="color: var(--accent-main);">
-                            <span>Request Service</span> <i class="fa-solid fa-arrow-right"></i>
+                        <a href="<?php echo APP_URL; ?>/request-care?service=Wound+Dressing" class="btn-clean-service text-purple">
+                            <span>Request Service</span> <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- NGT-08 -->
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="ui-card-modern h-100 p-3 d-flex flex-column justify-content-between">
+                    <div class="clean-service-card h-100 p-4">
                         <div>
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">NG Tube Feeding</h6>
-                                <span class="badge-pill-custom bg-blue-subtle text-blue-accent font-mono" style="font-size: 0.68rem;">NGT-08</span>
+                                <h5 class="clean-service-title mb-0" style="font-size: 1rem;">NG Tube Feeding</h5>
+                                <span class="badge-pill-custom badge-purple font-mono" style="font-size: 0.7rem;">NGT-08</span>
                             </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.45;">
-                                Nasogastric tube insertion, enteral formula feeding administration, tube patency checks, and aspiration prevention precautions.
+                            <p class="clean-service-desc mb-3">
+                                Enteral nasogastric nutrition administration, tube verification, flushing, and aspiration safety.
                             </p>
                         </div>
-                        <a href="<?php echo APP_URL; ?>/request-care?service=NG+Tube+Feeding" class="pillar-action-link" style="color: var(--accent-main);">
-                            <span>Request Service</span> <i class="fa-solid fa-arrow-right"></i>
+                        <a href="<?php echo APP_URL; ?>/request-care?service=NG+Tube+Feeding" class="btn-clean-service text-purple">
+                            <span>Request Service</span> <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Pillar 3: Rehabilitation & Therapy -->
-        <div id="rehab" class="mb-5 pt-3">
-            <div class="d-flex align-items-center gap-3 mb-3">
-                <div class="pillar-icon-box theme-teal" style="width: 40px; height: 40px; font-size: 1rem;">
+        <!-- Domain 3: Rehabilitation & Therapy -->
+        <div id="rehabilitation" class="mb-5">
+            <div class="d-flex align-items-center gap-3 mb-4 pb-2 border-bottom">
+                <div class="icon-sq bg-emerald-subtle text-success" style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
                     <i class="fa-solid fa-person-walking"></i>
                 </div>
                 <div>
-                    <h3 class="fw-bold text-dark mb-0" style="font-size: 1.25rem;">3. Rehabilitation & Therapy</h3>
-                    <small class="text-muted">Post-surgical recovery, mobility enhancement, lifestyle guidance, and clinical escort.</small>
+                    <h3 class="fw-bold text-dark mb-0" style="font-size: 1.3rem;">3. Rehabilitation & Recovery Therapy</h3>
+                    <small class="text-secondary">Physical stroke rehabilitation, post-operative support, and medical escort.</small>
                 </div>
             </div>
 
-            <div class="row g-3">
+            <div class="row g-4">
+                <!-- REC-09 -->
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="ui-card-modern h-100 p-3 d-flex flex-column justify-content-between">
+                    <div class="clean-service-card h-100 p-4">
                         <div>
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Post-Operative Care</h6>
-                                <span class="badge-pill-custom bg-blue-subtle text-blue-accent font-mono" style="font-size: 0.68rem;">POP-09</span>
+                                <h5 class="clean-service-title mb-0" style="font-size: 1rem;">Post-Operative Care</h5>
+                                <span class="badge-pill-custom badge-emerald font-mono" style="font-size: 0.7rem;">REC-09</span>
                             </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.45;">
-                                Post-discharge home monitoring, surgical site inspection, pain control management, drain care, and recovery milestone tracking.
+                            <p class="clean-service-desc mb-3">
+                                Post-surgical monitoring, drain management, pain tracking, and early mobilization guidance.
                             </p>
                         </div>
-                        <a href="<?php echo APP_URL; ?>/request-care?service=Post+Operative+Care" class="pillar-action-link" style="color: var(--accent-main);">
-                            <span>Request Service</span> <i class="fa-solid fa-arrow-right"></i>
+                        <a href="<?php echo APP_URL; ?>/request-care?service=Post+Operative+Care" class="btn-clean-service text-success">
+                            <span>Request Service</span> <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- PHY-10 -->
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="ui-card-modern h-100 p-3 d-flex flex-column justify-content-between">
+                    <div class="clean-service-card h-100 p-4">
                         <div>
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Physiotherapy & Exercise</h6>
-                                <span class="badge-pill-custom bg-blue-subtle text-blue-accent font-mono" style="font-size: 0.68rem;">PHY-10</span>
+                                <h5 class="clean-service-title mb-0" style="font-size: 1rem;">Physiotherapy</h5>
+                                <span class="badge-pill-custom badge-emerald font-mono" style="font-size: 0.7rem;">PHY-10</span>
                             </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.45;">
-                                Guided rehabilitation exercises, joint range-of-motion mobilization, post-stroke motor recovery, and ambulatory assistance.
+                            <p class="clean-service-desc mb-3">
+                                Bedside range-of-motion therapy, stroke rehab, gait training, and muscle reconditioning.
                             </p>
                         </div>
-                        <a href="<?php echo APP_URL; ?>/request-care?service=Physiotherapy+and+Exercise" class="pillar-action-link" style="color: var(--accent-main);">
-                            <span>Request Service</span> <i class="fa-solid fa-arrow-right"></i>
+                        <a href="<?php echo APP_URL; ?>/request-care?service=Physiotherapy+and+Exercise" class="btn-clean-service text-success">
+                            <span>Request Service</span> <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- HLT-11 -->
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="ui-card-modern h-100 p-3 d-flex flex-column justify-content-between">
+                    <div class="clean-service-card h-100 p-4">
                         <div>
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Health Talk & Counseling</h6>
-                                <span class="badge-pill-custom bg-blue-subtle text-blue-accent font-mono" style="font-size: 0.68rem;">HLT-11</span>
+                                <h5 class="clean-service-title mb-0" style="font-size: 1rem;">Health Counseling</h5>
+                                <span class="badge-pill-custom badge-emerald font-mono" style="font-size: 0.7rem;">HLT-11</span>
                             </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.45;">
-                                Educational health sessions for families, preventative health strategies, chronic disease management, and psycho-social encouragement.
+                            <p class="clean-service-desc mb-3">
+                                Chronic disease management guidance, hypertension & diabetic education, and family talks.
                             </p>
                         </div>
-                        <a href="<?php echo APP_URL; ?>/request-care?service=Health+Talk" class="pillar-action-link" style="color: var(--accent-main);">
-                            <span>Request Service</span> <i class="fa-solid fa-arrow-right"></i>
+                        <a href="<?php echo APP_URL; ?>/request-care?service=Health+Talk" class="btn-clean-service text-success">
+                            <span>Request Service</span> <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- ESC-12 -->
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="ui-card-modern h-100 p-3 d-flex flex-column justify-content-between">
+                    <div class="clean-service-card h-100 p-4">
                         <div>
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Hospital Escort</h6>
-                                <span class="badge-pill-custom bg-blue-subtle text-blue-accent font-mono" style="font-size: 0.68rem;">ESC-12</span>
+                                <h5 class="clean-service-title mb-0" style="font-size: 1rem;">Hospital Escort</h5>
+                                <span class="badge-pill-custom badge-emerald font-mono" style="font-size: 0.7rem;">ESC-12</span>
                             </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.45;">
-                                Professional clinical accompaniment for hospital appointments, imaging visits, diagnostic reviews, and inpatient admissions.
+                            <p class="clean-service-desc mb-3">
+                                Certified nurse-assisted transport and physical accompaniment for specialist hospital appointments.
                             </p>
                         </div>
-                        <a href="<?php echo APP_URL; ?>/request-care?service=Hospital+Escort" class="pillar-action-link" style="color: var(--accent-main);">
-                            <span>Request Service</span> <i class="fa-solid fa-arrow-right"></i>
+                        <a href="<?php echo APP_URL; ?>/request-care?service=Hospital+Escort" class="btn-clean-service text-success">
+                            <span>Request Service</span> <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Pillar 4: Daily Living & Hygiene Support -->
-        <div id="daily" class="mb-4 pt-3">
-            <div class="d-flex align-items-center gap-3 mb-3">
-                <div class="pillar-icon-box theme-amber" style="width: 40px; height: 40px; font-size: 1rem;">
+        <!-- Domain 4: Daily Living Care & Medical Consultations -->
+        <div id="dailyliving" class="mb-5">
+            <div class="d-flex align-items-center gap-3 mb-4 pb-2 border-bottom">
+                <div class="icon-sq bg-soft-amber text-danger" style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;">
                     <i class="fa-solid fa-bath"></i>
                 </div>
                 <div>
-                    <h3 class="fw-bold text-dark mb-0" style="font-size: 1.25rem;">4. Daily Living Care & Wellness</h3>
-                    <small class="text-muted">Hygiene maintenance, oral sanitation, medical diet formulation, and general physician consults.</small>
+                    <h3 class="fw-bold text-dark mb-0" style="font-size: 1.3rem;">4. Daily Living Care & Doctor Reviews</h3>
+                    <small class="text-secondary">Bed bathing, oral hygiene, clinical nutrition, and physician consultations.</small>
                 </div>
             </div>
 
-            <div class="row g-3">
+            <div class="row g-4">
+                <!-- BTH-13 -->
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="ui-card-modern h-100 p-3 d-flex flex-column justify-content-between">
+                    <div class="clean-service-card h-100 p-4">
                         <div>
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Bed Bathing Care</h6>
-                                <span class="badge-pill-custom bg-blue-subtle text-blue-accent font-mono" style="font-size: 0.68rem;">BTH-13</span>
+                                <h5 class="clean-service-title mb-0" style="font-size: 1rem;">Bed Bathing Care</h5>
+                                <span class="badge-pill-custom badge-rose font-mono" style="font-size: 0.7rem;">BTH-13</span>
                             </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.45;">
-                                Dignified, gentle sponge and assisted bathing in bed for elderly, post-stroke, or immobile individuals with skin moisturizing.
+                            <p class="clean-service-desc mb-3">
+                                Gentle, hygienic full bed bathing, pressure area skincare, and linen change for immobile patients.
                             </p>
                         </div>
-                        <a href="<?php echo APP_URL; ?>/request-care?service=Bed+Bathing" class="pillar-action-link" style="color: var(--accent-main);">
-                            <span>Request Service</span> <i class="fa-solid fa-arrow-right"></i>
+                        <a href="<?php echo APP_URL; ?>/request-care?service=Bed+Bathing" class="btn-clean-service text-danger">
+                            <span>Request Service</span> <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- ORL-14 -->
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="ui-card-modern h-100 p-3 d-flex flex-column justify-content-between">
+                    <div class="clean-service-card h-100 p-4">
                         <div>
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Oral Hygiene Care</h6>
-                                <span class="badge-pill-custom bg-blue-subtle text-blue-accent font-mono" style="font-size: 0.68rem;">ORL-14</span>
+                                <h5 class="clean-service-title mb-0" style="font-size: 1rem;">Oral Hygiene Care</h5>
+                                <span class="badge-pill-custom badge-rose font-mono" style="font-size: 0.7rem;">ORL-14</span>
                             </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.45;">
-                                Specialized oral cavitary debridement, antiseptic mouthwashes, denture care, and mucositis prevention for dependent patients.
+                            <p class="clean-service-desc mb-3">
+                                Antiseptic mouth care, denture cleaning, and oral cavity sanitation for dependent individuals.
                             </p>
                         </div>
-                        <a href="<?php echo APP_URL; ?>/request-care?service=Oral+Care" class="pillar-action-link" style="color: var(--accent-main);">
-                            <span>Request Service</span> <i class="fa-solid fa-arrow-right"></i>
+                        <a href="<?php echo APP_URL; ?>/request-care?service=Oral+Care" class="btn-clean-service text-danger">
+                            <span>Request Service</span> <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- NUT-15 -->
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="ui-card-modern h-100 p-3 d-flex flex-column justify-content-between">
+                    <div class="clean-service-card h-100 p-4">
                         <div>
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Nutritional Planning</h6>
-                                <span class="badge-pill-custom bg-blue-subtle text-blue-accent font-mono" style="font-size: 0.68rem;">NUT-15</span>
+                                <h5 class="clean-service-title mb-0" style="font-size: 1rem;">Nutritional Planning</h5>
+                                <span class="badge-pill-custom badge-rose font-mono" style="font-size: 0.7rem;">NUT-15</span>
                             </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.45;">
-                                Clinical dietetic assessment, specialized diabetic, renal, and low-sodium hypertensive meal planning and hydration support.
+                            <p class="clean-service-desc mb-3">
+                                Tailored dietary plans for diabetics, hypertensive clients, elderly nutrition, and fluid logs.
                             </p>
                         </div>
-                        <a href="<?php echo APP_URL; ?>/request-care?service=Nutritional+Management" class="pillar-action-link" style="color: var(--accent-main);">
-                            <span>Request Service</span> <i class="fa-solid fa-arrow-right"></i>
+                        <a href="<?php echo APP_URL; ?>/request-care?service=Nutritional+Management" class="btn-clean-service text-danger">
+                            <span>Request Service</span> <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- MED-16 -->
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="ui-card-modern h-100 p-3 d-flex flex-column justify-content-between">
+                    <div class="clean-service-card h-100 p-4">
                         <div>
                             <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold text-dark mb-0" style="font-size: 0.95rem;">Medical Consultations</h6>
-                                <span class="badge-pill-custom bg-blue-subtle text-blue-accent font-mono" style="font-size: 0.68rem;">CON-16</span>
+                                <h5 class="clean-service-title mb-0" style="font-size: 1rem;">Doctor Consultations</h5>
+                                <span class="badge-pill-custom badge-rose font-mono" style="font-size: 0.7rem;">MED-16</span>
                             </div>
-                            <p class="text-secondary small mb-3" style="line-height: 1.45;">
-                                Clinical reviews, physical assessments, diagnosis discussions, specialist second opinions, and home care treatment plans.
+                            <p class="clean-service-desc mb-3">
+                                General medical examinations, treatment reviews, prescription renewals, and specialist referrals.
                             </p>
                         </div>
-                        <a href="<?php echo APP_URL; ?>/request-care?service=Medical+Advice+%26+Other+Services" class="pillar-action-link" style="color: var(--accent-main);">
-                            <span>Request Service</span> <i class="fa-solid fa-arrow-right"></i>
+                        <a href="<?php echo APP_URL; ?>/request-care?service=Medical+Advice+%26+Other+Services" class="btn-clean-service text-danger">
+                            <span>Request Service</span> <i class="fa-solid fa-arrow-right ms-1"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
 
-    </div>
-</section>
-
-<!-- Call to Action Banner -->
-<section class="section-py" style="background-color: #ffffff; border-top: 1px solid var(--border-subtle);">
-    <div class="container text-center">
-        <h3 class="fw-bold text-dark mb-2">Have a Customized Care Requirement?</h3>
-        <p class="text-secondary small mb-4" style="max-width: 540px; margin: 0 auto 24px auto;">
-            Our clinical team handles combined home care packages, palliative long-term support, and routine wellness schedules tailored to your family's needs.
-        </p>
-        <div class="d-flex justify-content-center gap-2 flex-wrap">
-            <a href="<?php echo APP_URL; ?>/request-care" class="btn-cta-primary">
-                <i class="fa-solid fa-calendar-check"></i> Book Home Care Session
-            </a>
-            <a href="<?php echo APP_URL; ?>/contact" class="btn-cta-secondary">
-                <i class="fa-solid fa-envelope"></i> Contact Clinical Officer
-            </a>
+        <!-- 3. Immediate Helpline Callout -->
+        <div class="clean-service-card p-4 p-md-5 text-center" style="background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%); color: #ffffff;">
+            <h3 class="fw-bold mb-2" style="font-size: 1.5rem;">Need Immediate In-Home Clinical Care?</h3>
+            <p class="mb-4" style="font-size: 0.95rem; opacity: 0.9; max-width: 580px; margin: 0 auto 20px auto;">
+                Our nursing supervisors are available 24/7 to assess patient needs and deploy registered clinical officers to your home.
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="tel:0241974447" class="btn btn-light fw-bold py-2 px-4 shadow-sm" style="color: #1e40af; border-radius: 8px;">
+                    <i class="fa-solid fa-phone me-1"></i> Call 0241974447
+                </a>
+                <a href="<?php echo APP_URL; ?>/request-care" class="btn btn-outline-light fw-bold py-2 px-4" style="border-radius: 8px;">
+                    <i class="fa-solid fa-calendar-check me-1"></i> Request Online Consultation
+                </a>
+            </div>
         </div>
+
     </div>
 </section>
 

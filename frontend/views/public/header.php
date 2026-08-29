@@ -1,539 +1,454 @@
 <?php
+if (!defined('APP_NAME')) {
+    require_once __DIR__ . '/../../../backend/config/config.php';
+}
+
+$pageTitle = $pageTitle ?? 'I.K HOLINESS HOME CARE SERVICES - Premier Domiciliary Healthcare';
 $currentPage = $currentPage ?? 'home';
 ?>
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $pageTitle ?? 'I.K HOLINESS HOME CARE SERVICES - "Your Health is Our Life"'; ?></title>
-    <meta name="description" content="Professional clinical home care, nursing, vital signs monitoring, wound care, and post-operative recovery in Pankrono, Kumasi.">
-    
-    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <meta name="description" content="I.K Holiness Home Care Services - Premier physician-directed domiciliary nursing, diagnostics, wound care, catheterization, and stroke rehabilitation in Pankrono, Kumasi, Ghana.">
+    <title><?php echo htmlspecialchars($pageTitle); ?></title>
+
+    <!-- Google Fonts: Plus Jakarta Sans & Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Bootstrap 5.3 -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- FontAwesome 6.5 -->
+    
+    <!-- Font Awesome 6 Pro / Free CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         :root {
-            --bg-base: #f8fafc;
-            --bg-subtle: #f1f5f9;
-            --surface-card: #ffffff;
-            --border-subtle: #e2e8f0;
-            --border-strong: #cbd5e1;
-            --accent-main: #2563eb;
-            --accent-dark: #1d4ed8;
-            --accent-light: #eff6ff;
-            --accent-border: #bfdbfe;
+            --font-main: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Color Tokens */
+            --brand-navy: #0b132b;
+            --brand-dark: #0f172a;
+            --brand-primary: #2563eb;
+            --brand-primary-hover: #1d4ed8;
+            --brand-primary-light: #eff6ff;
+            --brand-purple: #7c3aed;
+            --brand-emerald: #059669;
+            --brand-amber: #d97706;
+            --brand-rose: #e11d48;
+
             --text-primary: #0f172a;
             --text-secondary: #475569;
             --text-muted: #64748b;
+
+            --bg-base: #ffffff;
+            --bg-subtle: #f8fafc;
+            --bg-muted: #f1f5f9;
+
+            --border-subtle: #e2e8f0;
+            --border-strong: #cbd5e1;
+
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --radius-xl: 24px;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: var(--font-main);
+            color: var(--text-primary);
             background-color: var(--bg-base);
-            color: var(--text-primary);
-            font-size: 0.875rem;
-            margin: 0;
+            line-height: 1.6;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
+        .font-mono {
+            font-family: var(--font-mono);
         }
 
-        /* Top Navbar */
+        /* 1. Header Top Announcement Bar */
+        .announcement-bar {
+            background-color: #0b132b;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.78rem;
+            padding: 7px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .announcement-bar a {
+            color: #93c5fd;
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .announcement-bar a:hover {
+            color: #ffffff;
+        }
+
+        /* 2. Frosted Glass Sticky Navbar */
         .public-navbar {
-            background-color: #ffffff;
-            border-bottom: 1px solid var(--border-subtle);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
             position: sticky;
             top: 0;
-            z-index: 1050;
-            padding: 12px 0;
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+            z-index: 1040;
+            padding: 14px 0;
+            transition: all 0.2s ease;
         }
 
         .brand-logo-wrap {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
         }
 
-        .brand-icon-box {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        .brand-icon-sq {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+            color: #ffffff;
+            font-size: 1.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
-            color: #ffffff;
-            font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+            flex-shrink: 0;
+        }
+
+        .brand-text-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--brand-dark);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 1px;
+        }
+
+        .brand-text-sub {
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--brand-primary);
+            display: block;
         }
 
         .nav-link-custom {
-            color: var(--text-secondary);
+            font-size: 0.875rem;
             font-weight: 600;
-            font-size: 0.85rem;
-            text-decoration: none;
-            padding: 7px 14px;
+            color: #334155;
+            padding: 8px 14px;
             border-radius: 8px;
+            text-decoration: none;
             transition: all 0.15s ease;
         }
 
         .nav-link-custom:hover {
-            color: var(--accent-main);
-            background-color: var(--accent-light);
+            color: var(--brand-primary);
+            background-color: var(--brand-primary-light);
         }
 
         .nav-link-custom.active {
-            color: var(--accent-main);
-            background-color: var(--accent-light);
+            color: var(--brand-primary);
+            background-color: var(--brand-primary-light);
             font-weight: 700;
+        }
+
+        .helpline-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            background-color: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            color: var(--brand-dark);
+            font-size: 0.8125rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.15s ease;
+        }
+
+        .helpline-pill:hover {
+            background-color: var(--brand-primary-light);
+            border-color: #bfdbfe;
+            color: var(--brand-primary);
         }
 
         .btn-cta-primary {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            border: 1px solid #1d4ed8;
-            color: #ffffff !important;
-            font-weight: 600;
-            font-size: 0.875rem;
-            padding: 8px 16px;
-            border-radius: 8px;
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 6px;
-            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
-            transition: all 0.15s ease;
+            gap: 8px;
+            padding: 9px 20px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+            color: #ffffff !important;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .btn-cta-primary:hover {
-            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+            color: #ffffff;
         }
 
         .btn-cta-secondary {
-            background-color: #ffffff;
-            border: 1px solid var(--border-strong);
-            color: var(--text-primary) !important;
-            font-weight: 600;
-            font-size: 0.8125rem;
-            padding: 8px 14px;
-            border-radius: 8px;
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 6px;
+            gap: 8px;
+            padding: 9px 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-strong);
+            color: var(--brand-dark);
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-decoration: none;
             transition: all 0.15s ease;
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
         }
 
         .btn-cta-secondary:hover {
-            background-color: var(--bg-subtle);
+            background-color: #f8fafc;
             border-color: #94a3b8;
+            color: var(--brand-primary);
         }
 
-        /* Hero Section with Generous Padding */
-        .hero-section {
-            padding: 92px 0 68px 0;
-            position: relative;
-            background: radial-gradient(circle at 50% 12%, rgba(37, 99, 235, 0.05) 0%, transparent 65%);
+        /* 3. Section Containers & Banners */
+        .section-py {
+            padding: 68px 0;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            padding: 6px 14px;
-            border-radius: 9999px;
-            background-color: var(--accent-light);
-            border: 1px solid var(--accent-border);
-            color: var(--accent-dark);
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            margin-bottom: 22px;
-        }
-
-        .hero-title {
-            font-size: clamp(2rem, 4.2vw, 2.9rem);
-            font-weight: 800;
-            line-height: 1.22;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-            letter-spacing: -0.025em;
-        }
-
-        .hero-title-accent {
-            color: var(--accent-main);
-        }
-
-        .hero-desc {
-            font-size: 0.98rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            max-width: 660px;
-            margin: 0 auto 30px auto;
-        }
-
-        /* Page Banner Header */
         .page-header-banner {
-            padding: 60px 0 44px 0;
-            background: radial-gradient(circle at 50% 10%, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+            padding: 60px 0 48px 0;
+            background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
             border-bottom: 1px solid var(--border-subtle);
-            text-align: center;
         }
 
-        .page-badge {
+        .badge-pill-custom {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 5px 14px;
+            padding: 4px 12px;
             border-radius: 9999px;
-            background-color: var(--accent-light);
-            border: 1px solid var(--accent-border);
-            color: var(--accent-dark);
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 700;
             letter-spacing: 0.04em;
             text-transform: uppercase;
-            margin-bottom: 14px;
         }
 
-        .page-title {
-            font-size: clamp(1.8rem, 3.8vw, 2.5rem);
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-            letter-spacing: -0.02em;
-        }
+        .badge-blue { background-color: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8; }
+        .badge-purple { background-color: #faf5ff; border: 1px solid #e9d5ff; color: #7e22ce; }
+        .badge-emerald { background-color: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d; }
+        .badge-rose { background-color: #fff1f2; border: 1px solid #fecdd3; color: #be123c; }
 
-        .page-desc {
-            font-size: 0.98rem;
-            color: var(--text-secondary);
-            max-width: 640px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 54px 0 40px 0;
-            }
-            .page-header-banner {
-                padding: 44px 0 32px 0;
-            }
-        }
-
-        /* Section Layouts */
-        .section-py {
-            padding: 56px 0;
-        }
-
-        /* Modern Redesigned Service Pillar Cards */
-        .pillar-card-modern {
+        /* 4. Luxury Cards & Components */
+        .clean-service-card {
             background: #ffffff;
             border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 24px 20px;
-            height: 100%;
+            border-radius: var(--radius-lg);
+            padding: 26px 22px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            position: relative;
-            overflow: hidden;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
         }
 
-        .pillar-card-modern::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--pillar-accent-gradient, linear-gradient(90deg, #2563eb, #3b82f6));
-            opacity: 0.9;
-        }
-
-        .pillar-card-modern:hover {
+        .clean-service-card:hover {
             transform: translateY(-4px);
-            border-color: var(--pillar-border-hover, #bfdbfe);
-            box-shadow: 0 14px 28px -4px rgba(15, 23, 42, 0.08), 0 6px 12px -2px rgba(15, 23, 42, 0.04);
+            border-color: #cbd5e1;
+            box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
         }
 
-        .pillar-header-wrap {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 18px;
-        }
-
-        .pillar-icon-box {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background-color: var(--pillar-bg-soft, #eff6ff);
-            border: 1px solid var(--pillar-border-soft, #dbeafe);
-            color: var(--pillar-color, #2563eb);
+        .clean-service-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.15rem;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-            transition: transform 0.2s ease;
+            font-size: 1.25rem;
+            margin-bottom: 18px;
         }
 
-        .pillar-card-modern:hover .pillar-icon-box {
-            transform: scale(1.05);
-        }
-
-        .pillar-badge {
-            font-size: 0.68rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 3px 8px;
-            border-radius: 9999px;
-            background-color: var(--pillar-bg-soft, #eff6ff);
-            color: var(--pillar-color, #2563eb);
-            border: 1px solid var(--pillar-border-soft, #dbeafe);
-        }
-
-        .pillar-card-title {
-            font-size: 1.05rem;
+        .clean-service-title {
+            font-size: 1.12rem;
             font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 2px;
-            letter-spacing: -0.01em;
+            color: var(--brand-dark);
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
         }
 
-        .pillar-card-subtitle {
-            font-size: 0.72rem;
-            font-weight: 600;
+        .clean-service-desc {
+            font-size: 0.84rem;
             color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 14px;
-            display: block;
+            line-height: 1.55;
+            margin-bottom: 16px;
         }
 
-        .procedure-tile-list {
+        .clean-service-tags {
             display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 6px;
         }
 
-        .procedure-tile {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 8px 12px;
-            border-radius: 10px;
-            background-color: #f8fafc;
-            border: 1px solid #f1f5f9;
-            transition: all 0.15s ease-in-out;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .procedure-tile:hover {
-            background-color: #ffffff;
-            border-color: var(--pillar-border-soft, #cbd5e1);
-            transform: translateX(2px);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
-        }
-
-        .procedure-tile-icon {
-            width: 24px;
-            height: 24px;
-            border-radius: 6px;
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.72rem;
-            color: var(--pillar-color, #2563eb);
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-
-        .procedure-tile-content {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .procedure-tile-name {
-            font-size: 0.8125rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.25;
-            display: block;
-        }
-
-        .procedure-tile-desc {
+        .service-mini-pill {
             font-size: 0.7rem;
-            color: var(--text-muted);
-            line-height: 1.35;
-            display: block;
-            margin-top: 1px;
+            font-weight: 600;
+            color: #475569;
+            background-color: #f1f5f9;
+            padding: 3px 8px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
         }
 
-        .pillar-card-footer {
+        .btn-clean-service {
+            font-size: 0.84rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: transform 0.15s ease;
             padding-top: 12px;
             border-top: 1px solid var(--border-subtle);
         }
 
-        .pillar-action-link {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.8125rem;
-            font-weight: 700;
-            color: var(--pillar-color, #2563eb);
-            text-decoration: none;
-            transition: all 0.15s ease;
-        }
-
-        .pillar-action-link:hover {
-            color: var(--pillar-color-dark, #1d4ed8);
-        }
-
-        .pillar-action-link i {
-            transition: transform 0.2s ease;
-        }
-
-        .pillar-card-modern:hover .pillar-action-link i {
+        .btn-clean-service:hover {
             transform: translateX(4px);
         }
 
-        /* Specific Pillar Color Themes */
-        .theme-sapphire {
-            --pillar-color: #2563eb;
-            --pillar-color-dark: #1d4ed8;
-            --pillar-bg-soft: #eff6ff;
-            --pillar-border-soft: #bfdbfe;
-            --pillar-border-hover: #93c5fd;
-            --pillar-accent-gradient: linear-gradient(90deg, #2563eb, #60a5fa);
-        }
+        .bg-soft-blue { background-color: #eff6ff; }
+        .bg-soft-purple { background-color: #faf5ff; }
+        .bg-soft-emerald { background-color: #f0fdf4; }
+        .bg-soft-amber { background-color: #fff1f2; }
+        .text-purple { color: #7c3aed !important; }
 
-        .theme-indigo {
-            --pillar-color: #6366f1;
-            --pillar-color-dark: #4338ca;
-            --pillar-bg-soft: #eef2ff;
-            --pillar-border-soft: #c7d2fe;
-            --pillar-border-hover: #a5b4fc;
-            --pillar-accent-gradient: linear-gradient(90deg, #6366f1, #818cf8);
-        }
-
-        .theme-teal {
-            --pillar-color: #0d9488;
-            --pillar-color-dark: #0f766e;
-            --pillar-bg-soft: #f0fdfa;
-            --pillar-border-soft: #99f6e4;
-            --pillar-border-hover: #5eead4;
-            --pillar-accent-gradient: linear-gradient(90deg, #0d9488, #2dd4bf);
-        }
-
-        .theme-amber {
-            --pillar-color: #d97706;
-            --pillar-color-dark: #b45309;
-            --pillar-bg-soft: #fffbeb;
-            --pillar-border-soft: #fde68a;
-            --pillar-border-hover: #fcd34d;
-            --pillar-accent-gradient: linear-gradient(90deg, #d97706, #fbbf24);
-        }
-
-        /* Forms & Cards */
-        .ui-card-modern {
-            background-color: #ffffff;
-            border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 28px;
-            box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.04);
-        }
-
-        .form-label {
+        /* Form Controls */
+        .form-label-custom {
             font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 5px;
+            font-weight: 700;
+            color: #334155;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 6px;
             display: block;
         }
 
         .form-control-custom, .form-select-custom {
-            background-color: #ffffff;
+            width: 100%;
+            padding: 11px 14px;
+            border-radius: 9px;
             border: 1px solid var(--border-strong);
+            font-size: 0.875rem;
             color: var(--text-primary);
-            border-radius: 8px;
-            padding: 9px 12px;
-            font-size: 0.8125rem;
+            background-color: #ffffff;
             transition: all 0.15s ease;
         }
 
         .form-control-custom:focus, .form-select-custom:focus {
-            background-color: #ffffff;
-            border-color: var(--accent-main);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
-            color: var(--text-primary);
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
             outline: none;
+        }
+
+        /* 5. Mobile Drawer */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: #ffffff;
+                border: 1px solid var(--border-subtle);
+                border-radius: var(--radius-md);
+                padding: 16px;
+                margin-top: 12px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Public Navigation Bar -->
+    <!-- Top Info Ribbon -->
+    <div class="announcement-bar d-none d-md-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+                <span><i class="fa-solid fa-location-dot text-primary me-1"></i> Pankrono, Kumasi, Ghana</span>
+                <span>&bull;</span>
+                <span><i class="fa-solid fa-clock text-primary me-1"></i> 24/7 On-Call Home Nursing</span>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <a href="tel:0241974447"><i class="fa-solid fa-phone me-1"></i> 0241974447 / 0550974126</a>
+                <span>&bull;</span>
+                <a href="<?php echo APP_URL; ?>/login"><i class="fa-solid fa-lock me-1"></i> Staff Portal</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Frosted Sticky Navbar -->
     <header class="public-navbar">
-        <div class="container">
-            <div class="d-flex align-items-center justify-content-between">
-                
-                <!-- Brand Logo (Clicking returns to home) -->
-                <a href="<?php echo APP_URL; ?>/" class="brand-logo-wrap">
-                    <div class="brand-icon-box">
-                        <i class="fa-solid fa-house-medical"></i>
-                    </div>
-                    <div>
-                        <span class="fw-bold text-dark d-block" style="font-size: 0.95rem; line-height: 1.15;">I.K HOLINESS</span>
-                        <span style="font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: var(--accent-main);">Home Care Services</span>
-                    </div>
+        <div class="container d-flex align-items-center justify-content-between">
+            
+            <!-- Brand Monogram & Title -->
+            <a href="<?php echo APP_URL; ?>/" class="brand-logo-wrap">
+                <div class="brand-icon-sq">
+                    <i class="fa-solid fa-house-medical"></i>
+                </div>
+                <div>
+                    <div class="brand-text-title">I.K HOLINESS</div>
+                    <span class="brand-text-sub">Home Care Services</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="d-none d-lg-flex align-items-center gap-1">
+                <a href="<?php echo APP_URL; ?>/" class="nav-link-custom <?php echo $currentPage === 'home' ? 'active' : ''; ?>">Home</a>
+                <a href="<?php echo APP_URL; ?>/services" class="nav-link-custom <?php echo $currentPage === 'services' ? 'active' : ''; ?>">Services</a>
+                <a href="<?php echo APP_URL; ?>/about" class="nav-link-custom <?php echo $currentPage === 'about' ? 'active' : ''; ?>">About Us</a>
+                <a href="<?php echo APP_URL; ?>/contact" class="nav-link-custom <?php echo $currentPage === 'contact' ? 'active' : ''; ?>">Contact</a>
+            </nav>
+
+            <!-- Action Area -->
+            <div class="d-flex align-items-center gap-2">
+                <a href="tel:0241974447" class="helpline-pill d-none d-sm-inline-flex">
+                    <i class="fa-solid fa-phone text-primary"></i>
+                    <span>0241974447</span>
+                </a>
+                <a href="<?php echo APP_URL; ?>/request-care" class="btn-cta-primary">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>Request Care</span>
                 </a>
 
-                <!-- Separate Multi-Page Navigation Menu -->
-                <nav class="d-none d-lg-flex align-items-center gap-1">
-                    <a href="<?php echo APP_URL; ?>/" class="nav-link-custom <?php echo $currentPage === 'home' ? 'active' : ''; ?>">Home</a>
-                    <a href="<?php echo APP_URL; ?>/services" class="nav-link-custom <?php echo $currentPage === 'services' ? 'active' : ''; ?>">Services</a>
-                    <a href="<?php echo APP_URL; ?>/about" class="nav-link-custom <?php echo $currentPage === 'about' ? 'active' : ''; ?>">About Us</a>
-                    <a href="<?php echo APP_URL; ?>/request-care" class="nav-link-custom <?php echo $currentPage === 'request-care' ? 'active' : ''; ?>">Request Care</a>
-                    <a href="<?php echo APP_URL; ?>/contact" class="nav-link-custom <?php echo $currentPage === 'contact' ? 'active' : ''; ?>">Contact</a>
-                </nav>
+                <!-- Mobile Hamburger Toggle -->
+                <button class="navbar-toggler d-lg-none border-0 p-2 text-dark shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobilePublicNav" aria-controls="mobilePublicNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars fs-4"></i>
+                </button>
+            </div>
 
-                <div class="d-flex align-items-center gap-2">
-                    <a href="tel:0241974447" class="btn-cta-secondary d-none d-sm-inline-flex">
-                        <i class="fa-solid fa-phone" style="color: var(--accent-main);"></i> 0241974447
-                    </a>
-                    <a href="<?php echo APP_URL; ?>/request-care" class="btn-cta-primary">
-                        <i class="fa-solid fa-calendar-check"></i> Book Visit
-                    </a>
-                </div>
+        </div>
 
+        <!-- Mobile Drawer -->
+        <div class="container d-lg-none collapse" id="mobilePublicNav">
+            <div class="d-flex flex-column gap-2 pt-3 pb-2">
+                <a href="<?php echo APP_URL; ?>/" class="nav-link-custom <?php echo $currentPage === 'home' ? 'active' : ''; ?>">Home</a>
+                <a href="<?php echo APP_URL; ?>/services" class="nav-link-custom <?php echo $currentPage === 'services' ? 'active' : ''; ?>">Services Catalog</a>
+                <a href="<?php echo APP_URL; ?>/about" class="nav-link-custom <?php echo $currentPage === 'about' ? 'active' : ''; ?>">About Practice</a>
+                <a href="<?php echo APP_URL; ?>/contact" class="nav-link-custom <?php echo $currentPage === 'contact' ? 'active' : ''; ?>">Contact Us</a>
+                <hr class="my-2 text-muted">
+                <a href="<?php echo APP_URL; ?>/login" class="nav-link-custom text-muted small"><i class="fa-solid fa-lock me-1"></i> Staff Login</a>
             </div>
         </div>
     </header>
