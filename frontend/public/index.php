@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Front Controller & Routing Entry Point
  * I.K HOLINESS HOME CARE SERVICES
@@ -18,7 +18,6 @@ AuthHelper::initSession();
 $requestUri = $_SERVER['REQUEST_URI'] ?? '/';
 $requestPath = parse_url($requestUri, PHP_URL_PATH);
 
-// Strip application base subdirectories
 $baseNames = ['/ik-holiness-clinic/frontend/public', '/ik-holiness-clinic/public', '/ik-holiness-clinic'];
 foreach ($baseNames as $b) {
     if (strpos($requestPath, $b) === 0) {
@@ -35,13 +34,16 @@ if (empty($routingPath)) {
 // 4. Initialize Router
 $router = new Router();
 
+// Public Homepage & Inquiries
+$router->get('/', 'HomeController@index');
+$router->post('/book-request', 'HomeController@bookRequest');
+
 // Authentication Routes
-$router->get('/', 'AuthController@showLogin');
 $router->get('/login', 'AuthController@showLogin');
 $router->post('/login', 'AuthController@login');
 $router->get('/logout', 'AuthController@logout');
 
-// Dashboard Route
+// Doctor Dashboard Route
 $router->get('/dashboard', 'DashboardController@index');
 
 // Patient / Client Routes
