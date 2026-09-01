@@ -1,4 +1,7 @@
--- I.K HOLINESS HOME CARE SERVICES - Database Schema
+-- ============================================================
+-- I.K HOLINESS HOME CARE SERVICES - Database Schema & Seeds
+-- Ready for direct import via InfinityFree phpMyAdmin
+-- ============================================================
 
 SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS payments;
@@ -19,7 +22,7 @@ CREATE TABLE settings (
     phone_number VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL,
     logo VARCHAR(255) NULL,
-    currency VARCHAR(10) NOT NULL DEFAULT 'GHâ‚µ',
+    currency VARCHAR(10) NOT NULL DEFAULT 'GH₵',
     CHECK (id = 1)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -131,3 +134,65 @@ CREATE TABLE payments (
     FOREIGN KEY (staff_id) REFERENCES users(id) ON DELETE RESTRICT,
     INDEX idx_payment_date (payment_date)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+-- ============================================================
+-- INITIAL SEED DATA
+-- ============================================================
+
+-- A. Seed Clinic Settings
+INSERT INTO settings (id, clinic_name, clinic_address, phone_number, email, logo, currency)
+VALUES (1, 'I.K HOLINESS HOME CARE SERVICES', 'Pankrono, Kumasi, Ghana', '0241974447 / 0550974126', 'kisaiahh@icloud.com', NULL, 'GH₵')
+ON DUPLICATE KEY UPDATE 
+    clinic_name = VALUES(clinic_name),
+    clinic_address = VALUES(clinic_address),
+    phone_number = VALUES(phone_number),
+    email = VALUES(email);
+
+-- B. Seed Staff & Admin Accounts (admin / admin123  &  staff / staff123)
+INSERT INTO users (id, username, password_hash, full_name, role)
+VALUES 
+(1, 'admin', '$2y$10$ckJb7xTJ3rj2BOf.0AInYujuactfO9FvP0yUI3.521rNEowe/dHIe', 'Dr. I.K Holiness', 'admin'),
+(2, 'staff', '$2y$10$s8hwj6quw6YVXWreZdQT8uWBb6ugPaybmCMeQUXxl2hH8Tn8rfjKC', 'Clinical Staff Nurse', 'staff')
+ON DUPLICATE KEY UPDATE 
+    password_hash = VALUES(password_hash),
+    full_name = VALUES(full_name),
+    role = VALUES(role);
+
+-- C. Seed Demonstration Patients
+INSERT INTO clients (client_id, full_name, gender, dob, age, phone, address, emergency_name, emergency_phone, registration_date)
+VALUES 
+('CL-000001', 'Madam Akua Serwaa', 'Female', '1958-04-12', 68, '0244112233', 'Plot 12, Pankrono Estate, Kumasi', 'Kofi Serwaa (Son)', '0555998877', CURDATE()),
+('CL-000002', 'Opanin Kwabena Osei', 'Male', '1962-09-24', 64, '0208776655', 'Near Pankrono High School, Kumasi', 'Abena Osei (Wife)', '0243332211', CURDATE()),
+('CL-000003', 'Mrs. Beatrice Appiah', 'Female', '1975-11-03', 51, '0501234567', 'House 8B, Tafo Nhyiaeso, Kumasi', 'Dr. Emmanuel Appiah', '0241974447', CURDATE())
+ON DUPLICATE KEY UPDATE full_name = VALUES(full_name);
+
+-- D. Seed Demonstration Clinical Encounter
+INSERT INTO visits (id, client_id, visit_date, complaint, symptoms, temperature, bp, weight, diagnosis, treatment, prescription, notes, attending_staff_id)
+VALUES 
+(1, 'CL-000001', NOW(), 'Routine diabetic checkup and minor leg ulcer dressing.', 'Fasting blood sugar high, mild localized swelling on right ankle.', '36.7', '135/85', '68.0', 'Type 2 Diabetes Mellitus & Stage 1 Superficial Ulcer', 'Wound debridement, normal saline irrigation, and sterile hydrocolloid dressing applied.', 'Tab Metformin 500mg BD x 30 days\nTab Vitamin C 1000mg Daily x 14 days', 'Review wound healing in 5 days. Low carbohydrate dietary reinforcement.', 1)
+ON DUPLICATE KEY UPDATE complaint = VALUES(complaint);
+
+-- E. Seed Demonstration Invoice & Invoice Items
+INSERT INTO invoices (invoice_number, client_id, invoice_date, total_amount, amount_paid, balance, payment_status)
+VALUES 
+('INV-000001', 'CL-000001', CURDATE(), 180.00, 180.00, 0.00, 'Paid')
+ON DUPLICATE KEY UPDATE total_amount = VALUES(total_amount);
+
+INSERT INTO invoice_items (id, invoice_number, service_description, quantity, unit_price, subtotal)
+VALUES 
+(1, 'INV-000001', 'Glucose Monitoring & Vital Signs Check', 1, 60.00, 60.00),
+(2, 'INV-000001', 'Wound Dressing & Aseptic Care', 1, 120.00, 120.00)
+ON DUPLICATE KEY UPDATE subtotal = VALUES(subtotal);
+
+-- F. Seed Demonstration Payment Receipt
+INSERT INTO payments (payment_id, receipt_number, client_id, invoice_number, payment_date, amount_paid, payment_method, staff_id, notes)
+VALUES 
+('PAY-000001', 'REC-000001', 'CL-000001', 'INV-000001', NOW(), 180.00, 'Mobile Money', 1, 'MoMo Reference: MM202688990')
+ON DUPLICATE KEY UPDATE amount_paid = VALUES(amount_paid);
+
+-- G. Seed Demonstration Appointment
+INSERT INTO appointments (id, client_id, appointment_date, appointment_time, reason, status, notes)
+VALUES 
+(1, 'CL-000002', CURDATE(), '10:30:00', 'Catheter Replacement & Vital Signs Monitoring', 'Scheduled', 'Patient residence near Pankrono High School.')
+ON DUPLICATE KEY UPDATE status = VALUES(status);
