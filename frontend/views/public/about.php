@@ -1,124 +1,129 @@
 <?php
-$pageTitle = 'About Us - I.K HOLINESS HOME CARE SERVICES';
+$pageTitle   = 'About Our Practice – I.K HOLINESS HOME CARE SERVICES';
 $currentPage = 'about';
 require_once __DIR__ . '/header.php';
 ?>
 
-<!-- Banner Header -->
-<section class="page-header-banner">
-    <div class="container">
-        <span class="page-badge">
-            <i class="fa-solid fa-house-medical"></i> About Our Clinic & Domiciliary Practice
-        </span>
-        <h1 class="page-title">Dedicated to Your Health & Well-being</h1>
-        <p class="page-desc">
-            Bringing licensed medical expertise, compassionate bedside nursing, and advanced clinical care directly to private residences across Kumasi.
-        </p>
-    </div>
+<!-- ╔═══ PAGE HERO ═══╗ -->
+<section class="page-hero">
+  <div class="container position-relative" style="z-index:2">
+    <div class="tag navy mb-3">Established Clinical Practice</div>
+    <h1 style="font-size:clamp(1.8rem,4vw,2.6rem);">Compassionate Healthcare<br>at Your Bedside</h1>
+    <p class="lead mt-2" style="max-width:580px;">
+      Bringing certified medical expertise, sterile nursing, and dignified domiciliary care directly to patients and families across Greater Kumasi.
+    </p>
+  </div>
 </section>
 
-<!-- Mission & Vision Section -->
-<section class="section-py" style="background-color: var(--bg-base);">
-    <div class="container">
-        <div class="row g-4 align-items-center mb-5">
-            <div class="col-12 col-lg-6">
-                <span class="text-uppercase fw-bold text-blue-accent d-block mb-1" style="font-size: 0.72rem; letter-spacing: 0.05em;">Our Purpose & Ethos</span>
-                <h2 class="fw-bold text-dark mb-3" style="font-size: 1.6rem;">"Your Health Is Our Life"</h2>
-                <p class="text-secondary mb-3" style="line-height: 1.65;">
-                    Founded on the foundational principle that quality, dignified medical care should be accessible where patients feel most comfortable and secure—their own home. 
-                </p>
-                <p class="text-secondary mb-4" style="line-height: 1.65;">
-                    <strong>I.K Holiness Home Care Services</strong> operates in Pankrono, Kumasi, providing comprehensive domiciliary nursing, post-operative rehabilitation, catheter care, vital signs monitoring, wound management, and diabetic glycemic surveillance.
-                </p>
+<!-- ╔═══ STATS RIBBON ═══╗ -->
+<section style="background:var(--surface);border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="row g-0">
+      <?php
+      $stats=[
+        ['num'=>'16+',  'label'=>'Clinical Procedures','sub'=>'Across 4 care domains'],
+        ['num'=>'100%', 'label'=>'Certified Staff',    'sub'=>'Licensed by health authority'],
+        ['num'=>'8+',   'label'=>'Kumasi Communities', 'sub'=>'Covered by our teams'],
+        ['num'=>'24/7', 'label'=>'On-Call Response',   'sub'=>'Round-the-clock dispatch'],
+      ];
+      foreach($stats as $s): ?>
+      <div class="col-6 col-md-3 stat-block" style="border-right:1px solid var(--border);">
+        <div class="stat-num font-serif" style="font-size:2rem;color:var(--sapphire)"><?php echo $s['num'];?></div>
+        <div class="stat-label"><?php echo $s['label'];?></div>
+        <div style="font-size:11px;color:var(--ink-200);margin-top:2px;"><?php echo $s['sub'];?></div>
+      </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
 
-                <div class="row g-3">
-                    <div class="col-12 col-sm-6">
-                        <div class="p-3 rounded-3" style="background-color: #ffffff; border: 1px solid var(--border-subtle); box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
-                            <div class="d-flex align-items-center gap-2 mb-2">
-                                <i class="fa-solid fa-bullseye text-blue-accent fs-5"></i>
-                                <h6 class="fw-bold text-dark mb-0">Our Mission</h6>
-                            </div>
-                            <small class="text-secondary d-block" style="line-height: 1.45;">
-                                To deliver premier, empathetic, and clinically sound home healthcare that fosters rapid patient recovery and peace of mind for families.
-                            </small>
-                        </div>
-                    </div>
+<!-- ╔═══ MISSION & VISION ═══╗ -->
+<section class="section-gap">
+  <div class="container">
+    <div class="row g-5 align-items-center">
 
-                    <div class="col-12 col-sm-6">
-                        <div class="p-3 rounded-3" style="background-color: #ffffff; border: 1px solid var(--border-subtle); box-shadow: 0 1px 3px rgba(0,0,0,0.03);">
-                            <div class="d-flex align-items-center gap-2 mb-2">
-                                <i class="fa-solid fa-eye text-blue-accent fs-5"></i>
-                                <h6 class="fw-bold text-dark mb-0">Our Vision</h6>
-                            </div>
-                            <small class="text-secondary d-block" style="line-height: 1.45;">
-                                To be the gold standard in domiciliary nursing and home medical solutions across Kumasi and the Ashanti Region.
-                            </small>
-                        </div>
-                    </div>
-                </div>
+      <div class="col-12 col-lg-6">
+        <div class="eyebrow">Our Purpose</div>
+        <h2 style="font-size:clamp(1.5rem,3vw,2rem);margin-bottom:16px;">"Your Health Is Our Life"</h2>
+        <div class="divider-line"></div>
+        <p style="font-size:15px;color:var(--ink-400);line-height:1.7;margin-bottom:16px;">
+          Founded on the conviction that quality medical care should be dignified, accessible, and provided in the environment where patients heal best — their own homes.
+        </p>
+        <p style="font-size:15px;color:var(--ink-400);line-height:1.7;margin-bottom:32px;">
+          Headquartered in Pankrono, Kumasi, <strong style="color:var(--ink)">I.K Holiness Home Care Services</strong> provides physician-directed home nursing, diabetic management, sterile wound debridement, catheterization, and stroke rehabilitation.
+        </p>
+        <div class="row g-3">
+          <?php
+          $mv=[
+            ['icon'=>'fa-bullseye','chip'=>'blue','title'=>'Mission',
+             'text'=>'Deliver high-quality, empathetic, hospital-grade home healthcare that accelerates recovery and gives families peace of mind.'],
+            ['icon'=>'fa-eye','chip'=>'purple','title'=>'Vision',
+             'text'=>'Become the most trusted clinical standard for domiciliary healthcare and nursing therapy across the Ashanti Region.'],
+          ];
+          foreach($mv as $c): ?>
+          <div class="col-12 col-sm-6">
+            <div class="ik-card p-4 h-100">
+              <div class="icon-chip <?php echo $c['chip'];?> mb-3">
+                <i class="fa-solid <?php echo $c['icon'];?>"></i>
+              </div>
+              <h5 style="font-size:15px;margin-bottom:6px;"><?php echo $c['title'];?></h5>
+              <p style="font-size:13px;color:var(--ink-300);line-height:1.55;margin:0;"><?php echo $c['text'];?></p>
             </div>
-
-            <!-- Highlights Box -->
-            <div class="col-12 col-lg-6">
-                <div class="ui-card-modern p-4 p-md-5" style="border-left: 4px solid var(--accent-main);">
-                    <h5 class="fw-bold text-dark mb-3">Core Practice Standards</h5>
-                    
-                    <div class="d-flex align-items-start gap-3 mb-3 pb-3 border-bottom" style="border-color: var(--border-subtle) !important;">
-                        <div class="pillar-icon-box theme-sapphire" style="width: 36px; height: 36px; font-size: 0.9rem;">
-                            <i class="fa-solid fa-user-shield"></i>
-                        </div>
-                        <div>
-                            <strong class="text-dark d-block mb-1" style="font-size: 0.875rem;">1. Patient Dignity & Empathy</strong>
-                            <small class="text-muted">Every patient is treated with utmost respect, confidentiality, and discrete attention.</small>
-                        </div>
-                    </div>
-
-                    <div class="d-flex align-items-start gap-3 mb-3 pb-3 border-bottom" style="border-color: var(--border-subtle) !important;">
-                        <div class="pillar-icon-box theme-indigo" style="width: 36px; height: 36px; font-size: 0.9rem;">
-                            <i class="fa-solid fa-stethoscope"></i>
-                        </div>
-                        <div>
-                            <strong class="text-dark d-block mb-1" style="font-size: 0.875rem;">2. Clinical Precision & Hygiene</strong>
-                            <small class="text-muted">Strict adherence to sterile aseptic techniques for wound care, catheterization, and injections.</small>
-                        </div>
-                    </div>
-
-                    <div class="d-flex align-items-start gap-3">
-                        <div class="pillar-icon-box theme-teal" style="width: 36px; height: 36px; font-size: 0.9rem;">
-                            <i class="fa-solid fa-receipt"></i>
-                        </div>
-                        <div>
-                            <strong class="text-dark d-block mb-1" style="font-size: 0.875rem;">3. Full Financial Transparency</strong>
-                            <small class="text-muted">Itemized statements, verified receipt vouchers, and clear billing without hidden charges.</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
+          <?php endforeach; ?>
         </div>
+      </div>
 
-        <!-- Geographic Service Coverage -->
-        <div class="ui-card-modern p-4 p-md-5 mb-4 text-center" style="background-color: #ffffff;">
-            <span class="text-uppercase fw-bold text-blue-accent d-block mb-1" style="font-size: 0.72rem; letter-spacing: 0.06em;">Coverage Area</span>
-            <h3 class="fw-bold text-dark mb-2" style="font-size: 1.35rem;">Serving Greater Kumasi & Surrounding Communities</h3>
-            <p class="text-secondary small mb-4" style="max-width: 580px; margin: 0 auto 20px auto;">
-                Our on-call medical practitioners and nursing officers travel directly to homes in:
-            </p>
-            <div class="d-flex justify-content-center gap-2 flex-wrap mb-4">
-                <span class="badge-pill-custom bg-blue-subtle text-blue-accent py-2 px-3 fw-semibold">Pankrono</span>
-                <span class="badge-pill-custom bg-blue-subtle text-blue-accent py-2 px-3 fw-semibold">Tafo</span>
-                <span class="badge-pill-custom bg-blue-subtle text-blue-accent py-2 px-3 fw-semibold">Ahodwo</span>
-                <span class="badge-pill-custom bg-blue-subtle text-blue-accent py-2 px-3 fw-semibold">Asokwa</span>
-                <span class="badge-pill-custom bg-blue-subtle text-blue-accent py-2 px-3 fw-semibold">Kwadaso</span>
-                <span class="badge-pill-custom bg-blue-subtle text-blue-accent py-2 px-3 fw-semibold">Bantama</span>
-                <span class="badge-pill-custom bg-blue-subtle text-blue-accent py-2 px-3 fw-semibold">Suame</span>
-                <span class="badge-pill-custom bg-blue-subtle text-blue-accent py-2 px-3 fw-semibold">Santasi</span>
+      <!-- Clinical standards card -->
+      <div class="col-12 col-lg-6">
+        <div class="ik-card p-5" style="border-left:4px solid var(--sapphire);">
+          <div class="tag blue mb-3">Clinical Protocols</div>
+          <h3 style="font-size:1.35rem;margin-bottom:24px;">Core Practice Standards</h3>
+
+          <?php
+          $stds=[
+            ['icon'=>'fa-user-shield','chip'=>'blue','title'=>'Patient Dignity & Confidentiality',
+             'desc'=>'Discrete, individualized, respectful bedside attention complying with national medical ethics.'],
+            ['icon'=>'fa-shield-virus','chip'=>'purple','title'=>'Sterile Aseptic Protocols',
+             'desc'=>'Hospital-standard sterilization for every wound dressing, catheter exchange, and injection.'],
+            ['icon'=>'fa-file-invoice-dollar','chip'=>'teal','title'=>'Financial Clarity',
+             'desc'=>'Transparent itemized billing, verified receipts, and zero undisclosed practitioner fees.'],
+          ];
+          foreach($stds as $i=>$s): ?>
+          <div class="d-flex gap-3 <?php echo $i<2?'mb-4 pb-4 border-bottom':''; ?>">
+            <div class="icon-chip <?php echo $s['chip'];?>" style="width:38px;height:38px;font-size:17px;flex-shrink:0;margin-top:2px;">
+              <i class="fa-solid <?php echo $s['icon'];?>"></i>
             </div>
-            <a href="<?php echo APP_URL; ?>/request-care" class="btn-cta-primary px-4 py-2">
-                <i class="fa-solid fa-calendar-check"></i> Book Care in Your Neighborhood
-            </a>
+            <div>
+              <strong style="font-size:14px;color:var(--ink);display:block;margin-bottom:4px;"><?php echo $s['title'];?></strong>
+              <p style="font-size:13px;color:var(--ink-300);margin:0;line-height:1.5;"><?php echo $s['desc'];?></p>
+            </div>
+          </div>
+          <?php endforeach; ?>
         </div>
+      </div>
 
     </div>
+  </div>
+</section>
+
+<!-- ╔═══ COVERAGE ═══╗ -->
+<section class="section-gap-sm" style="background:var(--surface-2);">
+  <div class="container text-center">
+    <div class="eyebrow mx-auto" style="justify-content:center;">Where We Serve</div>
+    <h2 style="font-size:clamp(1.4rem,2.5vw,1.9rem);margin-bottom:8px;">Serving Greater Kumasi & Surrounding Communities</h2>
+    <p style="font-size:14px;color:var(--ink-300);margin-bottom:28px;">
+      Our on-call clinical teams travel directly to patient residences across:
+    </p>
+    <div class="d-flex justify-content-center flex-wrap gap-2 mb-4">
+      <?php foreach(['Pankrono','Tafo','Ahodwo','Asokwa','Kwadaso','Bantama','Suame','Santasi'] as $area): ?>
+      <span class="tag blue"><?php echo $area;?></span>
+      <?php endforeach; ?>
+    </div>
+    <a href="<?php echo APP_URL; ?>/request-care" class="btn-primary-ik">
+      <i class="fa-solid fa-calendar-check"></i> Book Care in Your Neighbourhood
+    </a>
+  </div>
 </section>
 
 <?php require_once __DIR__ . '/footer.php'; ?>

@@ -1,101 +1,95 @@
-    <!-- Master Luxury Public Footer -->
-    <footer class="public-footer mt-auto" style="background-color: #0b132b; color: #94a3b8; padding: 64px 0 28px 0; border-top: 1px solid rgba(255, 255, 255, 0.08);">
-        <div class="container">
-            <div class="row g-4 g-lg-5 pb-5 border-bottom" style="border-color: rgba(255, 255, 255, 0.1) !important;">
-                
-                <!-- Column 1: Clinic Identity & Mission -->
-                <div class="col-12 col-lg-4">
-                    <div class="d-flex align-items-center gap-2 mb-3">
-                        <div class="brand-icon-sq" style="width: 38px; height: 38px; font-size: 1.1rem;">
-                            <i class="fa-solid fa-house-medical"></i>
-                        </div>
-                        <div>
-                            <h6 class="fw-bold text-white mb-0" style="font-size: 1.05rem; letter-spacing: -0.01em;">I.K HOLINESS</h6>
-                            <span style="font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; color: #60a5fa;">Home Care Services</span>
-                        </div>
-                    </div>
-                    <p class="small mb-3" style="font-size: 0.84rem; line-height: 1.6; color: #94a3b8;">
-                        Licensed clinical home care, domiciliary nursing, diagnostics, and patient recovery services. We bring dedicated medical expertise directly to the comfort of your home in Kumasi.
-                    </p>
-                    <div class="p-2 px-3 rounded-2 d-inline-block" style="background-color: rgba(37, 99, 235, 0.15); border: 1px solid rgba(37, 99, 235, 0.3);">
-                        <span class="text-blue-accent fw-bold font-mono" style="font-size: 0.75rem; letter-spacing: 0.04em; color: #93c5fd;">
-                            <i class="fa-solid fa-heart-pulse me-1 text-danger"></i> "YOUR HEALTH IS OUR LIFE"
-                        </span>
-                    </div>
-                </div>
+<!-- ╔═══ FOOTER ═══╗ -->
+<footer class="ik-footer">
+  <div class="container">
+    <div class="row g-4 g-lg-5">
 
-                <!-- Column 2: Quick Navigation -->
-                <div class="col-6 col-sm-4 col-lg-2">
-                    <h6 class="fw-bold text-white text-uppercase mb-3" style="font-size: 0.75rem; letter-spacing: 0.06em;">Quick Links</h6>
-                    <ul class="list-unstyled small mb-0" style="font-size: 0.8125rem;">
-                        <li class="mb-2"><a href="<?php echo APP_URL; ?>/" class="text-secondary text-decoration-none hover-light">Home Page</a></li>
-                        <li class="mb-2"><a href="<?php echo APP_URL; ?>/services" class="text-secondary text-decoration-none hover-light">Services Catalog</a></li>
-                        <li class="mb-2"><a href="<?php echo APP_URL; ?>/about" class="text-secondary text-decoration-none hover-light">About Our Care</a></li>
-                        <li class="mb-2"><a href="<?php echo APP_URL; ?>/request-care" class="text-secondary text-decoration-none hover-light">Request Care</a></li>
-                        <li class="mb-2"><a href="<?php echo APP_URL; ?>/contact" class="text-secondary text-decoration-none hover-light">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <!-- Column 3: Clinical Care Portfolio -->
-                <div class="col-6 col-sm-4 col-lg-3">
-                    <h6 class="fw-bold text-white text-uppercase mb-3" style="font-size: 0.75rem; letter-spacing: 0.06em;">Key Procedures</h6>
-                    <ul class="list-unstyled small mb-0" style="font-size: 0.8125rem;">
-                        <li class="mb-2"><a href="<?php echo APP_URL; ?>/services#nursing" class="text-secondary text-decoration-none hover-light">Glucose & Vitals Tracking</a></li>
-                        <li class="mb-2"><a href="<?php echo APP_URL; ?>/services#specialized" class="text-secondary text-decoration-none hover-light">Catheter Care & Flushing</a></li>
-                        <li class="mb-2"><a href="<?php echo APP_URL; ?>/services#specialized" class="text-secondary text-decoration-none hover-light">Wound Dressing & Ulcers</a></li>
-                        <li class="mb-2"><a href="<?php echo APP_URL; ?>/services#rehab" class="text-secondary text-decoration-none hover-light">Post-Operative Recovery</a></li>
-                        <li class="mb-2"><a href="<?php echo APP_URL; ?>/services#rehab" class="text-secondary text-decoration-none hover-light">Physiotherapy & Mobility</a></li>
-                        <li class="mb-2"><a href="<?php echo APP_URL; ?>/services#daily" class="text-secondary text-decoration-none hover-light">Bed Bathing & Oral Care</a></li>
-                    </ul>
-                </div>
-
-                <!-- Column 4: 24/7 Rapid Emergency Contacts -->
-                <div class="col-12 col-sm-4 col-lg-3">
-                    <h6 class="fw-bold text-white text-uppercase mb-3" style="font-size: 0.75rem; letter-spacing: 0.06em;">Emergency Hotline</h6>
-                    
-                    <div class="mb-2 small" style="font-size: 0.8125rem;">
-                        <i class="fa-solid fa-location-dot text-primary me-2"></i>
-                        <span class="text-secondary">Pankrono, Kumasi, Ghana</span>
-                    </div>
-                    <div class="mb-2 small" style="font-size: 0.8125rem;">
-                        <i class="fa-solid fa-phone text-primary me-2"></i>
-                        <a href="tel:0241974447" class="text-white fw-bold text-decoration-none">0241974447</a> / 
-                        <a href="tel:0550974126" class="text-white fw-bold text-decoration-none">0550974126</a>
-                    </div>
-                    <div class="mb-2 small" style="font-size: 0.8125rem;">
-                        <i class="fa-solid fa-envelope text-primary me-2"></i>
-                        <a href="mailto:kisaiahh@icloud.com" class="text-secondary text-decoration-none">kisaiahh@icloud.com</a>
-                    </div>
-                    <div class="mt-3 p-2 rounded-2" style="background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.75rem; color: #cbd5e1;">
-                        <i class="fa-regular fa-clock text-primary me-1"></i>
-                        <strong class="text-white">Service Hours:</strong> 24 Hours / 7 Days On-Call
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Bottom Legal Bar -->
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pt-4 small" style="font-size: 0.75rem; color: #64748b;">
-                <div>
-                    &copy; <?php echo date('Y'); ?> I.K Holiness Home Care Services. All rights reserved. &bull; Pankrono, Kumasi.
-                </div>
-                <div class="mt-2 mt-md-0 d-flex align-items-center gap-3">
-                    <a href="<?php echo APP_URL; ?>/login" class="text-secondary text-decoration-none hover-light" style="font-size: 0.75rem;">
-                        <i class="fa-solid fa-lock me-1"></i> Staff Portal Access
-                    </a>
-                </div>
-            </div>
+      <!-- Brand col -->
+      <div class="col-12 col-lg-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <div class="ik-logo-icon" style="width:34px;height:34px;font-size:16px;border-radius:9px;">
+            <i class="fa-solid fa-house-medical"></i>
+          </div>
+          <div>
+            <div class="footer-brand-name">I.K HOLINESS</div>
+            <div class="footer-brand-sub">Home Care Services</div>
+          </div>
         </div>
-    </footer>
+        <p style="font-size:13px;line-height:1.6;color:rgba(255,255,255,.45);max-width:300px;">
+          Licensed domiciliary nursing, clinical diagnostics, wound management, and patient rehabilitation — delivered with dignity to your home in Kumasi.
+        </p>
+        <div class="mt-3 d-inline-flex align-items-center gap-2 px-3 py-2 rounded-3"
+             style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:12px;color:rgba(255,255,255,.6);">
+          <i class="fa-solid fa-heart-pulse" style="color:#f43f5e"></i>
+          <em>"Your Health Is Our Life"</em>
+        </div>
+      </div>
 
-    <style>
-        .hover-light:hover {
-            color: #ffffff !important;
-            transition: color 0.15s ease;
-        }
-    </style>
+      <!-- Quick links -->
+      <div class="col-6 col-sm-3 col-lg-2">
+        <h6>Navigation</h6>
+        <ul>
+          <li><a href="<?php echo APP_URL; ?>/">Home</a></li>
+          <li><a href="<?php echo APP_URL; ?>/services">Services</a></li>
+          <li><a href="<?php echo APP_URL; ?>/about">About Us</a></li>
+          <li><a href="<?php echo APP_URL; ?>/contact">Contact</a></li>
+          <li><a href="<?php echo APP_URL; ?>/request-care">Book a Visit</a></li>
+        </ul>
+      </div>
 
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- Key procedures -->
+      <div class="col-6 col-sm-3 col-lg-3">
+        <h6>Key Procedures</h6>
+        <ul>
+          <li><a href="<?php echo APP_URL; ?>/services#nursing">Glucose & Vitals Monitoring</a></li>
+          <li><a href="<?php echo APP_URL; ?>/services#specialized">Catheter Care & Flushing</a></li>
+          <li><a href="<?php echo APP_URL; ?>/services#specialized">Wound Dressing & Ulcers</a></li>
+          <li><a href="<?php echo APP_URL; ?>/services#rehabilitation">Post-Operative Recovery</a></li>
+          <li><a href="<?php echo APP_URL; ?>/services#dailyliving">Bed Bathing & Oral Care</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <h6>Contact & Hotline</h6>
+        <ul>
+          <li>
+            <i class="fa-solid fa-location-dot me-2" style="color:#60a5fa;width:14px"></i>
+            Pankrono, Kumasi, Ghana
+          </li>
+          <li>
+            <i class="fa-solid fa-phone me-2" style="color:#60a5fa;width:14px"></i>
+            <a href="tel:0241974447" style="color:#fff;font-weight:600;">0241974447</a>
+            &nbsp;/&nbsp;
+            <a href="tel:0550974126" style="color:#fff;font-weight:600;">0550974126</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-envelope me-2" style="color:#60a5fa;width:14px"></i>
+            <a href="mailto:kisaiahh@icloud.com">kisaiahh@icloud.com</a>
+          </li>
+        </ul>
+        <div class="mt-3 p-2 px-3 rounded-2"
+             style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:11.5px;color:rgba(255,255,255,.5);">
+          <i class="fa-regular fa-clock me-1" style="color:#60a5fa"></i>
+          <strong style="color:rgba(255,255,255,.7)">Hours:</strong> 24 / 7 On-Call Dispatch
+        </div>
+      </div>
+
+    </div>
+
+    <hr class="footer-divider">
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+      <p class="copy mb-0">
+        &copy; <?php echo date('Y'); ?> I.K Holiness Home Care Services &bull; Pankrono, Kumasi &bull; All rights reserved.
+      </p>
+      <a href="<?php echo APP_URL; ?>/login"
+         style="font-size:12px;color:rgba(255,255,255,.3);display:flex;align-items:center;gap:5px;">
+        <i class="fa-solid fa-lock"></i> Staff Portal
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
