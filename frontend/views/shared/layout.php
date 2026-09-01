@@ -794,23 +794,426 @@ $currentRoute = $currentRoute ?? 'dashboard';
             display: none;
         }
 
-        /* Mobile Responsiveness */
+        /* ================================================================
+           DASHBOARD — FULL RESPONSIVE SYSTEM
+           xs: <576px | sm: 576-767px | md: 768-991px | lg: 992-1199px
+           ================================================================ */
+
+        /* ── Sidebar slide-in on tablet/mobile (≤991px) ────────────────── */
         @media (max-width: 991.98px) {
             #sidebar-wrapper {
                 transform: translateX(-260px);
+                z-index: 1045;
             }
             #sidebar-wrapper.show {
                 transform: translateX(0);
+                box-shadow: 8px 0 32px rgba(0,0,0,.35);
             }
             #page-content-wrapper {
-                margin-left: 0;
+                margin-left: 0 !important;
             }
             .topbar {
-                padding: 0 16px;
+                padding: 0 14px;
             }
             .main-container {
-                padding: 16px;
+                padding: 16px 14px;
             }
+        }
+
+        /* ── Small mobile (≤575px) ──────────────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .main-container {
+                padding: 12px 10px;
+            }
+            .topbar {
+                padding: 0 10px;
+                height: 54px;
+            }
+            /* Topbar heading shrinks */
+            .topbar-left h1 {
+                font-size: 0.9rem;
+            }
+            /* Prevent long page headings overflowing topbar */
+            .topbar-left {
+                max-width: calc(100vw - 120px);
+                overflow: hidden;
+            }
+            .topbar-left h1 {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        /* ── Tables — horizontal scroll on mobile ──────────────────────── */
+        @media (max-width: 767.98px) {
+            .ui-table-container, .tanstack-table-wrap {
+                border-radius: var(--radius-md);
+            }
+            .ui-table-container .table-responsive,
+            .tanstack-table-wrap .table-responsive {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .ui-table th, .ui-table td {
+                padding: 10px 12px;
+                font-size: 0.78rem;
+            }
+            .tanstack-table-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                padding: 12px 14px;
+            }
+            .tanstack-table-header .modern-search-wrap {
+                width: 100%;
+            }
+        }
+        @media (max-width: 575.98px) {
+            .ui-table th, .ui-table td {
+                padding: 8px 10px;
+                font-size: 0.75rem;
+                white-space: nowrap;
+            }
+        }
+
+        /* ── KPI / vibrant stat cards ───────────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .vibrant-stat-card {
+                padding: 16px !important;
+            }
+            .vibrant-value {
+                font-size: 1.6rem !important;
+            }
+            .vibrant-label {
+                font-size: 0.7rem !important;
+            }
+            .vibrant-icon-box {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 1rem !important;
+            }
+        }
+
+        /* ── ui-card padding ────────────────────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .ui-card {
+                padding: 14px 12px;
+            }
+            .ui-card-interactive:hover {
+                transform: none; /* disable lift on touch devices */
+            }
+        }
+
+        /* ── Section header bars (e.g., header-command-bar) ────────────── */
+        @media (max-width: 575.98px) {
+            .header-command-bar {
+                margin-bottom: 16px !important;
+            }
+            .header-title {
+                font-size: 1rem !important;
+            }
+            .header-subtitle {
+                font-size: 0.75rem !important;
+                line-height: 1.45;
+            }
+            .header-actions {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .btn-action-primary, .btn-action-secondary {
+                flex: 1;
+                justify-content: center;
+                font-size: 0.78rem !important;
+                padding: 7px 10px !important;
+            }
+            .btn-group-custom {
+                display: flex;
+                flex: 1;
+                gap: 6px;
+            }
+            .btn-group-custom a {
+                flex: 1;
+                justify-content: center;
+            }
+        }
+
+        /* ── Form grids ─────────────────────────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .form-control, .form-select {
+                font-size: 16px !important; /* Prevent iOS zoom */
+                min-height: 42px;
+            }
+            .form-label {
+                font-size: 0.75rem;
+            }
+            .modern-search-input {
+                font-size: 16px !important; /* Prevent iOS zoom */
+            }
+        }
+
+        /* ── Buttons ────────────────────────────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .btn-primary-custom, .btn-secondary-custom {
+                font-size: 0.78rem;
+                padding: 7px 12px;
+            }
+        }
+
+        /* ── Charts / canvas ────────────────────────────────────────────── */
+        @media (max-width: 575.98px) {
+            canvas {
+                max-height: 220px !important;
+            }
+        }
+        @media (max-width: 767.98px) {
+            canvas {
+                max-height: 260px;
+            }
+        }
+
+        /* ── Row gutters reduce on small screens ────────────────────────── */
+        @media (max-width: 575.98px) {
+            .row { --bs-gutter-x: 0.6rem; --bs-gutter-y: 0.6rem; }
+            .g-3  { --bs-gutter-x: 0.6rem !important; --bs-gutter-y: 0.6rem !important; }
+            .mb-4 { margin-bottom: 1rem !important; }
+        }
+
+        /* ── Badge pills ────────────────────────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .badge-pill-custom {
+                font-size: 0.67rem;
+                padding: 2px 6px;
+            }
+        }
+
+        /* ── Prevent any element breaking page width ────────────────────── */
+        img, video, iframe { max-width: 100%; }
+        #page-content-wrapper { overflow-x: hidden; }
+
+        /* ── Sidebar auto-close when link clicked on mobile ────────────── */
+        /* (handled via JS in the script block below) */
+
+        /* ── Tablet: 768–991px — moderate compact ───────────────────────── */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            .main-container { padding: 20px 18px; }
+            .topbar { padding: 0 18px; }
+            .ui-table th, .ui-table td { padding: 11px 14px; }
+        }
+
+        /* ================================================================
+           ALL-PAGES COMPONENT RESPONSIVE RULES
+           Covers visits, clients, billing, appointments, reports, settings,
+           payments, users, create/edit forms across every section.
+           ================================================================ */
+
+        /* ── KPI banner tiles (visits/users pages) ──────────────────────── */
+        @media (max-width: 575.98px) {
+            .kpi-banner-card {
+                padding: 14px !important;
+                border-radius: 12px !important;
+            }
+            .kpi-val {
+                font-size: 1.7rem !important;
+            }
+            .kpi-icon-pill {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 1rem !important;
+            }
+            .kpi-banner-card:hover { transform: none; }
+        }
+
+        /* ── Staff KPI cards (users page) ───────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .staff-kpi-card {
+                padding: 16px !important;
+            }
+            .kpi-main-number {
+                font-size: 1.8rem !important;
+            }
+            .staff-kpi-card:hover { transform: none; }
+        }
+
+        /* ── Appointments command bar ────────────────────────────────────── */
+        @media (max-width: 767.98px) {
+            .date-navigator-box {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .agenda-view-switcher {
+                width: 100%;
+            }
+            .agenda-view-switcher .agenda-btn {
+                flex: 1;
+                justify-content: center;
+            }
+        }
+        @media (max-width: 575.98px) {
+            .current-date-text {
+                font-size: 0.78rem !important;
+            }
+            .appointments-calendar-wrapper .btn-primary-custom {
+                width: 100%;
+                justify-content: center;
+            }
+            .agenda-view-switcher {
+                display: flex;
+            }
+        }
+
+        /* ── Create / Edit forms ────────────────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .ui-card .row.g-3 > [class*="col-"] {
+                margin-bottom: 0;
+            }
+            /* Input labels */
+            .form-label-custom {
+                font-size: 0.73rem !important;
+            }
+            /* Submit button row */
+            .form-submit-row {
+                flex-direction: column !important;
+                gap: 8px;
+            }
+            .form-submit-row a,
+            .form-submit-row button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* ── Analytics / reports cards ──────────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .analytics-card { padding: 14px 12px !important; }
+            .analytics-card .d-flex.gap-3 { gap: 10px !important; }
+        }
+
+        /* ── Settings letterhead preview ────────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .letterhead-preview-card { padding: 14px 12px !important; }
+            .preview-logo-sq {
+                width: 40px !important;
+                height: 40px !important;
+                font-size: 1.1rem !important;
+            }
+        }
+
+        /* ── Settings form bento boxes ──────────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .settings-bento { padding: 14px 12px !important; }
+        }
+
+        /* ── Billing view (invoice detail) ──────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .invoice-header-row { flex-direction: column !important; gap: 12px !important; }
+            .invoice-kpi-strip { flex-direction: column; gap: 8px; }
+            .invoice-kpi-strip > div { width: 100%; }
+            .invoice-action-bar { flex-direction: column; gap: 8px; }
+            .invoice-action-bar a,
+            .invoice-action-bar button { width: 100%; justify-content: center; }
+        }
+
+        /* ── Receipt / payments view ────────────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .receipt-card { padding: 16px !important; }
+            .receipt-header-info { flex-direction: column; gap: 8px; }
+            .receipt-amounts-row { flex-direction: column; gap: 6px; }
+        }
+
+        /* ── Client / patient dossier (view.php) ────────────────────────── */
+        @media (max-width: 767.98px) {
+            .dossier-tab-nav { overflow-x: auto; flex-wrap: nowrap; white-space: nowrap; }
+            .dossier-tab-nav .nav-link { padding: 8px 12px !important; font-size: 0.78rem !important; }
+        }
+        @media (max-width: 575.98px) {
+            .dossier-header-info { flex-direction: column !important; gap: 12px; }
+            .dossier-avatar-lg {
+                width: 52px !important; height: 52px !important;
+                font-size: 1.2rem !important;
+            }
+            .dossier-action-strip { flex-direction: column; gap: 8px; }
+            .dossier-action-strip a { width: 100%; justify-content: center; }
+            .patient-info-grid { grid-template-columns: 1fr !important; }
+        }
+
+        /* ── Reports page charts ────────────────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .report-chart-container { height: 200px !important; }
+            .audit-kpi-card { padding: 14px 12px !important; }
+            .audit-kpi-card:hover { transform: none; }
+            .kpi-audit-num { font-size: 1.6rem !important; }
+        }
+        @media (max-width: 767.98px) {
+            .report-chart-container { height: 240px; }
+        }
+
+        /* ── Toolbar search full-width on xs ────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .encounters-ledger-wrapper .d-flex.flex-column,
+            .patients-directory-wrapper .d-flex.flex-column,
+            .staff-management-wrapper .d-flex.flex-column {
+                gap: 10px;
+            }
+            /* Make search input fill full width */
+            div[style*="max-width: 480px"] {
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+            div[style*="max-width:480px"] {
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+            /* Action buttons below search go full width */
+            .patients-directory-wrapper > div > div:last-child,
+            .encounters-ledger-wrapper > div > div:last-child {
+                width: 100%;
+            }
+            .patients-directory-wrapper > div > div:last-child a,
+            .encounters-ledger-wrapper > div > div:last-child a {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* ── Payments create form ────────────────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .payment-form-card { padding: 16px 14px !important; }
+        }
+
+        /* ── Users create/edit form ──────────────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .user-form-card { padding: 16px 14px !important; }
+        }
+
+        /* ── Modal dialogs inside dashboard ─────────────────────────────── */
+        @media (max-width: 575.98px) {
+            .modal-dialog { margin: 8px; }
+            .modal-body { padding: 14px; }
+            .modal-footer { padding: 10px 14px; flex-direction: column; gap: 8px; }
+            .modal-footer button, .modal-footer a { width: 100%; }
+        }
+
+        /* ── Global: disable hover transforms on likely touch devices ────── */
+        @media (hover: none) {
+            .kpi-banner-card:hover,
+            .staff-kpi-card:hover,
+            .vibrant-stat-card:hover,
+            .audit-kpi-card:hover,
+            .ui-card-interactive:hover {
+                transform: none !important;
+                box-shadow: inherit !important;
+            }
+        }
+
+        /* ── Prevent overflow from fixed-width elements ──────────────────── */
+        @media (max-width: 575.98px) {
+            [style*="min-width"] {
+                min-width: unset !important;
+            }
+            .white-space-nowrap-xs { white-space: normal !important; }
         }
     </style>
 </head>
@@ -971,15 +1374,74 @@ $currentRoute = $currentRoute ?? 'dashboard';
         </main>
     </div>
 
-    <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        /* ── Sidebar toggle ──────────────────────────────────────────────── */
+        const sidebar   = document.getElementById('sidebar-wrapper');
+        const backdrop  = document.getElementById('sidebar-backdrop');
+        const MOBILE_BP = 991.98;
+
         function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar-wrapper');
-            const backdrop = document.getElementById('sidebar-backdrop');
-            sidebar.classList.toggle('show');
-            backdrop.classList.toggle('show');
+            const isOpen = sidebar.classList.contains('show');
+            if (isOpen) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
         }
+
+        function openSidebar() {
+            sidebar.classList.add('show');
+            backdrop.classList.add('show');
+            document.body.style.overflow = 'hidden'; // prevent scroll behind
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('show');
+            backdrop.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        /* Backdrop click closes sidebar */
+        backdrop.addEventListener('click', closeSidebar);
+
+        /* Auto-close sidebar when any nav link is clicked (mobile) */
+        document.querySelectorAll('#sidebar-wrapper .sidebar-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= MOBILE_BP) {
+                    closeSidebar();
+                }
+            });
+        });
+
+        /* Reset sidebar to desktop state on resize */
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > MOBILE_BP) {
+                sidebar.classList.remove('show');
+                backdrop.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+
+        /* ── Touch swipe-left to close sidebar ───────────────────────────── */
+        let touchStartX = 0;
+        sidebar.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+
+        sidebar.addEventListener('touchend', e => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            if (dx < -60 && window.innerWidth <= MOBILE_BP) {
+                closeSidebar();
+            }
+        }, { passive: true });
+
+        /* ── Keyboard ESC to close ───────────────────────────────────────── */
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && sidebar.classList.contains('show')) {
+                closeSidebar();
+            }
+        });
     </script>
 </body>
 </html>

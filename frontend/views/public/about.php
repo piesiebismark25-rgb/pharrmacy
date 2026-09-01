@@ -27,7 +27,7 @@ require_once __DIR__ . '/header.php';
         ['num'=>'24/7', 'label'=>'On-Call Response',   'sub'=>'Round-the-clock dispatch'],
       ];
       foreach($stats as $s): ?>
-      <div class="col-6 col-md-3 stat-block" style="border-right:1px solid var(--border);">
+      <div class="col-6 col-md-3 stat-block" style="border-right:1px solid var(--border);border-bottom:1px solid var(--border);">
         <div class="stat-num font-serif" style="font-size:2rem;color:var(--sapphire)"><?php echo $s['num'];?></div>
         <div class="stat-label"><?php echo $s['label'];?></div>
         <div style="font-size:11px;color:var(--ink-200);margin-top:2px;"><?php echo $s['sub'];?></div>
@@ -62,7 +62,7 @@ require_once __DIR__ . '/header.php';
           ];
           foreach($mv as $c): ?>
           <div class="col-12 col-sm-6">
-            <div class="ik-card p-4 h-100">
+            <div class="ik-card p-4 h-100 mission-card">
               <div class="icon-chip <?php echo $c['chip'];?> mb-3">
                 <i class="fa-solid <?php echo $c['icon'];?>"></i>
               </div>
@@ -116,9 +116,11 @@ require_once __DIR__ . '/header.php';
       Our on-call clinical teams travel directly to patient residences across:
     </p>
     <div class="d-flex justify-content-center flex-wrap gap-2 mb-4">
+      <div class="coverage-pills">
       <?php foreach(['Pankrono','Tafo','Ahodwo','Asokwa','Kwadaso','Bantama','Suame','Santasi'] as $area): ?>
       <span class="tag blue"><?php echo $area;?></span>
       <?php endforeach; ?>
+      </div>
     </div>
     <a href="<?php echo APP_URL; ?>/request-care" class="btn-primary-ik">
       <i class="fa-solid fa-calendar-check"></i> Book Care in Your Neighbourhood

@@ -525,7 +525,172 @@ a { color: inherit; text-decoration: none; }
 /* ---- Smooth scroll --------------------------------------- */
 html { scroll-behavior: smooth; }
 
-/* ---- Print ----------------------------------------------- */
+/* ============================================================
+   RESPONSIVE SYSTEM — Mobile-First
+   xs: <576px  |  sm: 576-767px  |  md: 768-991px  |  lg: 992+
+   ============================================================ */
+
+/* ── Global section spacing ─────────────────────────────────── */
+@media (max-width:767px) {
+  .section-gap    { padding: 48px 0; }
+  .section-gap-sm { padding: 32px 0; }
+}
+@media (max-width:575px) {
+  .section-gap    { padding: 36px 0; }
+  .section-gap-sm { padding: 24px 0; }
+}
+
+/* ── Navbar ─────────────────────────────────────────────────── */
+@media (max-width:767px) {
+  .ik-navbar { padding: 10px 0; }
+  .ik-logo-name { font-size: 13px; }
+  .ik-logo-icon { width:32px; height:32px; font-size:15px; border-radius:8px; }
+  .btn-primary-ik { padding: 8px 14px; font-size: 12.5px; gap: 5px; }
+}
+
+/* ── Page hero (inner pages) ────────────────────────────────── */
+@media (max-width:767px) {
+  .page-hero { padding: 44px 0 36px; }
+  .page-hero h1 { font-size: 1.55rem !important; }
+  .page-hero .lead { font-size: 13.5px; }
+  .page-hero::before, .page-hero::after { display: none; }
+}
+@media (max-width:575px) {
+  .page-hero { padding: 36px 0 28px; }
+  .page-hero h1 { font-size: 1.35rem !important; }
+}
+
+/* ── Hero section (homepage) ────────────────────────────────── */
+.hero-section-outer { padding: 96px 0 80px; }
+@media (max-width:991px) {
+  .hero-section-outer { padding: 64px 0 56px; }
+}
+@media (max-width:767px) {
+  .hero-section-outer { padding: 48px 0 40px; }
+}
+@media (max-width:575px) {
+  .hero-section-outer { padding: 36px 0 32px; }
+}
+
+/* Vitals widget — hide on very small screens to save space */
+@media (max-width:575px) {
+  .hero-vitals-widget { display: none !important; }
+}
+
+/* ── Buttons — full-width on xs ─────────────────────────────── */
+@media (max-width:575px) {
+  .btn-primary-ik, .btn-ghost-ik, .btn-white-ik {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-cta-row { flex-direction: column !important; gap: 12px !important; }
+}
+
+/* ── Stats ribbon ───────────────────────────────────────────── */
+@media (max-width:575px) {
+  .stat-block { padding: 14px 10px; }
+  .stat-num   { font-size: 1.7rem; }
+  .stat-label { font-size: 10.5px; }
+}
+
+/* ── Cards ──────────────────────────────────────────────────── */
+@media (max-width:575px) {
+  .ik-card { border-radius: 14px; }
+  .ik-card:hover { transform: none; } /* disable lift on touch */
+}
+
+/* ── Section headings ───────────────────────────────────────── */
+@media (max-width:767px) {
+  h2 { font-size: 1.4rem !important; }
+  h3 { font-size: 1.2rem !important; }
+}
+@media (max-width:575px) {
+  h2 { font-size: 1.25rem !important; }
+}
+
+/* ── Eyebrow / eyebrow centering ────────────────────────────── */
+@media (max-width:767px) {
+  .eyebrow-center-mobile {
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ── How-it-works steps — remove vertical connector ─────────── */
+@media (max-width:767px) {
+  .step-connector { display: none; }
+}
+
+/* ── Footer ─────────────────────────────────────────────────── */
+@media (max-width:767px) {
+  .ik-footer { padding: 44px 0 24px; }
+}
+@media (max-width:575px) {
+  .ik-footer { padding: 36px 0 20px; }
+  .ik-footer .row > [class*="col-"] { margin-bottom: 8px; }
+}
+
+/* ── Forms ──────────────────────────────────────────────────── */
+@media (max-width:575px) {
+  .ik-input, .ik-select, .ik-textarea {
+    font-size: 16px; /* prevent iOS zoom */
+    padding: 10px 12px;
+  }
+  .ik-label { font-size: 11px; }
+}
+
+/* ── Contact cards ──────────────────────────────────────────── */
+@media (max-width:575px) {
+  .icon-chip { width: 36px; height: 36px; font-size: 17px; border-radius: 10px; }
+}
+
+/* ── Services catalog — domain headers ──────────────────────── */
+@media (max-width:575px) {
+  .domain-icon { width: 38px !important; height: 38px !important; font-size: 18px !important; }
+}
+
+/* ── Tag / badge wrapping ───────────────────────────────────── */
+.trust-strip { flex-wrap: wrap; gap: 12px 24px; }
+@media (max-width:575px) {
+  .trust-strip { gap: 10px 16px; }
+  .trust-strip span { font-size: 11px; }
+}
+
+/* ── Procedure code badge ───────────────────────────────────── */
+@media (max-width:575px) {
+  .proc-code { display: none; }
+}
+
+/* ── CTA band ───────────────────────────────────────────────── */
+@media (max-width:575px) {
+  .cta-band { padding: 48px 0 !important; }
+  .cta-band h2 { font-size: 1.4rem !important; }
+  .cta-band-btns { flex-direction: column; gap: 12px !important; }
+  .cta-band-btns a { width: 100%; justify-content: center; }
+}
+
+/* ── Mission / Vision cards equal height ───────────────────── */
+@media (max-width:575px) {
+  .mission-card { min-height: auto !important; }
+}
+
+/* ── Request care side panel — stack on mobile ──────────────── */
+@media (max-width:991px) {
+  .booking-side { margin-top: 0; }
+}
+
+/* ── Coverage pills wrap ────────────────────────────────────── */
+.coverage-pills { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+@media (max-width:575px) {
+  .coverage-pills .tag { font-size: 11px; padding: 3px 10px; }
+}
+
+/* ── Prevent horizontal overflow everywhere ─────────────────── */
+img, video, iframe, table { max-width: 100%; }
+.container { overflow-x: hidden; }
+
+/* ── Print ───────────────────────────────────────────────────── */
 @media print {
   .ik-navbar, .topbar, .ik-footer { display: none; }
 }

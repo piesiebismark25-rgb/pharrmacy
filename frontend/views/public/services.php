@@ -74,7 +74,7 @@ require_once __DIR__ . '/header.php';
 
       <!-- Domain header -->
       <div class="d-flex align-items-center gap-3 mb-4 pb-3" style="border-bottom:2px solid var(--border);">
-        <div class="icon-chip <?php echo $domain['chip'];?>" style="width:48px;height:48px;font-size:22px;flex-shrink:0;">
+        <div class="icon-chip domain-icon <?php echo $domain['chip'];?>" style="width:48px;height:48px;font-size:22px;flex-shrink:0;">
           <i class="fa-solid <?php echo $domain['icon'];?>"></i>
         </div>
         <div>
@@ -93,7 +93,7 @@ require_once __DIR__ . '/header.php';
           <div class="ik-card h-100 p-4 d-flex flex-column">
             <div class="d-flex justify-content-between align-items-start mb-2">
               <h5 style="font-size:15px;margin:0;"><?php echo $p['title'];?></h5>
-              <span class="font-mono" style="font-size:10px;font-weight:700;
+              <span class="proc-code font-mono" style="font-size:10px;font-weight:700;
                     background:var(--surface-2);border:1px solid var(--border);
                     border-radius:6px;padding:2px 7px;color:var(--ink-300);white-space:nowrap;margin-left:8px;">
                 <?php echo $p['code'];?>

@@ -796,11 +796,75 @@
     line-height: 1.2;
 }
 
-.appt-care-reason {
+    .appt-care-reason {
     font-size: 0.78rem;
     color: var(--text-secondary);
     line-height: 1.2;
     margin-top: 2px;
+}
+
+/* ============================================================
+   DASHBOARD — COMPONENT-LEVEL RESPONSIVE RULES
+   ============================================================ */
+
+/* ── Header command bar ──────────────────────────────────────── */
+@media (max-width: 767.98px) {
+    .header-command-bar { padding: 12px 14px; }
+    .header-title { font-size: 1.1rem; }
+    .header-actions { flex-wrap: wrap; width: 100%; }
+}
+@media (max-width: 575.98px) {
+    .header-command-bar { padding: 10px 12px; }
+    .header-title { font-size: 0.95rem; }
+    .btn-action-primary { width: 100%; justify-content: center; }
+    .btn-group-custom { width: 100%; }
+    .btn-group-custom .btn-action-secondary { flex: 1; justify-content: center; }
+    .vibrant-stat-card:hover { transform: none; }
+}
+
+/* ── Appointment schedule cards ──────────────────────────────── */
+@media (max-width: 575.98px) {
+    .appt-schedule-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 12px 14px;
+    }
+    .appt-time-box {
+        min-width: auto;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+    }
+    .appt-action-box { width: 100%; }
+    .appt-action-box a { width: 100%; justify-content: center; }
+    .appt-details-wrap { width: 100%; }
+    .appt-schedule-card:hover { transform: none; }
+}
+
+/* ── Stream row items ────────────────────────────────────────── */
+@media (max-width: 575.98px) {
+    .stream-row-item { padding: 10px 12px; gap: 8px; }
+    .stream-row-item .btn-secondary-custom { font-size: 0.7rem; padding: 4px 8px; }
+    .stream-name { font-size: 0.82rem; }
+}
+
+/* ── Neat card chart containers ──────────────────────────────── */
+@media (max-width: 575.98px) {
+    .neat-card.p-4 { padding: 14px 12px !important; }
+}
+
+/* ── Activity stream header (keep tabs from overflowing) ─────── */
+@media (max-width: 575.98px) {
+    .neat-card .d-flex.justify-content-between.align-items-center.p-3.px-4 {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 8px;
+        padding: 12px !important;
+    }
+    .stream-segmented-pill { align-self: flex-end; }
 }
 </style>
 
