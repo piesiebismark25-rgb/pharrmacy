@@ -18,16 +18,24 @@ AuthHelper::initSession();
 $requestUri = $_SERVER['REQUEST_URI'] ?? '/';
 $requestPath = parse_url($requestUri, PHP_URL_PATH);
 
-$baseNames = ['/ik-holiness-clinic/frontend/public', '/ik-holiness-clinic/public', '/ik-holiness-clinic'];
+// Strip known local base paths (XAMPP dev environments)
+// On production (ikclinic.page.gd) there is no subdirectory — path starts at /
+$baseNames = [
+    '/ik-holiness-clinic/frontend/public',
+    '/ik-holiness-clinic/public',
+    '/ik-holiness-clinic',
+    '/frontend/public',
+    '/public',
+];
 foreach ($baseNames as $b) {
-    if (strpos($requestPath, $b) === 0) {
+    if (str_starts_with($requestPath, $b)) {
         $requestPath = substr($requestPath, strlen($b));
         break;
     }
 }
 
-$routingPath = '/' . ltrim($requestPath, '/');
-if (empty($routingPath)) {
+$routingPath = '/' . ltrim($requestPath ?? '', '/');
+if ($routingPath === '' || $routingPath === '//') {
     $routingPath = '/';
 }
 
