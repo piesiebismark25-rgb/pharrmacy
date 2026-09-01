@@ -39,6 +39,12 @@ if ($routingPath === '' || $routingPath === '//') {
     $routingPath = '/';
 }
 
+// Direct Database Setup Endpoint
+if ($routingPath === '/setup' || $routingPath === '/setup.php' || $routingPath === '/install') {
+    require_once __DIR__ . '/../../backend/setup.php';
+    exit;
+}
+
 // 4. Initialize Router
 $router = new Router();
 

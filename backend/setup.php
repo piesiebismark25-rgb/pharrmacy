@@ -12,19 +12,24 @@ $status = 'pending';
 $errorDetails = '';
 
 try {
-    $dsn = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";charset=" . DB_CHARSET;
-    $options = [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES => false,
-    ];
-    $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
-    $logs[] = "Connected successfully to MySQL Server at " . DB_HOST . ":" . DB_PORT;
-
-    // 1. Create Database
-    $pdo->exec("CREATE DATABASE IF NOT EXISTS " . DB_NAME . " CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
-    $pdo->exec("USE " . DB_NAME);
-    $logs[] = "Database '" . DB_NAME . "' verified and active.";
+    // Try connecting directly with dbname (standard for shared hosts like InfinityFree)
+    try {
+        $dsn = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
+        $options = [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ];
+        $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
+        $logs[] = "Connected successfully to MySQL Database '" . DB_NAME . "' at " . DB_HOST;
+    } catch (PDOException $e) {
+        // Fallback for local environments where database might not exist yet
+        $dsn = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";charset=" . DB_CHARSET;
+        $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
+        $pdo->exec("CREATE DATABASE IF NOT EXISTS " . DB_NAME . " CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
+        $pdo->exec("USE " . DB_NAME);
+        $logs[] = "Database '" . DB_NAME . "' created and initialized.";
+    }
 
     // 2. Import Schema
     $schemaFile = __DIR__ . '/database/schema.sql';
